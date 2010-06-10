@@ -24,7 +24,7 @@ namespace Konesans.Dts.ExpressionEditor
         private ExpressionEditorView expressionEditorView;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ExpressionEditorPublic"/> class.
+        /// Initializes a new instance of the <see cref="ExpressionEditorPublic"/> class for a property
         /// </summary>
         /// <param name="variables">The variables collection for the container that hosts the property.</param>
         /// <param name="variableDispenser">The variable dispenser for the container that hosts the property.</param>
@@ -43,6 +43,26 @@ namespace Konesans.Dts.ExpressionEditor
             this.expressionEditorView.Expression = expression;
 
             this.labelFormTitle.Text = String.Format(CultureInfo.CurrentCulture, "Expression for property: {0} ({1})", propertyName, propertyType.Name);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ExpressionEditorPublic"/> class for a variable.
+        /// </summary>
+        /// <param name="variables">The variables collection for the host container.</param>
+        /// <param name="variableDispenser">The variable dispenser for the host container.</param>
+        /// <param name="variable">The variable which hosts the expression.</param>
+        public ExpressionEditorPublic(Variables variables, VariableDispenser variableDispenser, Variable variable)
+        {
+            this.InitializeComponent();
+
+            this.Icon = Konesans.Dts.ExpressionEditor.Properties.Resources.Expression;
+
+            this.expressionEditorView.ResultTypeValidate = true;
+            this.expressionEditorView.ResultType = variable.DataType;
+            this.expressionEditorView.Initialize(variableDispenser, variables);
+            this.expressionEditorView.Expression = variable.Expression;
+
+            this.labelFormTitle.Text = String.Format(CultureInfo.CurrentCulture, "Expression for variable: {0} ({1})", variable.QualifiedName, variable.DataType.ToString());
         }
 
         #region Expression

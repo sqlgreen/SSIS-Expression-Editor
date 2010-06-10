@@ -14,8 +14,8 @@
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkSubset>
     </TargetFrameworkSubset>
-    <SignAssembly>false</SignAssembly>
-    <DelaySign>true</DelaySign>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\..\KonesansStrongNameKeyPublicPrivateKeyPair.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -184,6 +184,10 @@
     <None Include="Resources\Save.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\..\KonesansStrongNameKeyPublicPrivateKeyPair.pfx">
+      <Link>Properties\KonesansStrongNameKeyPublicPrivateKeyPair.pfx</Link>
+    </None>
+    <None Include="KonesansStrongNameKeyPublicPrivateKeyPair.pfx" />
     <None Include="Resources\VariableDelete.bmp" />
     <None Include="Resources\VariableEdit.bmp" />
     <None Include="Resources\VariableNew.bmp" />

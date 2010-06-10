@@ -14,7 +14,6 @@
 // "In Project Suppression File". 
 // You do not need to add suppressions to this file manually. 
 
-[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA2210:AssembliesShouldHaveValidStrongNames")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2201:DoNotRaiseReservedExceptionTypes", Scope = "member", Target = "Konesans.Dts.ExpressionEditor.ExceptionMessageBox.#Show(System.Windows.Forms.IWin32Window,System.String,System.Exception,Microsoft.SqlServer.MessageBox.ExceptionMessageBoxButtons,Microsoft.SqlServer.MessageBox.ExceptionMessageBoxSymbol,Microsoft.SqlServer.MessageBox.ExceptionMessageBoxDefaultButton)")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Scope = "member", Target = "Konesans.Dts.ExpressionEditor.Controls.ExpressionEditorView.#AddVariable()")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Scope = "member", Target = "Konesans.Dts.ExpressionEditor.Controls.ExpressionEditorView.#DeleteVariable()")]
