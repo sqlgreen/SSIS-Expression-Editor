@@ -69,11 +69,11 @@
     <Compile Include="Controls\ExpressionEditorView.designer.cs">
       <DependentUpon>ExpressionEditorView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ExpressionEditorViewEditorPanel.cs">
+    <Compile Include="Controls\ExpressionFunctionsEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\ExpressionEditorViewEditorPanel.Designer.cs">
-      <DependentUpon>ExpressionEditorViewEditorPanel.cs</DependentUpon>
+    <Compile Include="Controls\ExpressionFunctionsEditor.Designer.cs">
+      <DependentUpon>ExpressionFunctionsEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\ExpressionEditorViewSerializer.cs" />
     <Compile Include="ExpressionEvaluator.cs" />
@@ -118,8 +118,8 @@
     <EmbeddedResource Include="Controls\ExpressionEditorView.resx">
       <DependentUpon>ExpressionEditorView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ExpressionEditorViewEditorPanel.resx">
-      <DependentUpon>ExpressionEditorViewEditorPanel.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\ExpressionFunctionsEditor.resx">
+      <DependentUpon>ExpressionFunctionsEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\FindReplace.resx">
       <DependentUpon>FindReplace.cs</DependentUpon>
