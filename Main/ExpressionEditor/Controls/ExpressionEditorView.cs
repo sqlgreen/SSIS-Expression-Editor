@@ -1329,14 +1329,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             this.toolTip.SetToolTip(this.linkEvaluate, "Evaluate expression");
 
             // Load functions document
-            try
-            {
-                this.SetDefaultFunctionsDocument();
-            }
-            catch
-            {
-                this.functionsDocument = null;
-            }
+            this.SetDefaultFunctionsDocument();
         }
 
         /// <summary>
@@ -1370,6 +1363,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             {
                 try
                 {
+                    System.Diagnostics.Debug.WriteLine("Loading functions from exe path: " + this.functionsFileName);
                     document.Load(this.functionsFileName);
                     this.functionsDocument = document;
                     return;
@@ -1381,13 +1375,23 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             }
 
             // Get Common Application Data Folder
-            string directory = RuntimeHelper.ApplicationDataFolder(RuntimeHelper.CommonProductName);
-            this.functionsFileName = Path.Combine(directory, FunctionsDocumentFileName);
+            // This is hardcoded here to ensure we always use the same folder regardless if it is hosted 
+            // by a custom tasks, the editor tool or BIDS Helper. BIDSHelper uses ILMerge which confuses means 
+            // we loose the normal assembly attributes hence we code a consistent path
+            string directory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            directory = Path.Combine(directory, @"Konesans Limited\Expression Editor");
+            if (!Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
 
+            this.functionsFileName = Path.Combine(directory, FunctionsDocumentFileName);
+            System.Diagnostics.Debug.WriteLine("4");
             if (File.Exists(this.functionsFileName))
             {
                 try
                 {
+                    System.Diagnostics.Debug.WriteLine("Loading functions from AppData path: " + this.functionsFileName);
                     document.Load(this.functionsFileName);
                     this.functionsDocument = document;
                     return;
@@ -1397,8 +1401,9 @@ namespace Konesans.Dts.ExpressionEditor.Controls
                     ExceptionMessageBox.Show(this, String.Format(CultureInfo.CurrentCulture, "The expression function file is invalid ({0}), the default function list will be used.", this.functionsFileName), ex);
                 }
             }
-
+            
             // Final trap, use embedded resource, but the filename is still set to AppData
+            System.Diagnostics.Debug.WriteLine("Loading functions from resource string");
             document.LoadXml(Konesans.Dts.ExpressionEditor.Properties.Resources.ExpressionViewFunctions);
             this.functionsDocument = document;
         }
@@ -1490,35 +1495,6 @@ namespace Konesans.Dts.ExpressionEditor.Controls
                 }
             }
         }
-
-        ////private void treeViewVariablesFunctions_DragOver(object sender, DragEventArgs e)
-        ////{
-        //    //if (_editMode)
-        //    //    e.Effect = DragDropEffects.Move;
-        //    //else
-        //        return;
-        ////}
-
-        ////private void treeViewVariablesFunctions_DragDrop(object sender, DragEventArgs e)
-        ////{
-        //    //if (_editMode)
-        //    //{
-        //    //    TreeNode targetNode = treeViewVariablesFunctions.GetNodeAt(e.X, e.Y);
-        //    //    if (e.Data.GetDataPresent(typeof(TreeNode)))
-        //    //    {
-        //    //        if (e.Effect == DragDropEffects.Move)
-        //    //        {
-        //    //            TreeNode treeNode = e.Data.GetData(typeof(TreeNode)) as TreeNode;
-        //    //            if (treeNode.ImageIndex == 0 || treeNode.ImageIndex == 1)
-        //    //                targetNode.Nodes.Add(treeNode);
-        //    //            else
-        //    //                targetNode.Parent.Nodes.Add(treeNode);
-        //    //        }
-        //    //    }
-        //    //}
-        //    //else
-        //        return;
-        ////}
 
         /// <summary>
         /// Handles the ItemDrag event of the treeViewVariablesFunctions control.

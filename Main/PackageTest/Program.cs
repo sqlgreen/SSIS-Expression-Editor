@@ -28,6 +28,10 @@ namespace PackageTest
             Executable exec = package.Executables.Add("STOCK:FileSystemTask");
             TaskHost taskHost = exec as TaskHost;
 
+            Variable variable = package.Variables.Add("MyVariable", false, "User", string.Empty);
+
+            Forms.Application.Run(new Konesans.Dts.ExpressionEditor.ExpressionEditorPublic(package.Variables, package.VariableDispenser, variable));
+
             Forms.Application.Run(new Konesans.Dts.ExpressionEditor.ExpressionEditorPublic(package.Variables, package.VariableDispenser, taskHost.Description.GetType(), "Operation", string.Empty));
         }
     }

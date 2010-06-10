@@ -103,6 +103,7 @@ namespace Konesans.Dts.ExpressionEditor
 
                 if (!Directory.Exists(fullPath))
                 {
+                    System.Diagnostics.Debug.WriteLine("Creating AppData Folder : " + fullPath);
                     Directory.CreateDirectory(fullPath);
                 }
 
