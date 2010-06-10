@@ -12,12 +12,12 @@ namespace Konesans.Dts.ExpressionEditor.Controls
     /// <summary>
     /// Function editor panel.
     /// </summary>
-    internal partial class ExpressionEditorViewEditorPanel : UserControl
+    internal partial class ExpressionFunctionsEditor : UserControl
     {
         /// <summary>
         /// Parent expression editor control
         /// </summary>
-        private ExpressionEditorView expressionEditorView;
+        private ExpressionEditorView expressionEditor;
 
         /// <summary>
         /// Current tree node.
@@ -27,7 +27,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// <summary>
         /// Initializes a new instance of the <see cref="ExpressionEditorViewEditorPanel"/> class.
         /// </summary>
-        public ExpressionEditorViewEditorPanel()
+        public ExpressionFunctionsEditor()
         {
             this.InitializeComponent();
 
@@ -40,7 +40,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// <value>The expression editor view.</value>
         internal ExpressionEditorView ExpressionEditorView
         {
-            set { this.expressionEditorView = value; }
+            set { this.expressionEditor = value; }
         }
 
         /// <summary>
@@ -148,7 +148,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             }
 
             // Flag as changed
-            this.expressionEditorView.ExpressionEdited();
+            this.expressionEditor.ExpressionEdited();
         }
 
         /// <summary>
@@ -174,7 +174,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
 
             // Save new value and flag as changed
             this.treeNode.Tag = syntax;
-            this.expressionEditorView.ExpressionEdited();
+            this.expressionEditor.ExpressionEdited();
         }
 
         /// <summary>
@@ -192,7 +192,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
 
             // Save new value and flag as changed
             this.treeNode.ToolTipText = this.textBoxDescription.Text;
-            this.expressionEditorView.ExpressionEdited();
+            this.expressionEditor.ExpressionEdited();
         }
 
         /// <summary>
@@ -202,7 +202,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void ToolStripButtonNewExpressionGroup_Click(object sender, EventArgs e)
         {
-            this.expressionEditorView.NewFunctionGroup();
+            this.expressionEditor.NewFunctionGroup();
         }
 
         /// <summary>
@@ -212,7 +212,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void ToolStripButtonNewExpressionFunction_Click(object sender, EventArgs e)
         {
-            this.expressionEditorView.NewFunction();
+            this.expressionEditor.NewFunction();
         }
 
         /// <summary>
@@ -222,7 +222,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void ToolStripButtonExpressionDelete_Click(object sender, EventArgs e)
         {
-            this.expressionEditorView.DeleteFunction();
+            this.expressionEditor.DeleteFunction();
         }
 
         /// <summary>
@@ -232,7 +232,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void ToolStripButtonUp_Click(object sender, EventArgs e)
         {
-            this.expressionEditorView.NodeUp();
+            this.expressionEditor.NodeUp();
         }
 
         /// <summary>
@@ -242,7 +242,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void ToolStripButtonDown_Click(object sender, EventArgs e)
         {
-            this.expressionEditorView.NodeDown();
+            this.expressionEditor.NodeDown();
         }
 
         /// <summary>
@@ -252,7 +252,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void ToolStripButtonRight_Click(object sender, EventArgs e)
         {
-            this.expressionEditorView.NodeRight();
+            this.expressionEditor.NodeRight();
         }
 
         /// <summary>
@@ -262,7 +262,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void ToolStripButtonLeft_Click(object sender, EventArgs e)
         {
-            this.expressionEditorView.NodeLeft();
+            this.expressionEditor.NodeLeft();
         }
 
         /// <summary>
@@ -272,7 +272,18 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void ToolStripButtonSaveFunctions_Click(object sender, EventArgs e)
         {
-            this.expressionEditorView.SaveFunctions();
+            this.expressionEditor.SaveFunctions();
+        }
+
+        /// <summary>
+        /// Handles the Click event of the toolStripButtonCloseFunctionEditor control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void toolStripButtonCloseFunctionEditor_Click(object sender, EventArgs e)
+        {
+            // Close the functions editor
+            this.expressionEditor.EditMode = false;
         }
     }
 }
