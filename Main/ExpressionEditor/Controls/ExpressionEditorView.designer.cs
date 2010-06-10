@@ -65,7 +65,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             this.richTextResult = new System.Windows.Forms.RichTextBox();
             this.evaluatorResultPableCaption = new Konesans.Dts.ExpressionEditor.Controls.RichPanel();
             this.linkEvaluate = new System.Windows.Forms.LinkLabel();
-            this.expressionEditorViewEditorPanel = new Konesans.Dts.ExpressionEditor.Controls.ExpressionEditorViewEditorPanel();
+            this.expressionEditorViewEditorPanel = new Konesans.Dts.ExpressionEditor.Controls.ExpressionFunctionsEditor();
             this.descriptionPanel = new Konesans.Dts.ExpressionEditor.Controls.RichPanel();
             this.labelHelpText = new System.Windows.Forms.Label();
             this.panelTopMargin = new System.Windows.Forms.Panel();
@@ -163,7 +163,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // 
             this.splitContainerMain.Panel2.Controls.Add(this.descriptionPanel);
             this.splitContainerMain.Size = new System.Drawing.Size(747, 457);
-            this.splitContainerMain.SplitterDistance = 385;
+            this.splitContainerMain.SplitterDistance = 409;
             this.splitContainerMain.TabIndex = 12;
             // 
             // splitContainerFunctionExpressions
@@ -182,7 +182,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // 
             this.splitContainerFunctionExpressions.Panel2.Controls.Add(this.splitContainerExpressionResult);
             this.splitContainerFunctionExpressions.Panel2.Controls.Add(this.expressionEditorViewEditorPanel);
-            this.splitContainerFunctionExpressions.Size = new System.Drawing.Size(747, 385);
+            this.splitContainerFunctionExpressions.Size = new System.Drawing.Size(747, 409);
             this.splitContainerFunctionExpressions.SplitterDistance = 233;
             this.splitContainerFunctionExpressions.TabIndex = 0;
             // 
@@ -193,7 +193,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             this.treeViewVariablesFunctions.HideSelection = false;
             this.treeViewVariablesFunctions.Location = new System.Drawing.Point(0, 21);
             this.treeViewVariablesFunctions.Name = "treeViewVariablesFunctions";
-            this.treeViewVariablesFunctions.Size = new System.Drawing.Size(233, 364);
+            this.treeViewVariablesFunctions.Size = new System.Drawing.Size(233, 388);
             this.treeViewVariablesFunctions.TabIndex = 3;
             this.treeViewVariablesFunctions.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.TreeViewVariablesFunctions_NodeMouseDoubleClick);
             this.treeViewVariablesFunctions.AfterCollapse += new System.Windows.Forms.TreeViewEventHandler(this.TreeViewVariablesFunctions_AfterCollapse);
@@ -245,8 +245,8 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // 
             this.splitContainerExpressionResult.Panel2.Controls.Add(this.richTextResultBorderPanel);
             this.splitContainerExpressionResult.Panel2.Controls.Add(this.evaluatorResultPableCaption);
-            this.splitContainerExpressionResult.Size = new System.Drawing.Size(510, 385);
-            this.splitContainerExpressionResult.SplitterDistance = 252;
+            this.splitContainerExpressionResult.Size = new System.Drawing.Size(510, 409);
+            this.splitContainerExpressionResult.SplitterDistance = 276;
             this.splitContainerExpressionResult.TabIndex = 0;
             // 
             // richTxtExpressionBorderPanel
@@ -274,7 +274,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             this.richTxtExpressionBorderPanel.PanelIcon = null;
             this.richTxtExpressionBorderPanel.ShowBorder = true;
             this.richTxtExpressionBorderPanel.ShowIcon = false;
-            this.richTxtExpressionBorderPanel.Size = new System.Drawing.Size(510, 231);
+            this.richTxtExpressionBorderPanel.Size = new System.Drawing.Size(510, 255);
             this.richTxtExpressionBorderPanel.TabIndex = 4;
             this.richTxtExpressionBorderPanel.TextAntiAlias = true;
             // 
@@ -289,13 +289,14 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             this.ExpressionTextBox.HideSelection = false;
             this.ExpressionTextBox.Location = new System.Drawing.Point(1, 1);
             this.ExpressionTextBox.Name = "ExpressionTextBox";
-            this.ExpressionTextBox.Size = new System.Drawing.Size(508, 225);
+            this.ExpressionTextBox.Size = new System.Drawing.Size(508, 249);
             this.ExpressionTextBox.TabIndex = 0;
             this.ExpressionTextBox.Text = "";
             this.ExpressionTextBox.SelectionChanged += new System.EventHandler(this.ExpressionTextBox_SelectionChanged);
             this.ExpressionTextBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.RichTxtExpression_MouseDoubleClick);
             this.ExpressionTextBox.Enter += new System.EventHandler(this.TextControls_Enter);
             this.ExpressionTextBox.Leave += new System.EventHandler(this.TextControls_Leave);
+            this.ExpressionTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ExpressionTextBox_KeyDown);
             this.ExpressionTextBox.TextChanged += new System.EventHandler(this.RichTxtExpression_TextChanged);
             // 
             // contextMenuStripTextPanes
@@ -499,7 +500,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             this.expressionEditorViewEditorPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.expressionEditorViewEditorPanel.Location = new System.Drawing.Point(0, 0);
             this.expressionEditorViewEditorPanel.Name = "expressionEditorViewEditorPanel";
-            this.expressionEditorViewEditorPanel.Size = new System.Drawing.Size(510, 385);
+            this.expressionEditorViewEditorPanel.Size = new System.Drawing.Size(510, 409);
             this.expressionEditorViewEditorPanel.TabIndex = 1;
             // 
             // descriptionPanel
@@ -526,7 +527,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             this.descriptionPanel.PanelIcon = null;
             this.descriptionPanel.ShowBorder = true;
             this.descriptionPanel.ShowIcon = false;
-            this.descriptionPanel.Size = new System.Drawing.Size(747, 68);
+            this.descriptionPanel.Size = new System.Drawing.Size(747, 44);
             this.descriptionPanel.TabIndex = 0;
             this.descriptionPanel.TextAntiAlias = true;
             // 
@@ -539,7 +540,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             this.labelHelpText.Location = new System.Drawing.Point(2, 4);
             this.labelHelpText.Name = "labelHelpText";
             this.labelHelpText.Padding = new System.Windows.Forms.Padding(2);
-            this.labelHelpText.Size = new System.Drawing.Size(743, 62);
+            this.labelHelpText.Size = new System.Drawing.Size(743, 38);
             this.labelHelpText.TabIndex = 2;
             // 
             // panelTopMargin
@@ -603,7 +604,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         private System.Windows.Forms.Panel panelTopMargin;
         internal System.Windows.Forms.RichTextBox ExpressionTextBox;
         private RichPanel richTextResultBorderPanel;
-        private ExpressionEditorViewEditorPanel expressionEditorViewEditorPanel;
+        private ExpressionFunctionsEditor expressionEditorViewEditorPanel;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripTextPanes;
         private System.Windows.Forms.ToolStripMenuItem undoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem redoToolStripMenuItem;

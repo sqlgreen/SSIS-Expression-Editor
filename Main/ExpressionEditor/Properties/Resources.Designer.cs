@@ -146,6 +146,11 @@ namespace Konesans.Dts.ExpressionEditor.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;
+        ///&lt;!-- 
+        ///  Default Expression Functions - ExpressionEditor.xml
+        ///  Version 2.0.0.0 - SQL Server Integration Services expression editor control
+        ///  Copyright © 2010 Konesans Limited
+        ///--&gt;
         ///&lt;ExpressionFunctions&gt;
         ///
         ///  &lt;Group Name=&quot;Math&quot;&gt;
@@ -154,9 +159,7 @@ namespace Konesans.Dts.ExpressionEditor.Properties {
         ///      &lt;Syntax&gt;ABS( «numeric» )&lt;/Syntax&gt;
         ///      &lt;Description&gt;Returns the absolute, positive value of a numeric expression.&lt;/Description&gt;
         ///    &lt;/Function&gt;
-        ///    &lt;Function&gt;
-        ///      &lt;Syntax&gt;EXP( «numeric» )&lt;/Syntax&gt;
-        ///      &lt;Description&gt;Returns the exponent to base e of the specified expression. The EXP function complements the action of the LN function and [rest of string was truncated]&quot;;.
+        ///    &lt;Function&gt;        /// [rest of string was truncated]&quot;;.
         /// </summary>
         public static string ExpressionViewFunctions {
             get {

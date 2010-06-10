@@ -2,7 +2,7 @@
 
 namespace Konesans.Dts.ExpressionEditor.Controls
 {
-    partial class ExpressionEditorViewEditorPanel
+    partial class ExpressionFunctionsEditor
     {
         /// <summary> 
         /// Required designer variable.
@@ -30,7 +30,6 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExpressionEditorViewEditorPanel));
             this.textBoxSyntax = new System.Windows.Forms.TextBox();
             this.textBoxSyntaxLabel = new System.Windows.Forms.TextBox();
             this.textBoxDescription = new System.Windows.Forms.TextBox();
@@ -52,6 +51,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             this.toolStripButtonRight = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonSaveFunctions = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonCloseFunctionEditor = new System.Windows.Forms.ToolStripButton();
             this.groupBoxBorder.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -128,7 +128,8 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             this.labelSyntax.Name = "labelSyntax";
             this.labelSyntax.Size = new System.Drawing.Size(412, 44);
             this.labelSyntax.TabIndex = 11;
-            this.labelSyntax.Text = resources.GetString("labelSyntax.Text");
+            this.labelSyntax.Text = "Optional.  For simple functions or snippets use Label only. For complex functions" +
+                " enter the display text in Label and the full expression text in Syntax.";
             // 
             // label1
             // 
@@ -178,7 +179,8 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             this.toolStripButtonLeft,
             this.toolStripButtonRight,
             this.toolStripSeparator2,
-            this.toolStripButtonSaveFunctions});
+            this.toolStripButtonSaveFunctions,
+            this.toolStripButtonCloseFunctionEditor});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(510, 25);
@@ -275,13 +277,24 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             this.toolStripButtonSaveFunctions.Text = "Save functions";
             this.toolStripButtonSaveFunctions.Click += new System.EventHandler(this.ToolStripButtonSaveFunctions_Click);
             // 
-            // ExpressionEditorViewEditorPanel
+            // toolStripButtonCloseFunctionEditor
+            // 
+            this.toolStripButtonCloseFunctionEditor.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButtonCloseFunctionEditor.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.ExpressionEdit;
+            this.toolStripButtonCloseFunctionEditor.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonCloseFunctionEditor.Name = "toolStripButtonCloseFunctionEditor";
+            this.toolStripButtonCloseFunctionEditor.Size = new System.Drawing.Size(53, 22);
+            this.toolStripButtonCloseFunctionEditor.Text = "Close";
+            this.toolStripButtonCloseFunctionEditor.ToolTipText = "Close functions & snippets editor";
+            this.toolStripButtonCloseFunctionEditor.Click += new System.EventHandler(this.toolStripButtonCloseFunctionEditor_Click);
+            // 
+            // ExpressionFunctionsEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBoxBorder);
             this.Controls.Add(this.toolStrip1);
-            this.Name = "ExpressionEditorViewEditorPanel";
+            this.Name = "ExpressionFunctionsEditor";
             this.Size = new System.Drawing.Size(510, 410);
             this.groupBoxBorder.ResumeLayout(false);
             this.groupBoxBorder.PerformLayout();
@@ -315,5 +328,6 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton toolStripButtonSaveFunctions;
+        private System.Windows.Forms.ToolStripButton toolStripButtonCloseFunctionEditor;
     }
 }

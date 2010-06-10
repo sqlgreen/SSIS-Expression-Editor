@@ -2082,5 +2082,30 @@ namespace Konesans.Dts.ExpressionEditor.Controls
                 }
             }
         }
+
+        /// <summary>
+        /// Handles the KeyDown event of the ExpressionTextBox control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.Windows.Forms.KeyEventArgs"/> instance containing the event data.</param>
+        private void ExpressionTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Capture key presses for the rich text box that we wish to handle 
+            // ourselves or just supress because we do not want the functionality
+            if (e.Control)
+            {
+                if (e.KeyCode == Keys.E)
+                {
+                    // Evaluate
+                    this.Run();
+                    e.Handled = true;
+                }
+                else if (e.KeyCode == Keys.R || e.KeyCode == Keys.L || e.KeyCode == Keys.I)
+                {
+                    // Supress
+                    e.Handled = true;
+                }
+            }
+        }
     }
 }
