@@ -286,7 +286,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             this.toolStripButtonCloseFunctionEditor.Size = new System.Drawing.Size(53, 22);
             this.toolStripButtonCloseFunctionEditor.Text = "Close";
             this.toolStripButtonCloseFunctionEditor.ToolTipText = "Close functions & snippets editor";
-            this.toolStripButtonCloseFunctionEditor.Click += new System.EventHandler(this.toolStripButtonCloseFunctionEditor_Click);
+            this.toolStripButtonCloseFunctionEditor.Click += new System.EventHandler(this.ToolStripButtonCloseFunctionEditor_Click);
             // 
             // ExpressionFunctionsEditor
             // 

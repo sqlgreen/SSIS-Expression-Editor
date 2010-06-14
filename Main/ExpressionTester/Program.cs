@@ -41,7 +41,7 @@ namespace Konesans.Dts.Tools.ExpressionTester
         /// <summary>
         /// Assembly name for SQL Server 2008 Interation Services compatible expression editor control library
         /// </summary>
-        private const string ExpressionEditorAssemblyName = "ExpressionEditor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null";
+        private const string ExpressionEditorAssemblyName = "ExpressionEditor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b2ab4a111192992b";
 #else
         /// <summary>
         /// SQL Server 2005 version text
@@ -61,7 +61,7 @@ namespace Konesans.Dts.Tools.ExpressionTester
         /// <summary>
         /// Assembly name for SQL Server 2005 Interation Services compatible expression editor control library
         /// </summary>
-       private const string ExpressionEditorAssemblyName = "ExpressionEditor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null";
+       private const string ExpressionEditorAssemblyName = "ExpressionEditor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b2ab4a111192992b";
 #endif
 
         /// <summary>

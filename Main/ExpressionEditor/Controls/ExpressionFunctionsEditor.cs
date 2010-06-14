@@ -1,5 +1,5 @@
 //-------------------------------------------------------------------------------------------------
-// <copyright file="ExpressionEditorViewEditorPanel.cs" company="Konesans Limited">
+// <copyright file="ExpressionFunctionsEditor.cs" company="Konesans Limited">
 // Copyright (C) 2010 Konesans Limited.  All rights reserved.
 // </copyright>
 //-------------------------------------------------------------------------------------------------
@@ -25,7 +25,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         private TreeNode treeNode;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ExpressionEditorViewEditorPanel"/> class.
+        /// Initializes a new instance of the <see cref="ExpressionFunctionsEditor"/> class.
         /// </summary>
         public ExpressionFunctionsEditor()
         {
@@ -280,7 +280,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void toolStripButtonCloseFunctionEditor_Click(object sender, EventArgs e)
+        private void ToolStripButtonCloseFunctionEditor_Click(object sender, EventArgs e)
         {
             // Close the functions editor
             this.expressionEditor.EditMode = false;
