@@ -16,11 +16,11 @@ using System.Security.Permissions;
 #if KATMAI
 [assembly: AssemblyDescription("SQL Server 2008 Integration Services expression development and testing tool.")]
 [assembly: AssemblyVersion("2.0.0.0")]
-[assembly: AssemblyFileVersion("2.0.0.0")]
+[assembly: AssemblyFileVersion("2.0.2.0")]
 #else
 [assembly: AssemblyDescription("SQL Server 2005 Integration Services expression development and testing tool.")]
 [assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.2.0")]
 #endif
 
 [assembly: AssemblyCompany("Konesans Limited")]
