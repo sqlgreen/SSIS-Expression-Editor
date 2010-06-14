@@ -38,6 +38,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.ExceptionMessageBox, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.Dts.Design, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ReferencedAssemblies\2008\Microsoft.SqlServer.Dts.Design.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.SQLServer.DTSRuntimeWrap, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=x86">
       <Private>False</Private>
     </Reference>
@@ -53,6 +57,7 @@
     <Compile Include="Controls\UndoOrRedoCountChangedEventArgs.cs" />
     <Compile Include="Controls\ResultTypeChangedEventArgs.cs" />
     <Compile Include="Controls\CursorPositionChangedEventArgs.cs" />
+    <Compile Include="Controls\UndoText.cs" />
     <Compile Include="Controls\VariableSelectionChangedEventArgs.cs" />
     <Compile Include="Controls\TitleChangedEventArgs.cs" />
     <Compile Include="DTSInfoEvents.cs" />
@@ -187,7 +192,6 @@
     <None Include="..\..\..\KonesansStrongNameKeyPublicPrivateKeyPair.pfx">
       <Link>Properties\KonesansStrongNameKeyPublicPrivateKeyPair.pfx</Link>
     </None>
-    <None Include="KonesansStrongNameKeyPublicPrivateKeyPair.pfx" />
     <None Include="Resources\VariableDelete.bmp" />
     <None Include="Resources\VariableEdit.bmp" />
     <None Include="Resources\VariableNew.bmp" />

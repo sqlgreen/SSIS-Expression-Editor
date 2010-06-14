@@ -1757,10 +1757,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         {
             StringCollection intermediates = new StringCollection();
             intermediates.AddRange(intermediate);
-
             string text = this.ExpressionTextBox.Text;
-
-            ////string selectedText = this.ExpressionTextBox.SelectedText;
             int start = this.ExpressionTextBox.SelectionStart;
             int end = start + this.ExpressionTextBox.SelectionLength;
             int leftBoundaryLength = leftBoundary.Length;
@@ -1789,9 +1786,6 @@ namespace Konesans.Dts.ExpressionEditor.Controls
                             break;
                         }
                     }
-
-                    // Underscore on left boundary
-                    ////if (this.richTxtExpression.Text.i
                 }
                 else if (text.Substring(start - leftBoundaryLength, leftBoundaryLength) == leftBoundary && intermediates.Contains(text.Substring(end, rightBoundaryLength)))
                 {
@@ -1888,20 +1882,9 @@ namespace Konesans.Dts.ExpressionEditor.Controls
                 }
             }
 
-            // TODO:  Need to add file load support if we want to include this, default action for Auto mode is to embed it.
-            //////else if (e.Data.GetDataPresent(DataFormats.FileDrop))
-            //////{
-            //////    string[] files = e.Data.GetData(DataFormats.FileDrop) as string[];
-            //////    if (files.Length > 0)
-            //////    {
-            //////        string file = files[0];
-            //////        if (Path.GetExtension(file) == ".expr")
-            //////        {
-            //////            e.Effect = DragDropEffects.Copy;
-            //////            return;
-            //////        }
-            //////    }
-            //////}
+            //// TODO:  Need to add file load support if we want to include this, default action for Auto mode is to embed it.
+            //// if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            ////     string[] files = e.Data.GetData(DataFormats.FileDrop) as string[];
 
             e.Effect = DragDropEffects.None;
         }
@@ -2014,76 +1997,6 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         }
 
         /// <summary>
-        /// Undo operation class.
-        /// </summary>
-        private class UndoText
-        {
-            /// <summary>
-            /// The text changed during the operation
-            /// </summary>
-            private string text;
-
-            /// <summary>
-            /// The start position of the text
-            /// </summary>
-            private int selectionStart;
-
-            /// <summary>
-            /// The length of the text
-            /// </summary>
-            private int selectionLength;
-
-            /// <summary>
-            /// Gets or sets the text changed during the operation
-            /// </summary>
-            /// <value>The operation text.</value>
-            public string Text
-            {
-                get { return this.text; }
-                set { this.text = value; }
-            }
-
-            /// <summary>
-            /// Gets or sets the start position of the text.
-            /// </summary>
-            /// <value>The selection start.</value>
-            public int SelectionStart
-            {
-                get { return this.selectionStart; }
-                set { this.selectionStart = value; }
-            }
-
-            /// <summary>
-            /// Gets or sets the length of the text.
-            /// </summary>
-            /// <value>The length of the selection.</value>
-            public int SelectionLength
-            {
-                get { return this.selectionLength; }
-                set { this.selectionLength = value; }
-            }
-
-            /// <summary>
-            /// Determines whether the undo text is a duplicate.
-            /// </summary>
-            /// <param name="undoText">The undo text.</param>
-            /// <returns>
-            ///     <c>true</c> if the specified undo text is duplicate; otherwise, <c>false</c>.
-            /// </returns>
-            public bool IsDuplicate(UndoText undoText)
-            {
-                if (undoText.SelectionLength == this.SelectionLength && undoText.SelectionStart == this.SelectionStart && undoText.Text == this.Text)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-        }
-
-        /// <summary>
         /// Handles the KeyDown event of the ExpressionTextBox control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
@@ -2100,7 +2013,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
                     this.Run();
                     e.Handled = true;
                 }
-                else if (e.KeyCode == Keys.R || e.KeyCode == Keys.L || e.KeyCode == Keys.I)
+                else if (e.KeyCode == Keys.R || e.KeyCode == Keys.L || e.KeyCode == Keys.L)
                 {
                     // Supress
                     e.Handled = true;

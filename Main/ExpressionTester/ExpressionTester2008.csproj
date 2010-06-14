@@ -115,7 +115,6 @@
     <None Include="..\..\..\KonesansStrongNameKeyPublicPrivateKeyPair.pfx">
       <Link>Properties\KonesansStrongNameKeyPublicPrivateKeyPair.pfx</Link>
     </None>
-    <None Include="KonesansStrongNameKeyPublicPrivateKeyPair.pfx" />
     <None Include="Resources\Run.bmp" />
     <None Include="Resources\Properties.bmp" />
     <None Include="Resources\Options.bmp" />

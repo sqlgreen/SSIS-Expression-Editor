@@ -53,6 +53,7 @@
     <Compile Include="Controls\UndoOrRedoCountChangedEventArgs.cs" />
     <Compile Include="Controls\ResultTypeChangedEventArgs.cs" />
     <Compile Include="Controls\CursorPositionChangedEventArgs.cs" />
+    <Compile Include="Controls\UndoText.cs" />
     <Compile Include="Controls\VariableSelectionChangedEventArgs.cs" />
     <Compile Include="Controls\TitleChangedEventArgs.cs" />
     <Compile Include="DTSInfoEvents.cs" />
