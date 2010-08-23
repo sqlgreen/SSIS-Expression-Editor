@@ -144,7 +144,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // 
             // toolTip
             // 
-            this.toolTip.IsBalloon = true;
+            //this.toolTip.IsBalloon = true;
             // 
             // splitContainerMain
             // 

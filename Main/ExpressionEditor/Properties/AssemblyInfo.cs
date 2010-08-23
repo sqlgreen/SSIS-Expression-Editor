@@ -20,7 +20,7 @@ using System.Security.Permissions;
 #else
 [assembly: AssemblyDescription("SQL Server 2005 Integration Services expression editor control library.")]
 [assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.2.0")]
 #endif
 
 [assembly: AssemblyCompany("Konesans Limited")]

@@ -159,7 +159,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         {
             this.InitializeComponent();
 
-            this.toolTip.SetToolTip(this.linkEvaluate, "Evaluate expression");
+            this.toolTip.SetToolTip(this.linkEvaluate, Konesans.Dts.ExpressionEditor.Properties.Resources.EvaluateToolTip);
             this.expressionEvaluator = new ExpressionEvaluator();
 
             this.findReplace = new FindReplace(this.ExpressionTextBox);
@@ -1326,7 +1326,6 @@ namespace Konesans.Dts.ExpressionEditor.Controls
 
             this.expressionEvaluator = new ExpressionEvaluator();
             this.treeViewVariablesFunctions.ImageList = this.imageListIcons;
-            this.toolTip.SetToolTip(this.linkEvaluate, "Evaluate expression");
 
             // Load functions document
             this.SetDefaultFunctionsDocument();
