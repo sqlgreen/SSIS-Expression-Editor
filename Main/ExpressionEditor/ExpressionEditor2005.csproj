@@ -49,6 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\ExpressionRichTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\FindOrReplaceEventArgs.cs" />
     <Compile Include="Controls\UndoOrRedoCountChangedEventArgs.cs" />
     <Compile Include="Controls\ResultTypeChangedEventArgs.cs" />

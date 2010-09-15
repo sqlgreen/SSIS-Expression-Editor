@@ -123,15 +123,6 @@ namespace Konesans.Dts.ExpressionEditor.Properties {
             }
         }
         
-        /// <summary>
-        ///   Looks up a localized string similar to Evaluate expression, Ctrl+E or F5.
-        /// </summary>
-        public static string EvaluateToolTip {
-            get {
-                return ResourceManager.GetString("EvaluateToolTip", resourceCulture);
-            }
-        }
-        
         public static System.Drawing.Icon Expression {
             get {
                 object obj = ResourceManager.GetObject("Expression", resourceCulture);
@@ -228,6 +219,13 @@ namespace Konesans.Dts.ExpressionEditor.Properties {
         public static System.Drawing.Bitmap Replace {
             get {
                 object obj = ResourceManager.GetObject("Replace", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        public static System.Drawing.Bitmap Run {
+            get {
+                object obj = ResourceManager.GetObject("Run", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
