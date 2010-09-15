@@ -31,18 +31,13 @@ namespace Konesans.Dts.ExpressionEditor
         /// <param name="propertyType">The type of the property which hosts the expression.</param>
         /// <param name="propertyName">The name of the property which hosts the expression.</param>
         /// <param name="expression">The current expression if any.</param>
-        public ExpressionEditorPublic(Variables variables, VariableDispenser variableDispenser, Type propertyType, string propertyName, string expression)
+        public ExpressionEditorPublic(Variables variables, VariableDispenser variableDispenser, Type propertyType, string propertyName, string expression) : this(variables, variableDispenser)
         {
-            this.InitializeComponent();
-
-            this.Icon = Konesans.Dts.ExpressionEditor.Properties.Resources.Expression;
-
-            this.expressionEditorView.ResultTypeValidate = true;
             this.expressionEditorView.ResultType = Type.GetTypeCode(propertyType);
-            this.expressionEditorView.Initialize(variableDispenser, variables);
             this.expressionEditorView.Expression = expression;
 
-            this.labelFormTitle.Text = String.Format(CultureInfo.CurrentCulture, "Expression for property: {0} ({1})", propertyName, propertyType.Name);
+            this.TitleLabel.Text = "Expression for property:";
+            this.TitleValueLabel.Text = string.Format(CultureInfo.CurrentCulture, "{0} ({1})", propertyName, propertyType.Name);
         }
 
         /// <summary>
@@ -51,21 +46,46 @@ namespace Konesans.Dts.ExpressionEditor
         /// <param name="variables">The variables collection for the host container.</param>
         /// <param name="variableDispenser">The variable dispenser for the host container.</param>
         /// <param name="variable">The variable which hosts the expression.</param>
-        public ExpressionEditorPublic(Variables variables, VariableDispenser variableDispenser, Variable variable)
+        public ExpressionEditorPublic(Variables variables, VariableDispenser variableDispenser, Variable variable) : this(variables, variableDispenser)
         {
+            this.expressionEditorView.ResultTypeValidate = true;
+            this.expressionEditorView.Initialize(variableDispenser, variables);
+           
+            this.expressionEditorView.ResultType = variable.DataType;
+            this.expressionEditorView.Expression = variable.Expression;
+
+            this.TitleLabel.Text = "Expression for variable:";
+            this.TitleValueLabel.Text = string.Format(CultureInfo.CurrentCulture, "{0} ({1})", variable.QualifiedName, variable.DataType.ToString());
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ExpressionEditorPublic"/> class.
+        /// </summary>
+        /// <param name="variables">The variables.</param>
+        /// <param name="variableDispenser">The variable dispenser.</param>
+        private ExpressionEditorPublic(Variables variables, VariableDispenser variableDispenser)
+        {
+            // Common constructor, called by public constructors
             this.InitializeComponent();
 
             this.Icon = Konesans.Dts.ExpressionEditor.Properties.Resources.Expression;
 
             this.expressionEditorView.ResultTypeValidate = true;
-            this.expressionEditorView.ResultType = variable.DataType;
             this.expressionEditorView.Initialize(variableDispenser, variables);
-            this.expressionEditorView.Expression = variable.Expression;
 
-            this.labelFormTitle.Text = String.Format(CultureInfo.CurrentCulture, "Expression for variable: {0} ({1})", variable.QualifiedName, variable.DataType.ToString());
+            // Merge the expression editor tool strip with the main form
+            int index = 0;
+            ToolStrip childToolStrip = this.expressionEditorView.ToolStrip;
+            foreach (ToolStripItem item in childToolStrip.Items)
+            {
+                item.MergeAction = MergeAction.Insert;
+                item.MergeIndex = index;
+                index++;
+            }
+
+            ToolStripManager.Merge(this.expressionEditorView.ToolStrip, this.toolStrip);
         }
 
-        #region Expression
         /// <summary>
         /// Gets or sets the editor expression
         /// </summary>
@@ -74,7 +94,6 @@ namespace Konesans.Dts.ExpressionEditor
             get { return this.expressionEditorView.Expression; }
             set { this.expressionEditorView.Expression = value; }
         }
-        #endregion
 
         /// <summary>
         /// Handles the Click event of the OK control.
@@ -110,7 +129,6 @@ namespace Konesans.Dts.ExpressionEditor
             this.Close();
         }
 
-        #region ExpressionEditor_KeyUp - F5 and Ctrl+A
         /// <summary>
         /// Handle the F5 keypress at a form level, to pass down to the evaluator control.
         /// </summary>
@@ -118,7 +136,8 @@ namespace Konesans.Dts.ExpressionEditor
         /// <param name="e">KeyEventArgs e</param>
         private void ExpressionEditor_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.F5)
+            // F5 or Ctrl+E, Ctrl+A, 
+            if (e.KeyCode == Keys.F5 || (e.Control && e.KeyCode == Keys.E))
             {
                 this.expressionEditorView.Run();
             }
@@ -127,6 +146,5 @@ namespace Konesans.Dts.ExpressionEditor
                 this.expressionEditorView.SelectAllText();
             }
         }
-        #endregion
     }
 }

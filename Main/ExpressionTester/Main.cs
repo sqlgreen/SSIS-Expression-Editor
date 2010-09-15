@@ -67,6 +67,18 @@ namespace Konesans.Dts.Tools.ExpressionTester
             this.programSettings = new ProgramSettings();
             this.applicationSettings = new ApplicationSettings();
             this.expressionEditor.ApplicationTitle = Application.ProductName;
+
+            // Merge the expression editor tool strip with the main form
+            int index = this.toolStrip.Items.Count - 2;
+            ToolStrip childToolStrip = this.expressionEditor.ToolStrip;
+            foreach (ToolStripItem item in childToolStrip.Items)
+            {
+                item.MergeAction = MergeAction.Insert;
+                item.MergeIndex = index;
+                index++;
+            }
+
+            ToolStripManager.Merge(this.expressionEditor.ToolStrip, this.toolStrip.Name);
         }
 
         /// <summary>
@@ -458,18 +470,14 @@ namespace Konesans.Dts.Tools.ExpressionTester
 
             this.saveAsToolStripMenuItem.Enabled = status;
 
-            this.addVariabletoolStripButton.Enabled = status;
             this.addVariableToolStripMenuItem.Enabled = status;
 
             if (status == false)
             {
-                this.deleteVariabletoolStripButton.Enabled = status;
                 this.deleteVariableToolStripMenuItem.Enabled = status;
-                this.editVariabletoolStripButton.Enabled = status;
                 this.editVariableToolStripMenuItem.Enabled = status;
             }
 
-            this.runToolStripButton.Enabled = status;
             this.evaluateToolStripMenuItem.Enabled = status;
 
             this.expressionFilePropertiesToolStripMenuItem.Enabled = status;
@@ -568,13 +576,9 @@ namespace Konesans.Dts.Tools.ExpressionTester
         {
             this.saveToolStripButton.Enabled = false;
             this.saveToolStripMenuItem.Enabled = false;
-            this.addVariabletoolStripButton.Enabled = true;
             this.addVariableToolStripMenuItem.Enabled = true;
-            this.deleteVariabletoolStripButton.Enabled = false;
             this.deleteVariableToolStripMenuItem.Enabled = false;
-            this.editVariabletoolStripButton.Enabled = false;
             this.editVariableToolStripMenuItem.Enabled = false;
-            this.runToolStripButton.Enabled = true;
             this.evaluateToolStripMenuItem.Enabled = true;
             this.expressionFilePropertiesToolStripMenuItem.Enabled = true;
             this.expressionFileSettingsToolStripButton.Enabled = true;
@@ -752,9 +756,7 @@ namespace Konesans.Dts.Tools.ExpressionTester
         /// <param name="e">The <see cref="Konesans.Dts.ExpressionEditor.Controls.VariableSelectionChangedEventArgs"/> instance containing the event data.</param>
         private void ExpressionEditor_VariableSelectionChanged(object sender, VariableSelectionChangedEventArgs e)
         {
-            this.deleteVariabletoolStripButton.Enabled = e.VariableSelected;
             this.deleteVariableToolStripMenuItem.Enabled = e.VariableSelected;
-            this.editVariabletoolStripButton.Enabled = e.VariableSelected;
             this.editVariableToolStripMenuItem.Enabled = e.VariableSelected;
         }
 
@@ -879,15 +881,12 @@ namespace Konesans.Dts.Tools.ExpressionTester
 
             // Checked controls
             this.editFunctionsToolStripMenuItem.Checked = enabled;
-            this.toolStripButtonEditFunctions.Checked = enabled;
 
             // Additional controls
             this.newToolStripButton.Enabled = !enabled;
             this.newToolStripMenuItem.Enabled = !enabled;
             this.openToolStripButton.Enabled = !enabled;
             this.openToolStripMenuItem.Enabled = !enabled;
-            this.toolStripButtonFind.Enabled = !enabled;
-            this.toolStripButtonReplace.Enabled = !enabled;
             this.saveAsTemplateToolStripMenuItem.Enabled = !enabled;
             this.recentFilesToolStripMenuItem.Enabled = !enabled;
         }

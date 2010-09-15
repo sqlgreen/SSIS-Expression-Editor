@@ -38,28 +38,42 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             this.components = new System.ComponentModel.Container();
             this.imageListIcons = new System.Windows.Forms.ImageList(this.components);
             this.contextMenuStripVariablesFunctions = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.addVariableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editVariableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteVariableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addVariableMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editVariableMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteVariableMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparatorEditFunctions = new System.Windows.Forms.ToolStripSeparator();
-            this.editFunctionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editFunctionsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
             this.splitContainerFunctionExpressions = new System.Windows.Forms.SplitContainer();
             this.treeViewVariablesFunctions = new System.Windows.Forms.TreeView();
-            this.richPanelFunctionsCaption = new Konesans.Dts.ExpressionEditor.Controls.RichPanel();
             this.splitContainerExpressionResult = new System.Windows.Forms.SplitContainer();
-            this.richTxtExpressionBorderPanel = new Konesans.Dts.ExpressionEditor.Controls.RichPanel();
-            this.ExpressionTextBox = new System.Windows.Forms.RichTextBox();
             this.contextMenuStripTextPanes = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.redoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.undoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.redoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparatorUndo = new System.Windows.Forms.ToolStripSeparator();
-            this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pasteMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparatorTextEdit = new System.Windows.Forms.ToolStripSeparator();
-            this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.selectAllMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panelTopMargin = new System.Windows.Forms.Panel();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.addVariableToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.editVariableToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.deleteVariableToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonFind = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonReplace = new System.Windows.Forms.ToolStripButton();
+            this.evalToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.editFunctionsToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.expressionFileSettingsToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.toolStripSeparatorEndVariables = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparatorEndEdit = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparatorEndEval = new System.Windows.Forms.ToolStripSeparator();
+            this.richPanelFunctionsCaption = new Konesans.Dts.ExpressionEditor.Controls.RichPanel();
+            this.richTxtExpressionBorderPanel = new Konesans.Dts.ExpressionEditor.Controls.RichPanel();
+            this.ExpressionTextBox = new Konesans.Dts.ExpressionEditor.Controls.ExpressionRichTextBox();
             this.borderedPanelExpressionCaption = new Konesans.Dts.ExpressionEditor.Controls.RichPanel();
             this.richTextResultBorderPanel = new Konesans.Dts.ExpressionEditor.Controls.RichPanel();
             this.richTextResult = new System.Windows.Forms.RichTextBox();
@@ -68,7 +82,6 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             this.expressionEditorViewEditorPanel = new Konesans.Dts.ExpressionEditor.Controls.ExpressionFunctionsEditor();
             this.descriptionPanel = new Konesans.Dts.ExpressionEditor.Controls.RichPanel();
             this.labelHelpText = new System.Windows.Forms.Label();
-            this.panelTopMargin = new System.Windows.Forms.Panel();
             this.contextMenuStripVariablesFunctions.SuspendLayout();
             this.splitContainerMain.Panel1.SuspendLayout();
             this.splitContainerMain.Panel2.SuspendLayout();
@@ -79,8 +92,9 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             this.splitContainerExpressionResult.Panel1.SuspendLayout();
             this.splitContainerExpressionResult.Panel2.SuspendLayout();
             this.splitContainerExpressionResult.SuspendLayout();
-            this.richTxtExpressionBorderPanel.SuspendLayout();
             this.contextMenuStripTextPanes.SuspendLayout();
+            this.toolStrip.SuspendLayout();
+            this.richTxtExpressionBorderPanel.SuspendLayout();
             this.richTextResultBorderPanel.SuspendLayout();
             this.evaluatorResultPableCaption.SuspendLayout();
             this.descriptionPanel.SuspendLayout();
@@ -95,62 +109,60 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // contextMenuStripVariablesFunctions
             // 
             this.contextMenuStripVariablesFunctions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addVariableToolStripMenuItem,
-            this.editVariableToolStripMenuItem,
-            this.deleteVariableToolStripMenuItem,
+            this.addVariableMenuItem,
+            this.editVariableMenuItem,
+            this.deleteVariableMenuItem,
             this.toolStripSeparatorEditFunctions,
-            this.editFunctionsToolStripMenuItem});
+            this.editFunctionsMenuItem});
             this.contextMenuStripVariablesFunctions.Name = "contextMenuStripVariables";
             this.contextMenuStripVariablesFunctions.Size = new System.Drawing.Size(147, 98);
-            this.contextMenuStripVariablesFunctions.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.ContextMenuStripVariablesFunctions_ItemClicked);
-            this.contextMenuStripVariablesFunctions.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuStripVariablesFunctions_Opening);
             // 
-            // addVariableToolStripMenuItem
+            // addVariableMenuItem
             // 
-            this.addVariableToolStripMenuItem.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.VariableNew;
-            this.addVariableToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
-            this.addVariableToolStripMenuItem.Name = "addVariableToolStripMenuItem";
-            this.addVariableToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.addVariableToolStripMenuItem.Text = "Add Variable";
+            this.addVariableMenuItem.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.VariableNew;
+            this.addVariableMenuItem.ImageTransparentColor = System.Drawing.Color.White;
+            this.addVariableMenuItem.Name = "addVariableMenuItem";
+            this.addVariableMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.addVariableMenuItem.Text = "Add Variable";
+            this.addVariableMenuItem.Click += new System.EventHandler(this.AddVariable_Click);
             // 
-            // editVariableToolStripMenuItem
+            // editVariableMenuItem
             // 
-            this.editVariableToolStripMenuItem.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.VariableEdit;
-            this.editVariableToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
-            this.editVariableToolStripMenuItem.Name = "editVariableToolStripMenuItem";
-            this.editVariableToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.editVariableToolStripMenuItem.Text = "Edit Variable";
+            this.editVariableMenuItem.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.VariableEdit;
+            this.editVariableMenuItem.ImageTransparentColor = System.Drawing.Color.White;
+            this.editVariableMenuItem.Name = "editVariableMenuItem";
+            this.editVariableMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.editVariableMenuItem.Text = "Edit Variable";
+            this.editVariableMenuItem.Click += new System.EventHandler(this.EditVariable_Click);
             // 
-            // deleteVariableToolStripMenuItem
+            // deleteVariableMenuItem
             // 
-            this.deleteVariableToolStripMenuItem.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.VariableDelete;
-            this.deleteVariableToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
-            this.deleteVariableToolStripMenuItem.Name = "deleteVariableToolStripMenuItem";
-            this.deleteVariableToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.deleteVariableToolStripMenuItem.Text = "Delete Variable";
+            this.deleteVariableMenuItem.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.VariableDelete;
+            this.deleteVariableMenuItem.ImageTransparentColor = System.Drawing.Color.White;
+            this.deleteVariableMenuItem.Name = "deleteVariableMenuItem";
+            this.deleteVariableMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.deleteVariableMenuItem.Text = "Delete Variable";
+            this.deleteVariableMenuItem.Click += new System.EventHandler(this.DeleteVariable_Click);
             // 
             // toolStripSeparatorEditFunctions
             // 
             this.toolStripSeparatorEditFunctions.Name = "toolStripSeparatorEditFunctions";
             this.toolStripSeparatorEditFunctions.Size = new System.Drawing.Size(143, 6);
             // 
-            // editFunctionsToolStripMenuItem
+            // editFunctionsMenuItem
             // 
-            this.editFunctionsToolStripMenuItem.CheckOnClick = true;
-            this.editFunctionsToolStripMenuItem.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.ExpressionEdit;
-            this.editFunctionsToolStripMenuItem.Name = "editFunctionsToolStripMenuItem";
-            this.editFunctionsToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.editFunctionsToolStripMenuItem.Text = "Edit Functions";
-            // 
-            // toolTip
-            // 
-            //this.toolTip.IsBalloon = true;
+            this.editFunctionsMenuItem.CheckOnClick = true;
+            this.editFunctionsMenuItem.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.ExpressionEdit;
+            this.editFunctionsMenuItem.Name = "editFunctionsMenuItem";
+            this.editFunctionsMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.editFunctionsMenuItem.Text = "Edit Functions";
+            this.editFunctionsMenuItem.Click += new System.EventHandler(this.EditFunctions_Click);
             // 
             // splitContainerMain
             // 
             this.splitContainerMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerMain.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.splitContainerMain.Location = new System.Drawing.Point(0, 4);
+            this.splitContainerMain.Location = new System.Drawing.Point(0, 29);
             this.splitContainerMain.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
             this.splitContainerMain.Name = "splitContainerMain";
             this.splitContainerMain.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -162,8 +174,8 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // splitContainerMain.Panel2
             // 
             this.splitContainerMain.Panel2.Controls.Add(this.descriptionPanel);
-            this.splitContainerMain.Size = new System.Drawing.Size(747, 457);
-            this.splitContainerMain.SplitterDistance = 409;
+            this.splitContainerMain.Size = new System.Drawing.Size(747, 432);
+            this.splitContainerMain.SplitterDistance = 384;
             this.splitContainerMain.TabIndex = 12;
             // 
             // splitContainerFunctionExpressions
@@ -182,7 +194,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // 
             this.splitContainerFunctionExpressions.Panel2.Controls.Add(this.splitContainerExpressionResult);
             this.splitContainerFunctionExpressions.Panel2.Controls.Add(this.expressionEditorViewEditorPanel);
-            this.splitContainerFunctionExpressions.Size = new System.Drawing.Size(747, 409);
+            this.splitContainerFunctionExpressions.Size = new System.Drawing.Size(747, 384);
             this.splitContainerFunctionExpressions.SplitterDistance = 233;
             this.splitContainerFunctionExpressions.TabIndex = 0;
             // 
@@ -193,7 +205,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             this.treeViewVariablesFunctions.HideSelection = false;
             this.treeViewVariablesFunctions.Location = new System.Drawing.Point(0, 21);
             this.treeViewVariablesFunctions.Name = "treeViewVariablesFunctions";
-            this.treeViewVariablesFunctions.Size = new System.Drawing.Size(233, 388);
+            this.treeViewVariablesFunctions.Size = new System.Drawing.Size(233, 363);
             this.treeViewVariablesFunctions.TabIndex = 3;
             this.treeViewVariablesFunctions.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.TreeViewVariablesFunctions_NodeMouseDoubleClick);
             this.treeViewVariablesFunctions.AfterCollapse += new System.Windows.Forms.TreeViewEventHandler(this.TreeViewVariablesFunctions_AfterCollapse);
@@ -201,6 +213,231 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             this.treeViewVariablesFunctions.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.TreeViewVariablesFunctions_NodeMouseClick);
             this.treeViewVariablesFunctions.AfterExpand += new System.Windows.Forms.TreeViewEventHandler(this.TreeViewVariablesFunctions_AfterExpand);
             this.treeViewVariablesFunctions.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.TreeViewVariablesFunctions_ItemDrag);
+            // 
+            // splitContainerExpressionResult
+            // 
+            this.splitContainerExpressionResult.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerExpressionResult.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainerExpressionResult.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerExpressionResult.Name = "splitContainerExpressionResult";
+            this.splitContainerExpressionResult.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainerExpressionResult.Panel1
+            // 
+            this.splitContainerExpressionResult.Panel1.Controls.Add(this.richTxtExpressionBorderPanel);
+            this.splitContainerExpressionResult.Panel1.Controls.Add(this.borderedPanelExpressionCaption);
+            // 
+            // splitContainerExpressionResult.Panel2
+            // 
+            this.splitContainerExpressionResult.Panel2.Controls.Add(this.richTextResultBorderPanel);
+            this.splitContainerExpressionResult.Panel2.Controls.Add(this.evaluatorResultPableCaption);
+            this.splitContainerExpressionResult.Size = new System.Drawing.Size(510, 384);
+            this.splitContainerExpressionResult.SplitterDistance = 251;
+            this.splitContainerExpressionResult.TabIndex = 0;
+            // 
+            // contextMenuStripTextPanes
+            // 
+            this.contextMenuStripTextPanes.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.undoMenuItem,
+            this.redoMenuItem,
+            this.toolStripSeparatorUndo,
+            this.cutMenuItem,
+            this.copyMenuItem,
+            this.pasteMenuItem,
+            this.toolStripSeparatorTextEdit,
+            this.selectAllMenuItem});
+            this.contextMenuStripTextPanes.Name = "contextMenuStripTextPanes";
+            this.contextMenuStripTextPanes.Size = new System.Drawing.Size(157, 148);
+            this.contextMenuStripTextPanes.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuStripTextPanes_Opening);
+            // 
+            // undoMenuItem
+            // 
+            this.undoMenuItem.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.EditUndo;
+            this.undoMenuItem.Name = "undoMenuItem";
+            this.undoMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
+            this.undoMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.undoMenuItem.Text = "&Undo";
+            this.undoMenuItem.Click += new System.EventHandler(this.UndoToolStripMenuItem_Click);
+            // 
+            // redoMenuItem
+            // 
+            this.redoMenuItem.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.EditRedo;
+            this.redoMenuItem.Name = "redoMenuItem";
+            this.redoMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
+            this.redoMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.redoMenuItem.Text = "&Redo";
+            this.redoMenuItem.Click += new System.EventHandler(this.RedoToolStripMenuItem_Click);
+            // 
+            // toolStripSeparatorUndo
+            // 
+            this.toolStripSeparatorUndo.Name = "toolStripSeparatorUndo";
+            this.toolStripSeparatorUndo.Size = new System.Drawing.Size(153, 6);
+            // 
+            // cutMenuItem
+            // 
+            this.cutMenuItem.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.Cut;
+            this.cutMenuItem.Name = "cutMenuItem";
+            this.cutMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
+            this.cutMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.cutMenuItem.Text = "Cu&t";
+            this.cutMenuItem.Click += new System.EventHandler(this.CutToolStripMenuItem_Click);
+            // 
+            // copyMenuItem
+            // 
+            this.copyMenuItem.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.Copy;
+            this.copyMenuItem.Name = "copyMenuItem";
+            this.copyMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.copyMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.copyMenuItem.Text = "&Copy";
+            this.copyMenuItem.Click += new System.EventHandler(this.CopyToolStripMenuItem_Click);
+            // 
+            // pasteMenuItem
+            // 
+            this.pasteMenuItem.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.Paste;
+            this.pasteMenuItem.Name = "pasteMenuItem";
+            this.pasteMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
+            this.pasteMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.pasteMenuItem.Text = "&Paste";
+            this.pasteMenuItem.Click += new System.EventHandler(this.PasteToolStripMenuItem_Click);
+            // 
+            // toolStripSeparatorTextEdit
+            // 
+            this.toolStripSeparatorTextEdit.Name = "toolStripSeparatorTextEdit";
+            this.toolStripSeparatorTextEdit.Size = new System.Drawing.Size(153, 6);
+            // 
+            // selectAllMenuItem
+            // 
+            this.selectAllMenuItem.Name = "selectAllMenuItem";
+            this.selectAllMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
+            this.selectAllMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.selectAllMenuItem.Text = "Select All";
+            this.selectAllMenuItem.Click += new System.EventHandler(this.SelectAllToolStripMenuItem_Click);
+            // 
+            // panelTopMargin
+            // 
+            this.panelTopMargin.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTopMargin.Location = new System.Drawing.Point(0, 25);
+            this.panelTopMargin.Name = "panelTopMargin";
+            this.panelTopMargin.Size = new System.Drawing.Size(747, 4);
+            this.panelTopMargin.TabIndex = 13;
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // addVariableToolStripButton
+            // 
+            this.addVariableToolStripButton.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.VariableNew;
+            this.addVariableToolStripButton.ImageTransparentColor = System.Drawing.Color.White;
+            this.addVariableToolStripButton.Name = "addVariableToolStripButton";
+            this.addVariableToolStripButton.Size = new System.Drawing.Size(87, 22);
+            this.addVariableToolStripButton.Text = "Add Variable";
+            this.addVariableToolStripButton.Click += new System.EventHandler(this.AddVariable_Click);
+            // 
+            // editVariableToolStripButton
+            // 
+            this.editVariableToolStripButton.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.VariableEdit;
+            this.editVariableToolStripButton.ImageTransparentColor = System.Drawing.Color.White;
+            this.editVariableToolStripButton.Name = "editVariableToolStripButton";
+            this.editVariableToolStripButton.Size = new System.Drawing.Size(86, 22);
+            this.editVariableToolStripButton.Text = "Edit Variable";
+            this.editVariableToolStripButton.Click += new System.EventHandler(this.EditVariable_Click);
+            // 
+            // deleteVariableToolStripButton
+            // 
+            this.deleteVariableToolStripButton.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.VariableDelete;
+            this.deleteVariableToolStripButton.ImageTransparentColor = System.Drawing.Color.White;
+            this.deleteVariableToolStripButton.Name = "deleteVariableToolStripButton";
+            this.deleteVariableToolStripButton.Size = new System.Drawing.Size(99, 22);
+            this.deleteVariableToolStripButton.Text = "Delete Variable";
+            this.deleteVariableToolStripButton.ToolTipText = "Delete Variable";
+            this.deleteVariableToolStripButton.Click += new System.EventHandler(this.DeleteVariable_Click);
+            // 
+            // toolStripButtonFind
+            // 
+            this.toolStripButtonFind.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.Find;
+            this.toolStripButtonFind.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonFind.Name = "toolStripButtonFind";
+            this.toolStripButtonFind.Size = new System.Drawing.Size(47, 22);
+            this.toolStripButtonFind.Text = "Find";
+            this.toolStripButtonFind.ToolTipText = "Find";
+            this.toolStripButtonFind.Click += new System.EventHandler(this.Find_Click);
+            // 
+            // toolStripButtonReplace
+            // 
+            this.toolStripButtonReplace.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.Replace;
+            this.toolStripButtonReplace.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonReplace.Name = "toolStripButtonReplace";
+            this.toolStripButtonReplace.Size = new System.Drawing.Size(65, 22);
+            this.toolStripButtonReplace.Text = "Replace";
+            this.toolStripButtonReplace.Click += new System.EventHandler(this.Replace_Click);
+            // 
+            // evalToolStripButton
+            // 
+            this.evalToolStripButton.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.Run;
+            this.evalToolStripButton.ImageTransparentColor = System.Drawing.Color.Black;
+            this.evalToolStripButton.Name = "evalToolStripButton";
+            this.evalToolStripButton.Size = new System.Drawing.Size(69, 22);
+            this.evalToolStripButton.Text = "Evaluate";
+            this.evalToolStripButton.ToolTipText = "Evaluate Expression (F5 or Ctrl+E)";
+            this.evalToolStripButton.Click += new System.EventHandler(this.LinkEvaluate_Click);
+            // 
+            // editFunctionsToolStripButton
+            // 
+            this.editFunctionsToolStripButton.CheckOnClick = true;
+            this.editFunctionsToolStripButton.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.ExpressionEdit;
+            this.editFunctionsToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.editFunctionsToolStripButton.Name = "editFunctionsToolStripButton";
+            this.editFunctionsToolStripButton.Size = new System.Drawing.Size(73, 22);
+            this.editFunctionsToolStripButton.Text = "Functions";
+            this.editFunctionsToolStripButton.ToolTipText = "Edit functions";
+            this.editFunctionsToolStripButton.Click += new System.EventHandler(this.EditFunctions_Click);
+            // 
+            // expressionFileSettingsToolStripButton
+            // 
+            this.expressionFileSettingsToolStripButton.ImageTransparentColor = System.Drawing.Color.Black;
+            this.expressionFileSettingsToolStripButton.Name = "expressionFileSettingsToolStripButton";
+            this.expressionFileSettingsToolStripButton.Size = new System.Drawing.Size(60, 22);
+            this.expressionFileSettingsToolStripButton.Text = "Properties";
+            this.expressionFileSettingsToolStripButton.ToolTipText = "Expression Properties";
+            // 
+            // toolStrip
+            // 
+            this.toolStrip.AllowItemReorder = true;
+            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addVariableToolStripButton,
+            this.editVariableToolStripButton,
+            this.deleteVariableToolStripButton,
+            this.toolStripSeparatorEndVariables,
+            this.toolStripButtonFind,
+            this.toolStripButtonReplace,
+            this.toolStripSeparatorEndEdit,
+            this.evalToolStripButton,
+            this.toolStripSeparatorEndEval,
+            this.editFunctionsToolStripButton});
+            this.toolStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            this.toolStrip.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip.Name = "toolStrip";
+            this.toolStrip.Size = new System.Drawing.Size(747, 25);
+            this.toolStrip.TabIndex = 14;
+            this.toolStrip.Text = "Expression Editor View Tool Bar";
+            this.toolStrip.ItemRemoved += new System.Windows.Forms.ToolStripItemEventHandler(this.ToolStrip_ItemRemoved);
+            // 
+            // toolStripSeparatorEndVariables
+            // 
+            this.toolStripSeparatorEndVariables.Name = "toolStripSeparatorEndVariables";
+            this.toolStripSeparatorEndVariables.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparatorEndEdit
+            // 
+            this.toolStripSeparatorEndEdit.Name = "toolStripSeparatorEndEdit";
+            this.toolStripSeparatorEndEdit.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparatorEndEval
+            // 
+            this.toolStripSeparatorEndEval.Name = "toolStripSeparatorEndEval";
+            this.toolStripSeparatorEndEval.Size = new System.Drawing.Size(6, 25);
             // 
             // richPanelFunctionsCaption
             // 
@@ -228,27 +465,6 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             this.richPanelFunctionsCaption.TabIndex = 0;
             this.richPanelFunctionsCaption.TextAntiAlias = true;
             // 
-            // splitContainerExpressionResult
-            // 
-            this.splitContainerExpressionResult.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerExpressionResult.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.splitContainerExpressionResult.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerExpressionResult.Name = "splitContainerExpressionResult";
-            this.splitContainerExpressionResult.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainerExpressionResult.Panel1
-            // 
-            this.splitContainerExpressionResult.Panel1.Controls.Add(this.richTxtExpressionBorderPanel);
-            this.splitContainerExpressionResult.Panel1.Controls.Add(this.borderedPanelExpressionCaption);
-            // 
-            // splitContainerExpressionResult.Panel2
-            // 
-            this.splitContainerExpressionResult.Panel2.Controls.Add(this.richTextResultBorderPanel);
-            this.splitContainerExpressionResult.Panel2.Controls.Add(this.evaluatorResultPableCaption);
-            this.splitContainerExpressionResult.Size = new System.Drawing.Size(510, 409);
-            this.splitContainerExpressionResult.SplitterDistance = 276;
-            this.splitContainerExpressionResult.TabIndex = 0;
-            // 
             // richTxtExpressionBorderPanel
             // 
             this.richTxtExpressionBorderPanel.BackColor = System.Drawing.Color.Transparent;
@@ -274,7 +490,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             this.richTxtExpressionBorderPanel.PanelIcon = null;
             this.richTxtExpressionBorderPanel.ShowBorder = true;
             this.richTxtExpressionBorderPanel.ShowIcon = false;
-            this.richTxtExpressionBorderPanel.Size = new System.Drawing.Size(510, 255);
+            this.richTxtExpressionBorderPanel.Size = new System.Drawing.Size(510, 230);
             this.richTxtExpressionBorderPanel.TabIndex = 4;
             this.richTxtExpressionBorderPanel.TextAntiAlias = true;
             // 
@@ -289,93 +505,14 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             this.ExpressionTextBox.HideSelection = false;
             this.ExpressionTextBox.Location = new System.Drawing.Point(1, 1);
             this.ExpressionTextBox.Name = "ExpressionTextBox";
-            this.ExpressionTextBox.Size = new System.Drawing.Size(508, 249);
+            this.ExpressionTextBox.Size = new System.Drawing.Size(508, 224);
             this.ExpressionTextBox.TabIndex = 0;
             this.ExpressionTextBox.Text = "";
+            this.ExpressionTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ExpressionTextBox_KeyDown);
             this.ExpressionTextBox.SelectionChanged += new System.EventHandler(this.ExpressionTextBox_SelectionChanged);
-            this.ExpressionTextBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.RichTxtExpression_MouseDoubleClick);
             this.ExpressionTextBox.Enter += new System.EventHandler(this.TextControls_Enter);
             this.ExpressionTextBox.Leave += new System.EventHandler(this.TextControls_Leave);
-            this.ExpressionTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ExpressionTextBox_KeyDown);
             this.ExpressionTextBox.TextChanged += new System.EventHandler(this.RichTxtExpression_TextChanged);
-            // 
-            // contextMenuStripTextPanes
-            // 
-            this.contextMenuStripTextPanes.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.undoToolStripMenuItem,
-            this.redoToolStripMenuItem,
-            this.toolStripSeparatorUndo,
-            this.cutToolStripMenuItem,
-            this.copyToolStripMenuItem,
-            this.pasteToolStripMenuItem,
-            this.toolStripSeparatorTextEdit,
-            this.selectAllToolStripMenuItem});
-            this.contextMenuStripTextPanes.Name = "contextMenuStripTextPanes";
-            this.contextMenuStripTextPanes.Size = new System.Drawing.Size(157, 148);
-            this.contextMenuStripTextPanes.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuStripTextPanes_Opening);
-            // 
-            // undoToolStripMenuItem
-            // 
-            this.undoToolStripMenuItem.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.EditUndo;
-            this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
-            this.undoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.undoToolStripMenuItem.Text = "&Undo";
-            this.undoToolStripMenuItem.Click += new System.EventHandler(this.UndoToolStripMenuItem_Click);
-            // 
-            // redoToolStripMenuItem
-            // 
-            this.redoToolStripMenuItem.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.EditRedo;
-            this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
-            this.redoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-            this.redoToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.redoToolStripMenuItem.Text = "&Redo";
-            this.redoToolStripMenuItem.Click += new System.EventHandler(this.RedoToolStripMenuItem_Click);
-            // 
-            // toolStripSeparatorUndo
-            // 
-            this.toolStripSeparatorUndo.Name = "toolStripSeparatorUndo";
-            this.toolStripSeparatorUndo.Size = new System.Drawing.Size(153, 6);
-            // 
-            // cutToolStripMenuItem
-            // 
-            this.cutToolStripMenuItem.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.Cut;
-            this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            this.cutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.cutToolStripMenuItem.Text = "Cu&t";
-            this.cutToolStripMenuItem.Click += new System.EventHandler(this.CutToolStripMenuItem_Click);
-            // 
-            // copyToolStripMenuItem
-            // 
-            this.copyToolStripMenuItem.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.Copy;
-            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.copyToolStripMenuItem.Text = "&Copy";
-            this.copyToolStripMenuItem.Click += new System.EventHandler(this.CopyToolStripMenuItem_Click);
-            // 
-            // pasteToolStripMenuItem
-            // 
-            this.pasteToolStripMenuItem.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.Paste;
-            this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.pasteToolStripMenuItem.Text = "&Paste";
-            this.pasteToolStripMenuItem.Click += new System.EventHandler(this.PasteToolStripMenuItem_Click);
-            // 
-            // toolStripSeparatorTextEdit
-            // 
-            this.toolStripSeparatorTextEdit.Name = "toolStripSeparatorTextEdit";
-            this.toolStripSeparatorTextEdit.Size = new System.Drawing.Size(153, 6);
-            // 
-            // selectAllToolStripMenuItem
-            // 
-            this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
-            this.selectAllToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.selectAllToolStripMenuItem.Text = "Select All";
-            this.selectAllToolStripMenuItem.Click += new System.EventHandler(this.SelectAllToolStripMenuItem_Click);
             // 
             // borderedPanelExpressionCaption
             // 
@@ -492,6 +629,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             this.linkEvaluate.TabStop = true;
             this.linkEvaluate.Text = "E&valuate";
             this.linkEvaluate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.toolTip.SetToolTip(this.linkEvaluate, "Evaluate Expression (F5 or Ctrl+E)");
             this.linkEvaluate.VisitedLinkColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.linkEvaluate.Click += new System.EventHandler(this.LinkEvaluate_Click);
             // 
@@ -500,7 +638,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             this.expressionEditorViewEditorPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.expressionEditorViewEditorPanel.Location = new System.Drawing.Point(0, 0);
             this.expressionEditorViewEditorPanel.Name = "expressionEditorViewEditorPanel";
-            this.expressionEditorViewEditorPanel.Size = new System.Drawing.Size(510, 409);
+            this.expressionEditorViewEditorPanel.Size = new System.Drawing.Size(510, 384);
             this.expressionEditorViewEditorPanel.TabIndex = 1;
             // 
             // descriptionPanel
@@ -543,18 +681,11 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             this.labelHelpText.Size = new System.Drawing.Size(743, 38);
             this.labelHelpText.TabIndex = 2;
             // 
-            // panelTopMargin
-            // 
-            this.panelTopMargin.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTopMargin.Location = new System.Drawing.Point(0, 0);
-            this.panelTopMargin.Name = "panelTopMargin";
-            this.panelTopMargin.Size = new System.Drawing.Size(747, 4);
-            this.panelTopMargin.TabIndex = 13;
-            // 
             // ExpressionEditorView
             // 
             this.Controls.Add(this.splitContainerMain);
             this.Controls.Add(this.panelTopMargin);
+            this.Controls.Add(this.toolStrip);
             this.MinimumSize = new System.Drawing.Size(338, 121);
             this.Name = "ExpressionEditorView";
             this.Size = new System.Drawing.Size(747, 461);
@@ -569,13 +700,16 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             this.splitContainerExpressionResult.Panel1.ResumeLayout(false);
             this.splitContainerExpressionResult.Panel2.ResumeLayout(false);
             this.splitContainerExpressionResult.ResumeLayout(false);
-            this.richTxtExpressionBorderPanel.ResumeLayout(false);
             this.contextMenuStripTextPanes.ResumeLayout(false);
+            this.toolStrip.ResumeLayout(false);
+            this.toolStrip.PerformLayout();
+            this.richTxtExpressionBorderPanel.ResumeLayout(false);
             this.richTextResultBorderPanel.ResumeLayout(false);
             this.evaluatorResultPableCaption.ResumeLayout(false);
             this.evaluatorResultPableCaption.PerformLayout();
             this.descriptionPanel.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 
@@ -591,30 +725,43 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         private System.Windows.Forms.Label labelHelpText;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripVariablesFunctions;
-        private System.Windows.Forms.ToolStripMenuItem addVariableToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem deleteVariableToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addVariableMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteVariableMenuItem;
 
 //        private System.Windows.Forms.SaveFileDialog saveFileDialog;
-        private System.Windows.Forms.ToolStripMenuItem editVariableToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editVariableMenuItem;
         private System.Windows.Forms.SplitContainer splitContainerMain;
         private System.Windows.Forms.SplitContainer splitContainerFunctionExpressions;
         private System.Windows.Forms.SplitContainer splitContainerExpressionResult;
         private System.Windows.Forms.TreeView treeViewVariablesFunctions;
         private RichPanel richPanelFunctionsCaption;
         private System.Windows.Forms.Panel panelTopMargin;
-        internal System.Windows.Forms.RichTextBox ExpressionTextBox;
+        internal ExpressionRichTextBox ExpressionTextBox;
         private RichPanel richTextResultBorderPanel;
         private ExpressionFunctionsEditor expressionEditorViewEditorPanel;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripTextPanes;
-        private System.Windows.Forms.ToolStripMenuItem undoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem redoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem undoMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem redoMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparatorUndo;
-        private System.Windows.Forms.ToolStripMenuItem cutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cutMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pasteMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparatorTextEdit;
-        private System.Windows.Forms.ToolStripMenuItem selectAllToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem selectAllMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparatorEditFunctions;
-        private System.Windows.Forms.ToolStripMenuItem editFunctionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editFunctionsMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton addVariableToolStripButton;
+        private System.Windows.Forms.ToolStripButton editVariableToolStripButton;
+        private System.Windows.Forms.ToolStripButton deleteVariableToolStripButton;
+        private System.Windows.Forms.ToolStripButton toolStripButtonFind;
+        private System.Windows.Forms.ToolStripButton toolStripButtonReplace;
+        private System.Windows.Forms.ToolStripButton evalToolStripButton;
+        private System.Windows.Forms.ToolStripButton editFunctionsToolStripButton;
+        private System.Windows.Forms.ToolStripButton expressionFileSettingsToolStripButton;
+        private System.Windows.Forms.ToolStrip toolStrip;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparatorEndVariables;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparatorEndEdit;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparatorEndEval;
     }
 }

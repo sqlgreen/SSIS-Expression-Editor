@@ -10,6 +10,7 @@ namespace Konesans.Dts.ExpressionEditor
     using System.Globalization;
     using System.IO;
     using System.Reflection;
+    using System.Xml;
     using Microsoft.SqlServer.Dts.Runtime;
 
     /// <summary>
@@ -151,6 +152,45 @@ namespace Konesans.Dts.ExpressionEditor
             string path = variable.GetPackagePath();
             path = path.Remove(path.LastIndexOf(".Variables[", StringComparison.CurrentCulture));
             return path.Remove(0, 1 + path.LastIndexOf('\\'));
+        }
+
+        /// <summary>
+        /// Saves the expression to a file
+        /// </summary>
+        /// <param name="file">The file name.</param>
+        /// <param name="host">The host containe, e.g. Package.</param>
+        /// <param name="expression">The expression text.</param>
+        /// <param name="resultType">The type of the result.</param>
+        /// <param name="validateResultType">if set to <c>true</c> the result type will be validated.</param>
+        internal static void SaveExpression(string file, DtsContainer host, string expression, TypeCode resultType, bool validateResultType)
+        {
+            XmlDocument hostDocument = new XmlDocument();
+            host.SaveToXML(ref hostDocument, null, null);
+
+            XmlDocument exprDocument = new XmlDocument();
+
+            XmlElement root = exprDocument.CreateElement("ExpressionProject");
+            exprDocument.AppendChild(root);
+
+            XmlElement expressionXml = exprDocument.CreateElement("Expression");
+            XmlCDataSection expressionData = exprDocument.CreateCDataSection(expression);
+            expressionXml.AppendChild(expressionData);
+            root.AppendChild(expressionXml);
+
+            XmlElement resultTypeXml = exprDocument.CreateElement("ResultType");
+            resultTypeXml.InnerText = Convert.ToInt32(resultType, CultureInfo.CurrentCulture).ToString(CultureInfo.CurrentCulture);
+            root.AppendChild(resultTypeXml);
+
+            XmlElement resultTypeValidateXml = exprDocument.CreateElement("ResultTypeValidate");
+            resultTypeValidateXml.InnerText = validateResultType.ToString(CultureInfo.CurrentCulture);
+            root.AppendChild(resultTypeValidateXml);
+
+            XmlElement hostXml = exprDocument.CreateElement("Host");
+            XmlCDataSection hostData = exprDocument.CreateCDataSection(hostDocument.InnerXml);
+            hostXml.AppendChild(hostData);
+            root.AppendChild(hostXml);
+
+            exprDocument.Save(file);
         }
     }
 }

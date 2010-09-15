@@ -46,6 +46,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             this.groupBoxFindOptions = new System.Windows.Forms.GroupBox();
             this.buttonOptionsToggle = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.line3D1 = new Konesans.Dts.ExpressionEditor.Controls.Line3D();
             this.toolStrip.SuspendLayout();
             this.groupBoxFindOptions.SuspendLayout();
             this.SuspendLayout();
@@ -78,7 +79,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             this.comboBoxFind.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxFind.Items.AddRange(new object[] {
-            string.Empty});
+            ""});
             this.comboBoxFind.Location = new System.Drawing.Point(12, 52);
             this.comboBoxFind.Name = "comboBoxFind";
             this.comboBoxFind.Size = new System.Drawing.Size(349, 21);
@@ -215,11 +216,22 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             this.label1.TabIndex = 22;
             this.label1.Text = "      Find Options";
             // 
+            // line3D1
+            // 
+            this.line3D1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.line3D1.Location = new System.Drawing.Point(0, 24);
+            this.line3D1.MaximumSize = new System.Drawing.Size(12400, 2);
+            this.line3D1.MinimumSize = new System.Drawing.Size(4, 2);
+            this.line3D1.Name = "line3D1";
+            this.line3D1.Size = new System.Drawing.Size(381, 2);
+            this.line3D1.TabIndex = 23;
+            // 
             // FindReplace
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(373, 263);
+            this.Controls.Add(this.line3D1);
             this.Controls.Add(this.buttonOptionsToggle);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBoxFindOptions);
@@ -268,5 +280,6 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         private System.Windows.Forms.GroupBox groupBoxFindOptions;
         private System.Windows.Forms.Button buttonOptionsToggle;
         private System.Windows.Forms.Label label1;
+        private Line3D line3D1;
     }
 }

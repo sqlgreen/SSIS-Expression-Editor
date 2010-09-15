@@ -19,7 +19,7 @@ ExpressionEditorView is the editor control if you wish to host it yourself.
 
 
 ** ExpressionTesterNNNN **
-The stgandalone tool.
+The standalone tool.
 
 
 ** PackageTestNNNN **

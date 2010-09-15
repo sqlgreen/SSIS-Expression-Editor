@@ -37,54 +37,104 @@ namespace Konesans.Dts.ExpressionEditor
         {
             this.OK = new System.Windows.Forms.Button();
             this.Cancel = new System.Windows.Forms.Button();
-            this.labelFormTitle = new System.Windows.Forms.Label();
             this.Remove = new System.Windows.Forms.Button();
+            this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.TitlePanel = new System.Windows.Forms.Panel();
+            this.TitleLabel = new System.Windows.Forms.Label();
+            this.TitleValueLabel = new System.Windows.Forms.Label();
+            this.line3DTop = new Konesans.Dts.ExpressionEditor.Controls.Line3D();
             this.expressionEditorView = new Konesans.Dts.ExpressionEditor.Controls.ExpressionEditorView();
-            this.line3D1 = new Konesans.Dts.ExpressionEditor.Controls.Line3D();
+            this.lineBottom = new Konesans.Dts.ExpressionEditor.Controls.Line3D();
+            this.TitlePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // OK
             // 
             this.OK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OK.Location = new System.Drawing.Point(532, 434);
+            this.OK.Location = new System.Drawing.Point(606, 492);
             this.OK.Name = "OK";
             this.OK.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.OK.Size = new System.Drawing.Size(76, 24);
             this.OK.TabIndex = 6;
-            this.OK.Text = "OK";
+            this.OK.Text = "&OK";
             this.OK.Click += new System.EventHandler(this.OK_Click);
             // 
             // Cancel
             // 
             this.Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.Cancel.Location = new System.Drawing.Point(614, 434);
+            this.Cancel.Location = new System.Drawing.Point(688, 492);
             this.Cancel.Name = "Cancel";
             this.Cancel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.Cancel.Size = new System.Drawing.Size(76, 24);
             this.Cancel.TabIndex = 7;
-            this.Cancel.Text = "Cancel";
+            this.Cancel.Text = "&Cancel";
             this.Cancel.Click += new System.EventHandler(this.Cancel_Click);
-            // 
-            // labelFormTitle
-            // 
-            this.labelFormTitle.AutoSize = true;
-            this.labelFormTitle.Location = new System.Drawing.Point(12, 9);
-            this.labelFormTitle.Name = "labelFormTitle";
-            this.labelFormTitle.Size = new System.Drawing.Size(117, 13);
-            this.labelFormTitle.TabIndex = 7;
-            this.labelFormTitle.Text = "Expression for property:";
             // 
             // Remove
             // 
             this.Remove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.Remove.Location = new System.Drawing.Point(12, 433);
+            this.Remove.Location = new System.Drawing.Point(12, 491);
             this.Remove.Name = "Remove";
             this.Remove.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.Remove.Size = new System.Drawing.Size(76, 24);
             this.Remove.TabIndex = 8;
-            this.Remove.Text = "Remove";
+            this.Remove.Text = "&Remove";
             this.Remove.Click += new System.EventHandler(this.Remove_Click);
+            // 
+            // toolStrip
+            // 
+            this.toolStrip.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip.Name = "toolStrip";
+            this.toolStrip.Size = new System.Drawing.Size(776, 25);
+            this.toolStrip.TabIndex = 10;
+            this.toolStrip.Text = "Form ToolStrip";
+            // 
+            // TitlePanel
+            // 
+            this.TitlePanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.TitlePanel.Controls.Add(this.TitleValueLabel);
+            this.TitlePanel.Controls.Add(this.TitleLabel);
+            this.TitlePanel.Location = new System.Drawing.Point(9, 34);
+            this.TitlePanel.Name = "TitlePanel";
+            this.TitlePanel.Size = new System.Drawing.Size(755, 16);
+            this.TitlePanel.TabIndex = 11;
+            // 
+            // TitleLabel
+            // 
+            this.TitleLabel.AutoSize = true;
+            this.TitleLabel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.TitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TitleLabel.Location = new System.Drawing.Point(0, 0);
+            this.TitleLabel.Name = "TitleLabel";
+            this.TitleLabel.Size = new System.Drawing.Size(141, 13);
+            this.TitleLabel.TabIndex = 0;
+            this.TitleLabel.Text = "Expression for property:";
+            this.TitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // TitleValueLabel
+            // 
+            this.TitleValueLabel.AutoSize = true;
+            this.TitleValueLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TitleValueLabel.Location = new System.Drawing.Point(141, 0);
+            this.TitleValueLabel.Name = "TitleValueLabel";
+            this.TitleValueLabel.Size = new System.Drawing.Size(67, 13);
+            this.TitleValueLabel.TabIndex = 1;
+            this.TitleValueLabel.Text = "Value (Type)";
+            this.TitleValueLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // line3DTop
+            // 
+            this.line3DTop.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.line3DTop.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.line3DTop.Location = new System.Drawing.Point(0, 26);
+            this.line3DTop.MaximumSize = new System.Drawing.Size(12400, 2);
+            this.line3DTop.MinimumSize = new System.Drawing.Size(4, 2);
+            this.line3DTop.Name = "line3DTop";
+            this.line3DTop.Size = new System.Drawing.Size(784, 2);
+            this.line3DTop.TabIndex = 12;
             // 
             // expressionEditorView
             // 
@@ -98,7 +148,7 @@ namespace Konesans.Dts.ExpressionEditor
             this.expressionEditorView.ExpressionFont = new System.Drawing.Font("Tahoma", 8F);
             this.expressionEditorView.FindOrReplaceMatchCase = false;
             this.expressionEditorView.FindOrReplaceSearchUp = false;
-            this.expressionEditorView.Location = new System.Drawing.Point(10, 25);
+            this.expressionEditorView.Location = new System.Drawing.Point(10, 49);
             this.expressionEditorView.MinimumSize = new System.Drawing.Size(338, 121);
             this.expressionEditorView.Name = "expressionEditorView";
             this.expressionEditorView.ResultColor = System.Drawing.SystemColors.WindowText;
@@ -106,34 +156,38 @@ namespace Konesans.Dts.ExpressionEditor
             this.expressionEditorView.ResultType = System.TypeCode.Empty;
             this.expressionEditorView.ResultTypeValidate = true;
             this.expressionEditorView.Saved = false;
-            this.expressionEditorView.Size = new System.Drawing.Size(680, 390);
-            this.expressionEditorView.SplitterDistanceExpressions = 233;
-            this.expressionEditorView.SplitterDistanceMain = 334;
-            this.expressionEditorView.SplitterDistanceResult = 180;
+            this.expressionEditorView.Size = new System.Drawing.Size(754, 423);
+            this.expressionEditorView.SplitterDistanceExpressions = 230;
+            this.expressionEditorView.SplitterDistanceMain = 350;
+            this.expressionEditorView.SplitterDistanceResult = 198;
             this.expressionEditorView.TabIndex = 9;
             this.expressionEditorView.WordWrap = true;
             // 
-            // line3D1
+            // lineBottom
             // 
-            this.line3D1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.lineBottom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.line3D1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.line3D1.Location = new System.Drawing.Point(10, 421);
-            this.line3D1.MaximumSize = new System.Drawing.Size(12400, 2);
-            this.line3D1.MinimumSize = new System.Drawing.Size(4, 2);
-            this.line3D1.Name = "line3D1";
-            this.line3D1.Size = new System.Drawing.Size(680, 2);
-            this.line3D1.TabIndex = 5;
+            this.lineBottom.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lineBottom.Location = new System.Drawing.Point(10, 479);
+            this.lineBottom.MaximumSize = new System.Drawing.Size(12400, 2);
+            this.lineBottom.MinimumSize = new System.Drawing.Size(4, 2);
+            this.lineBottom.Name = "lineBottom";
+            this.lineBottom.Size = new System.Drawing.Size(754, 2);
+            this.lineBottom.TabIndex = 5;
             // 
             // ExpressionEditorPublic
             // 
-            this.ClientSize = new System.Drawing.Size(702, 468);
+            this.AcceptButton = this.OK;
+            this.CancelButton = this.Cancel;
+            this.ClientSize = new System.Drawing.Size(776, 526);
+            this.Controls.Add(this.line3DTop);
+            this.Controls.Add(this.TitlePanel);
             this.Controls.Add(this.expressionEditorView);
             this.Controls.Add(this.Remove);
-            this.Controls.Add(this.labelFormTitle);
-            this.Controls.Add(this.line3D1);
+            this.Controls.Add(this.lineBottom);
             this.Controls.Add(this.OK);
             this.Controls.Add(this.Cancel);
+            this.Controls.Add(this.toolStrip);
             this.KeyPreview = true;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(338, 121);
@@ -143,6 +197,8 @@ namespace Konesans.Dts.ExpressionEditor
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Expression Editor";
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ExpressionEditor_KeyUp);
+            this.TitlePanel.ResumeLayout(false);
+            this.TitlePanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -152,8 +208,12 @@ namespace Konesans.Dts.ExpressionEditor
 
         private System.Windows.Forms.Button OK;
         private System.Windows.Forms.Button Cancel;
-        private Line3D line3D1;
-        private System.Windows.Forms.Label labelFormTitle;
+        private Line3D lineBottom;
         private System.Windows.Forms.Button Remove;
+        private ToolStrip toolStrip;
+        private Panel TitlePanel;
+        private Label TitleLabel;
+        private Label TitleValueLabel;
+        private Line3D line3DTop;
     }
 }

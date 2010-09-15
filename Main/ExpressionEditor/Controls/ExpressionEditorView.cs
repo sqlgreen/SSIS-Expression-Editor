@@ -28,16 +28,6 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         private const string FunctionsDocumentFileName = "ExpressionEditor.xml";
 
         /// <summary>
-        /// Syntax text token
-        /// </summary>
-        private const string LeftParameterBoundary1 = "«";
-
-        /// <summary>
-        /// Syntax text token
-        /// </summary>
-        private const string RightParameterBoundary1 = "»";
-
-        /// <summary>
         /// Constant node name for variables node
         /// </summary>
         private const string VariablesNodeName = "Variables";
@@ -159,7 +149,6 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         {
             this.InitializeComponent();
 
-            this.toolTip.SetToolTip(this.linkEvaluate, Konesans.Dts.ExpressionEditor.Properties.Resources.EvaluateToolTip);
             this.expressionEvaluator = new ExpressionEvaluator();
 
             this.findReplace = new FindReplace(this.ExpressionTextBox);
@@ -185,7 +174,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         public event EventHandler<CursorPositionChangedEventArgs> CursorPositionChanged;
 
         /// <summary>
-        /// Occurs when [variable selection changed].
+        /// Occurs when the variable selection has changed.
         /// </summary>
         public event EventHandler<VariableSelectionChangedEventArgs> VariableSelectionChanged;
 
@@ -265,6 +254,15 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         }
 
         /// <summary>
+        /// Gets the tool strip.
+        /// </summary>
+        /// <value>The tool strip.</value>
+        public ToolStrip ToolStrip
+        {
+            get { return this.toolStrip; }
+        }
+
+        /// <summary>
         /// Gets or sets the color of the expression text.
         /// </summary>
         /// <value>The color of the expression.</value>
@@ -273,9 +271,9 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         [Description("The color used for the expression text.")]
         public Color ExpressionColor
         {
-            get 
-            { 
-                return this.ExpressionTextBox.ForeColor; 
+            get
+            {
+                return this.ExpressionTextBox.ForeColor;
             }
 
             set
@@ -295,9 +293,9 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         [Description("The font used for the expression text.")]
         public Font ExpressionFont
         {
-            get 
-            { 
-                return this.ExpressionTextBox.Font; 
+            get
+            {
+                return this.ExpressionTextBox.Font;
             }
 
             set
@@ -340,9 +338,9 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// <value>The type of the result.</value>
         public TypeCode ResultType
         {
-            get 
-            { 
-                return this.resultType; 
+            get
+            {
+                return this.resultType;
             }
 
             set
@@ -466,6 +464,14 @@ namespace Konesans.Dts.ExpressionEditor.Controls
                 this.treeViewVariablesFunctions.HideSelection = !value;
                 this.treeViewVariablesFunctions.AllowDrop = value;
 
+                this.toolStripButtonFind.Enabled = !value;
+                this.toolStripButtonReplace.Enabled = !value;
+
+                this.editFunctionsMenuItem.Checked = value;
+                this.editFunctionsToolStripButton.Checked = value;
+
+                this.addVariableMenuItem.Enabled = !value;
+                this.addVariableToolStripButton.Enabled = !value;
                 if (value)
                 {
                     this.variablesNode.Remove();
@@ -688,33 +694,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// <param name="isTemplate">if set to <c>true</c> the file is a template.</param>
         public void Save(string file, bool isTemplate)
         {
-            XmlDocument hostDocument = new XmlDocument();
-            this.host.SaveToXML(ref hostDocument, null, null);
-
-            XmlDocument exprDocument = new XmlDocument();
-
-            XmlElement root = exprDocument.CreateElement("ExpressionProject");
-            exprDocument.AppendChild(root);
-
-            XmlElement expressionXml = exprDocument.CreateElement("Expression");
-            XmlCDataSection expressionData = exprDocument.CreateCDataSection(this.ExpressionTextBox.Text);
-            expressionXml.AppendChild(expressionData);
-            root.AppendChild(expressionXml);
-
-            XmlElement resultTypeXml = exprDocument.CreateElement("ResultType");
-            resultTypeXml.InnerText = Convert.ToInt32(this.ResultType, CultureInfo.CurrentCulture).ToString(CultureInfo.CurrentCulture);
-            root.AppendChild(resultTypeXml);
-
-            XmlElement resultTypeValidateXml = exprDocument.CreateElement("ResultTypeValidate");
-            resultTypeValidateXml.InnerText = this.ResultTypeValidate.ToString(CultureInfo.CurrentCulture);
-            root.AppendChild(resultTypeValidateXml);
-
-            XmlElement hostXml = exprDocument.CreateElement("Host");
-            XmlCDataSection hostData = exprDocument.CreateCDataSection(hostDocument.InnerXml);
-            hostXml.AppendChild(hostData);
-            root.AppendChild(hostXml);
-
-            exprDocument.Save(file);
+            RuntimeHelper.SaveExpression(file, this.host, this.ExpressionTextBox.Text, this.ResultType, this.ResultTypeValidate);
 
             if (isTemplate)
             {
@@ -831,6 +811,9 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// </summary>
         public void Run()
         {
+            // Start by clearing any existing result
+            this.richTextResult.Text = string.Empty;
+
             try
             {
                 this.expressionEvaluator.Expression = this.ExpressionTextBox.Text;
@@ -846,9 +829,9 @@ namespace Konesans.Dts.ExpressionEditor.Controls
                 {
                     string message = String.Format(CultureInfo.CurrentCulture, "Cannot convert expression value type ({0}) to result type ({1}).", result.GetType().Name, propertyType.Name);
                     string additionalInfo = "The expression is valid, but value type conflicts with the result type. Try using the Cast operators to convert the value to match the result type. You can also change the result type from the Expression Properties menu item.";
-                    ApplicationException exceptionMessage = new ApplicationException(String.Format(CultureInfo.CurrentCulture, "Cannot convert {0} to {1}.", result.GetType().FullName, propertyType.FullName));
+                    ExpressionException exceptionMessage = new ExpressionException(String.Format(CultureInfo.CurrentCulture, "Cannot convert {0} to {1}.", result.GetType().FullName, propertyType.FullName));
                     Microsoft.SqlServer.MessageBox.ExceptionMessageBox messageBox = new Microsoft.SqlServer.MessageBox.ExceptionMessageBox(message, this.ApplicationTitle, Microsoft.SqlServer.MessageBox.ExceptionMessageBoxButtons.OK, Microsoft.SqlServer.MessageBox.ExceptionMessageBoxSymbol.Warning);
-                    messageBox.InnerException = new ApplicationException(additionalInfo, exceptionMessage);
+                    messageBox.InnerException = new ExpressionException(additionalInfo, exceptionMessage);
                     messageBox.Show(this);
                 }
             }
@@ -1133,6 +1116,12 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// <param name="e">The <see cref="Konesans.Dts.ExpressionEditor.Controls.VariableSelectionChangedEventArgs"/> instance containing the event data.</param>
         protected virtual void OnVariableSelectionChanged(VariableSelectionChangedEventArgs e)
         {
+            // Update UI
+            this.editVariableMenuItem.Enabled = e.VariableSelected;
+            this.editVariableToolStripButton.Enabled = e.VariableSelected;
+            this.deleteVariableMenuItem.Enabled = e.VariableSelected;
+            this.deleteVariableToolStripButton.Enabled = e.VariableSelected;
+
             if (this.VariableSelectionChanged != null)
             {
                 this.VariableSelectionChanged(this, e);
@@ -1400,7 +1389,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
                     ExceptionMessageBox.Show(this, String.Format(CultureInfo.CurrentCulture, "The expression function file is invalid ({0}), the default function list will be used.", this.functionsFileName), ex);
                 }
             }
-            
+
             // Final trap, use embedded resource, but the filename is still set to AppData
             System.Diagnostics.Debug.WriteLine("Loading functions from resource string");
             document.LoadXml(Konesans.Dts.ExpressionEditor.Properties.Resources.ExpressionViewFunctions);
@@ -1502,19 +1491,19 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// <param name="e">The <see cref="System.Windows.Forms.ItemDragEventArgs"/> instance containing the event data.</param>
         private void TreeViewVariablesFunctions_ItemDrag(object sender, ItemDragEventArgs e)
         {
-                TreeNode node = e.Item as TreeNode;
-                if (node == null)
-                {
-                    return;
-                }
+            TreeNode node = e.Item as TreeNode;
+            if (node == null)
+            {
+                return;
+            }
 
-                string dragText = node.Tag as string;
-                if (string.IsNullOrEmpty(dragText))
-                {
-                    return;
-                }
+            string dragText = node.Tag as string;
+            if (string.IsNullOrEmpty(dragText))
+            {
+                return;
+            }
 
-                DoDragDrop(dragText, DragDropEffects.All);
+            DoDragDrop(dragText, DragDropEffects.All);
         }
 
         /// <summary>
@@ -1550,21 +1539,6 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             {
                 // Force node selection for reliable context menu behaviour, on any click.
                 this.treeViewVariablesFunctions.SelectedNode = e.Node;
-            }
-        }
-
-        /// <summary>
-        /// Handles the MouseDoubleClick event of the richTxtExpression control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.Windows.Forms.MouseEventArgs"/> instance containing the event data.</param>
-        private void RichTxtExpression_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                this.ExpandSelectedText(LeftParameterBoundary1, RightParameterBoundary1, "_");
-
-                this.ExpandSelectedText("@[", "]", ":", "::", "[", "_");
             }
         }
 
@@ -1609,101 +1583,6 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         }
 
         /// <summary>
-        /// Handles the Opening event of the contextMenuStripVariablesFunctions control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.ComponentModel.CancelEventArgs"/> instance containing the event data.</param>
-        private void ContextMenuStripVariablesFunctions_Opening(object sender, CancelEventArgs e)
-        {
-            e.Cancel = true;
-
-            ContextMenuStrip menu = sender as ContextMenuStrip;
-            if (menu == null)
-            {
-                return;
-            }
-
-            TreeView treeView = menu.SourceControl as TreeView;
-            if (treeView == null)
-            {
-                return;
-            }
-
-            // Set the edit functions menu item checked state to the current EditMode value
-            ToolStripMenuItem item = menu.Items[4] as ToolStripMenuItem;
-            if (item == null)
-            {
-                return;
-            }
-
-            item.Checked = this.EditMode;
-
-            TreeNode node = treeView.SelectedNode;
-            if (node == null)
-            {
-                return;
-            }
-
-            // Check if we have selected an existing variable or not
-            if (!this.EditMode && node.Level == 1)
-            {
-                if (node.Parent.Name == VariablesNodeName && node.Name != SystemVariablesNodeName)
-                {
-                    // Allow add, edit and delete
-                    e.Cancel = false;
-                    menu.Items[0].Enabled = true;
-                    menu.Items[1].Enabled = true;
-                    menu.Items[2].Enabled = true;
-                }
-            }
-            else
-            {
-                // Just allow adding or variables, except in edit mode
-                e.Cancel = false;
-                menu.Items[0].Enabled = !this.EditMode;
-                menu.Items[1].Enabled = false;
-                menu.Items[2].Enabled = false;
-            }
-        }
-
-        /// <summary>
-        /// Handles the ItemClicked event of the contextMenuStripVariablesFunctions control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.Windows.Forms.ToolStripItemClickedEventArgs"/> instance containing the event data.</param>
-        private void ContextMenuStripVariablesFunctions_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-            ContextMenuStrip menu = sender as ContextMenuStrip;
-            if (menu == null)
-            {
-                return;
-            }
-
-            if (menu.Items[0].Equals(e.ClickedItem))
-            {
-                this.AddVariable();
-            }
-            else if (menu.Items[1].Equals(e.ClickedItem))
-            {
-                this.EditVariable();
-            }
-            else if (menu.Items[2].Equals(e.ClickedItem))
-            {
-                this.DeleteVariable();
-            }
-            else if (menu.Items[4].Equals(e.ClickedItem))
-            {
-                ToolStripMenuItem item = e.ClickedItem as ToolStripMenuItem;
-                if (item == null)
-                {
-                    return;
-                }
-
-                this.EditMode = !item.Checked;
-            }
-        }
-
-        /// <summary>
         /// Handles the Load event of the ExpressionEditor control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
@@ -1725,7 +1604,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             ////{
             ////}
         }
-        
+
         /// <summary>
         /// Handles the Enter event of the TextControls control.
         /// </summary>
@@ -1744,67 +1623,6 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         private void TextControls_Leave(object sender, EventArgs e)
         {
             this.activeTextControl = null;
-        }
-
-        /// <summary>
-        /// Expands the selected text.
-        /// </summary>
-        /// <param name="leftBoundary">The left boundary.</param>
-        /// <param name="rightBoundary">The right boundary.</param>
-        /// <param name="intermediate">The intermediate.</param>
-        private void ExpandSelectedText(string leftBoundary, string rightBoundary, params string[] intermediate)
-        {
-            StringCollection intermediates = new StringCollection();
-            intermediates.AddRange(intermediate);
-            string text = this.ExpressionTextBox.Text;
-            int start = this.ExpressionTextBox.SelectionStart;
-            int end = start + this.ExpressionTextBox.SelectionLength;
-            int leftBoundaryLength = leftBoundary.Length;
-            int rightBoundaryLength = rightBoundary.Length;
-
-            if (end > start && start > 0 && this.ExpressionTextBox.Text.Length > end)
-            {
-                if (text.Substring(start - leftBoundaryLength, leftBoundaryLength) == leftBoundary && text.Substring(end, rightBoundaryLength) == rightBoundary)
-                {
-                    this.ExpressionTextBox.SelectionStart = start - leftBoundaryLength;
-                    this.ExpressionTextBox.SelectionLength = 1 + (end - this.ExpressionTextBox.SelectionStart);
-                }
-                else if (text.Substring(end, 1) == rightBoundary && intermediates.Contains(text.Substring(start - leftBoundaryLength, leftBoundaryLength)))
-                {
-                    for (int i = start; i > 0; i--)
-                    {
-                        string x = text.Substring(i, leftBoundaryLength);
-                        if (x == leftBoundary)
-                        {
-                            this.ExpressionTextBox.SelectionStart = i;
-                            this.ExpressionTextBox.SelectionLength = rightBoundaryLength + (end - this.ExpressionTextBox.SelectionStart);
-                            break;
-                        }
-                        else if (x == " " || x == "(" || x == "[")
-                        {
-                            break;
-                        }
-                    }
-                }
-                else if (text.Substring(start - leftBoundaryLength, leftBoundaryLength) == leftBoundary && intermediates.Contains(text.Substring(end, rightBoundaryLength)))
-                {
-                    int len = text.Length;
-                    for (int i = end; i < len; i++)
-                    {
-                        string x = text.Substring(i, rightBoundaryLength);
-                        if (x == rightBoundary)
-                        {
-                            this.ExpressionTextBox.SelectionStart = start - leftBoundaryLength;
-                            this.ExpressionTextBox.SelectionLength = rightBoundaryLength + (i - this.ExpressionTextBox.SelectionStart);
-                            break;
-                        }
-                        else if (x == " " || x == "(" || x == "[")
-                        {
-                            break;
-                        }
-                    }
-                }
-            }
         }
 
         /// <summary>
@@ -1918,21 +1736,21 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             }
 
             bool textIsExpression = this.ExpressionTextBox.Equals(menu.SourceControl);
-            this.undoToolStripMenuItem.Visible = textIsExpression;
-            this.redoToolStripMenuItem.Visible = textIsExpression;
+            this.undoMenuItem.Visible = textIsExpression;
+            this.redoMenuItem.Visible = textIsExpression;
             this.toolStripSeparatorUndo.Visible = textIsExpression;
 
-            this.selectAllToolStripMenuItem.Enabled = textBox.SelectionLength == textBox.Text.Length;
+            this.selectAllMenuItem.Enabled = textBox.SelectionLength == textBox.Text.Length;
 
             bool textIsSelected = textBox.SelectionLength > 0;
 
-            this.cutToolStripMenuItem.Enabled = textIsSelected;
-            this.copyToolStripMenuItem.Enabled = textIsSelected;
+            this.cutMenuItem.Enabled = textIsSelected;
+            this.copyMenuItem.Enabled = textIsSelected;
 
-            this.pasteToolStripMenuItem.Enabled = Clipboard.ContainsText();
+            this.pasteMenuItem.Enabled = Clipboard.ContainsText();
 
-            this.undoToolStripMenuItem.Enabled = this.undoStack.Count > 0;
-            this.redoToolStripMenuItem.Enabled = this.redoStack.Count > 0;
+            this.undoMenuItem.Enabled = this.undoStack.Count > 0;
+            this.redoMenuItem.Enabled = this.redoStack.Count > 0;
         }
 
         /// <summary>
@@ -2017,6 +1835,93 @@ namespace Konesans.Dts.ExpressionEditor.Controls
                     // Supress
                     e.Handled = true;
                 }
+            }
+        }
+
+        /// <summary>
+        /// Handles the Click event for one of the Add variable controls
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void AddVariable_Click(object sender, EventArgs e)
+        {
+            this.AddVariable();
+        }
+
+        /// <summary>
+        /// Handles the Click event for one of the Edit variable controls
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void EditVariable_Click(object sender, EventArgs e)
+        {
+            this.EditVariable();
+        }
+
+        /// <summary>
+        /// Handles the Click event for one of the Delete variable controls
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void DeleteVariable_Click(object sender, EventArgs e)
+        {
+            this.DeleteVariable();
+        }
+
+        /// <summary>
+        /// Handles the Click event for one of the Edit Functions controls.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void EditFunctions_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem menu = sender as ToolStripMenuItem;
+            if (menu != null)
+            {
+                this.EditMode = menu.Checked; 
+                return;
+            }
+
+            ToolStripButton button = sender as ToolStripButton;
+            if (button != null)
+            {
+                this.EditMode = button.Checked;
+                return;
+            }
+        }
+
+        /// <summary>
+        /// Handles the Find event.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void Find_Click(object sender, EventArgs e)
+        {
+            this.Find();
+        }
+
+        /// <summary>
+        /// Handles the Replace event.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void Replace_Click(object sender, EventArgs e)
+        {
+            this.Replace();
+        }
+
+        /// <summary>
+        /// Handles the ItemRemoved event of the toolStrip control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.Windows.Forms.ToolStripItemEventArgs"/> instance containing the event data.</param>
+        private void ToolStrip_ItemRemoved(object sender, ToolStripItemEventArgs e)
+        {
+            // Hides the toolstrip if nothing in it
+            // Used when toolstrip is merged into parent for example
+            if (this.toolStrip.Items.Count == 0)
+            {
+                this.toolStrip.Visible = false;
             }
         }
     }

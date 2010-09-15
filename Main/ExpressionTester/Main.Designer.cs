@@ -84,18 +84,7 @@ namespace Konesans.Dts.Tools.ExpressionTester
             this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.addVariabletoolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.editVariabletoolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.deleteVariabletoolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonFind = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonReplace = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
-            this.runToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonEditFunctions = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparatorEndFile = new System.Windows.Forms.ToolStripSeparator();
             this.optionsToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.expressionFileSettingsToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
@@ -493,21 +482,21 @@ namespace Konesans.Dts.Tools.ExpressionTester
             this.searchToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("searchToolStripMenuItem.Image")));
             this.searchToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.searchToolStripMenuItem.Text = "Online";
             this.searchToolStripMenuItem.Click += new System.EventHandler(this.SearchToolStripMenuItem_Click);
             // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator8.Size = new System.Drawing.Size(115, 6);
             this.toolStripSeparator8.Visible = false;
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Image = global::Konesans.Dts.Tools.ExpressionTester.Properties.Resources.Expression;
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.aboutToolStripMenuItem.Text = "&About ...";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.ShowAboutDialog);
             // 
@@ -518,18 +507,7 @@ namespace Konesans.Dts.Tools.ExpressionTester
             this.newToolStripButton,
             this.openToolStripButton,
             this.saveToolStripButton,
-            this.toolStripSeparator1,
-            this.addVariabletoolStripButton,
-            this.editVariabletoolStripButton,
-            this.toolStripSeparator2,
-            this.deleteVariabletoolStripButton,
-            this.toolStripSeparator14,
-            this.toolStripButtonFind,
-            this.toolStripButtonReplace,
-            this.toolStripSeparator11,
-            this.runToolStripButton,
-            this.toolStripSeparator10,
-            this.toolStripButtonEditFunctions,
+            this.toolStripSeparatorEndFile,
             this.optionsToolStripButton,
             this.expressionFileSettingsToolStripButton});
             this.toolStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
@@ -569,103 +547,14 @@ namespace Konesans.Dts.Tools.ExpressionTester
             this.saveToolStripButton.Text = "Save";
             this.saveToolStripButton.Click += new System.EventHandler(this.SaveFile);
             // 
-            // toolStripSeparator1
+            // toolStripSeparatorEndFile
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // addVariabletoolStripButton
-            // 
-            this.addVariabletoolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("addVariabletoolStripButton.Image")));
-            this.addVariabletoolStripButton.ImageTransparentColor = System.Drawing.Color.White;
-            this.addVariabletoolStripButton.Name = "addVariabletoolStripButton";
-            this.addVariabletoolStripButton.Size = new System.Drawing.Size(87, 22);
-            this.addVariabletoolStripButton.Text = "Add Variable";
-            this.addVariabletoolStripButton.Click += new System.EventHandler(this.AddVariable);
-            // 
-            // editVariabletoolStripButton
-            // 
-            this.editVariabletoolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("editVariabletoolStripButton.Image")));
-            this.editVariabletoolStripButton.ImageTransparentColor = System.Drawing.Color.White;
-            this.editVariabletoolStripButton.Name = "editVariabletoolStripButton";
-            this.editVariabletoolStripButton.Size = new System.Drawing.Size(86, 22);
-            this.editVariabletoolStripButton.Text = "Edit Variable";
-            this.editVariabletoolStripButton.Click += new System.EventHandler(this.EditVariable);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            this.toolStripSeparator2.Visible = false;
-            // 
-            // deleteVariabletoolStripButton
-            // 
-            this.deleteVariabletoolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("deleteVariabletoolStripButton.Image")));
-            this.deleteVariabletoolStripButton.ImageTransparentColor = System.Drawing.Color.White;
-            this.deleteVariabletoolStripButton.Name = "deleteVariabletoolStripButton";
-            this.deleteVariabletoolStripButton.Size = new System.Drawing.Size(99, 22);
-            this.deleteVariabletoolStripButton.Text = "Delete Variable";
-            this.deleteVariabletoolStripButton.ToolTipText = "Delete Variable";
-            this.deleteVariabletoolStripButton.Click += new System.EventHandler(this.DeleteVariable);
-            // 
-            // toolStripSeparator14
-            // 
-            this.toolStripSeparator14.Name = "toolStripSeparator14";
-            this.toolStripSeparator14.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripButtonFind
-            // 
-            this.toolStripButtonFind.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonFind.Image")));
-            this.toolStripButtonFind.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonFind.Name = "toolStripButtonFind";
-            this.toolStripButtonFind.Size = new System.Drawing.Size(47, 22);
-            this.toolStripButtonFind.Text = "Find";
-            this.toolStripButtonFind.ToolTipText = "Find";
-            this.toolStripButtonFind.Click += new System.EventHandler(this.FindExpression);
-            // 
-            // toolStripButtonReplace
-            // 
-            this.toolStripButtonReplace.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonReplace.Image")));
-            this.toolStripButtonReplace.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonReplace.Name = "toolStripButtonReplace";
-            this.toolStripButtonReplace.Size = new System.Drawing.Size(65, 22);
-            this.toolStripButtonReplace.Text = "Replace";
-            this.toolStripButtonReplace.Click += new System.EventHandler(this.ReplaceExpression);
-            // 
-            // toolStripSeparator11
-            // 
-            this.toolStripSeparator11.Name = "toolStripSeparator11";
-            this.toolStripSeparator11.Size = new System.Drawing.Size(6, 25);
-            // 
-            // runToolStripButton
-            // 
-            this.runToolStripButton.Image = global::Konesans.Dts.Tools.ExpressionTester.Properties.Resources.Run;
-            this.runToolStripButton.ImageTransparentColor = System.Drawing.Color.Black;
-            this.runToolStripButton.Name = "runToolStripButton";
-            this.runToolStripButton.Size = new System.Drawing.Size(69, 22);
-            this.runToolStripButton.Text = "Evaluate";
-            this.runToolStripButton.ToolTipText = "Evaluate Expression";
-            this.runToolStripButton.Click += new System.EventHandler(this.Run);
-            // 
-            // toolStripSeparator10
-            // 
-            this.toolStripSeparator10.Name = "toolStripSeparator10";
-            this.toolStripSeparator10.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripButtonEditFunctions
-            // 
-            this.toolStripButtonEditFunctions.CheckOnClick = true;
-            this.toolStripButtonEditFunctions.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonEditFunctions.Image")));
-            this.toolStripButtonEditFunctions.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonEditFunctions.Name = "toolStripButtonEditFunctions";
-            this.toolStripButtonEditFunctions.Size = new System.Drawing.Size(73, 22);
-            this.toolStripButtonEditFunctions.Text = "Functions";
-            this.toolStripButtonEditFunctions.ToolTipText = "Edit functions";
-            this.toolStripButtonEditFunctions.Click += new System.EventHandler(this.ToolStripButtonEditFunctions_Click);
+            this.toolStripSeparatorEndFile.Name = "toolStripSeparatorEndFile";
+            this.toolStripSeparatorEndFile.Size = new System.Drawing.Size(6, 25);
             // 
             // optionsToolStripButton
             // 
-            this.optionsToolStripButton.Image = global::Konesans.Dts.Tools.ExpressionTester.Properties.Resources.Options;
+            this.optionsToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("optionsToolStripButton.Image")));
             this.optionsToolStripButton.ImageTransparentColor = System.Drawing.Color.Black;
             this.optionsToolStripButton.Name = "optionsToolStripButton";
             this.optionsToolStripButton.Size = new System.Drawing.Size(64, 22);
@@ -793,8 +682,6 @@ namespace Konesans.Dts.Tools.ExpressionTester
         private MenuStrip menuStrip;
         private ToolStrip toolStrip;
         private StatusStrip statusStrip;
-        private ToolStripSeparator toolStripSeparator1;
-        private ToolStripSeparator toolStripSeparator2;
         private ToolStripSeparator toolStripSeparator4;
         private ToolStripSeparator toolStripSeparator5;
         private ToolStripSeparator toolStripSeparator6;
@@ -827,11 +714,6 @@ namespace Konesans.Dts.Tools.ExpressionTester
         private ToolStripButton saveToolStripButton;
         //private ToolTip ToolTip;
         private ToolStripSeparator toolStripSeparator9;
-        private ToolStripButton runToolStripButton;
-        private ToolStripButton addVariabletoolStripButton;
-        private ToolStripSeparator toolStripSeparator11;
-        private ToolStripSeparator toolStripSeparator10;
-        private ToolStripButton optionsToolStripButton;
         private ToolStripMenuItem expressionsMenu;
         private ToolStripMenuItem evaluateToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator12;
@@ -839,27 +721,23 @@ namespace Konesans.Dts.Tools.ExpressionTester
         private ToolStripMenuItem recentExpressionFilesPlaceHolderStripMenuItem;
         private ToolStripMenuItem addVariableToolStripMenuItem;
         private ToolStripMenuItem deleteVariableToolStripMenuItem;
-        private ToolStripButton deleteVariabletoolStripButton;
         private ToolStripMenuItem editVariableToolStripMenuItem;
-        private ToolStripButton editVariabletoolStripButton;
         private ToolStripButton expressionFileSettingsToolStripButton;
         private ToolStripMenuItem expressionFilePropertiesToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator13;
         private ExpressionEditorView expressionEditor;
         private ToolStripStatusLabel toolStripStatusLabelResultType;
-        private ToolStripButton toolStripButtonFind;
         private ToolStripSeparator toolStripSeparator3;
         private ToolStripMenuItem findToolStripMenuItem;
         private ToolStripMenuItem replaceToolStripMenuItem;
-        private ToolStripButton toolStripButtonReplace;
         private ToolStripStatusLabel toolStripStatusLabelLine;
         private ToolStripStatusLabel toolStripStatusLabelColumn;
-        private ToolStripSeparator toolStripSeparator14;
-        private ToolStripButton toolStripButtonEditFunctions;
         private ToolStripMenuItem wordWrapToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator16;
         private ToolStripMenuItem saveAsTemplateToolStripMenuItem;
         private ToolStripMenuItem editFunctionsToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparatorEndFile;
+        private ToolStripButton optionsToolStripButton;
     }
 }
 
