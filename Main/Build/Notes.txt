@@ -1,0 +1,21 @@
+PowerShell Build - Notes to Self
+
+The PowerShell build requires the ability to execute scriots, which is disabled by default.
+
+Review your execution policy with the following command
+	Get-ExecutionPolicy
+
+You can allow signed scripts to be run
+	Set-ExecutionPolicy AllSigned
+
+
+To re-sign the scripts if required
+	Set-AuthenticodeSignature c:\foo.ps1 @(Get-ChildItem cert:\CurrentUser\My -codesigning)[0]
+
+This uses the default coding signing certificate.
+
+To trust these signed scripts you may need to import the certificate public key into a trusted container.
+
+
+More info - http://www.hanselman.com/blog/SigningPowerShellScripts.aspx
+

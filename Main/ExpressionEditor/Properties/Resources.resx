@@ -136,14 +136,8 @@
   <data name="BlueDown16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BlueDown16.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="GoRtl" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\GoRtl.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="BlueRight16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BlueRight16.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="GoLtr" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\GoLtr.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Paste" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Paste.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
