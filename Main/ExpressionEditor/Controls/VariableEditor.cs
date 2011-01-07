@@ -52,9 +52,6 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             this.textBoxNamespace.Text = "User";
             this.textBoxName.Focus();
 
-            this.buttonTextExpand.Tag = false;
-            this.MaximumSize = new Size(Screen.GetBounds(this).Width, 251);
-
             this.Icon = global::Konesans.Dts.ExpressionEditor.Properties.Resources.Variable;
 
             this.activeControl = this.textBoxName;
@@ -97,7 +94,6 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             }
             else if (variable.DataType == TypeCode.Char)
             {
-                this.buttonTextExpand.Enabled = false;
                 this.comboBoxType.SelectedItem = TypeCode.Char;
                 this.textBoxValue.Text = Convert.ToChar(variable.Value, CultureInfo.CurrentCulture).ToString(CultureInfo.InvariantCulture);
                 this.activeControl = this.textBoxValue;
@@ -204,16 +200,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             else
             {
                 this.textBoxValue.Visible = true;
-
-                if (type == TypeCode.Char)
-                {
-                    this.TextButtonExpand(false);
-                    this.buttonTextExpand.Enabled = false;
-                }
-                else
-                {
-                    this.buttonTextExpand.Enabled = true;
-                }
+                this.textBoxValue.Multiline = !(type == TypeCode.Char);
             }
 
             this.ResumeLayout();
@@ -276,62 +263,6 @@ namespace Konesans.Dts.ExpressionEditor.Controls
                 Microsoft.SqlServer.MessageBox.ExceptionMessageBox message = new Microsoft.SqlServer.MessageBox.ExceptionMessageBox(ex);
                 message.Caption = System.Windows.Forms.Application.ProductName;
                 message.Show(this);
-            }
-        }
-
-        /// <summary>
-        /// Handles the VisibleChanged event of the textBoxValue control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void TextBoxValue_VisibleChanged(object sender, EventArgs e)
-        {
-            if (!this.textBoxValue.Visible)
-            {
-                this.TextButtonExpand(false);
-            }
-            else
-            {
-                this.TextButtonExpand(true);
-            }
-        }
-
-        /// <summary>
-        /// Handles the Click event of the buttonTextExpand control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void ButtonTextExpand_Click(object sender, EventArgs e)
-        {
-            this.TextButtonExpand(!(bool)this.buttonTextExpand.Tag);
-        }
-
-        /// <summary>
-        /// Handles the button expand event
-        /// </summary>
-        /// <param name="expand">if set to <c>true</c> [expand].</param>
-        private void TextButtonExpand(bool expand)
-        {
-            ////this.buttonTextExpand.Tag = expand;
-            this.textBoxValue.Multiline = expand;
-
-            if (expand)
-            {
-                Rectangle screen = Screen.GetBounds(this);
-                this.MaximumSize = new Size(screen.Width, screen.Height);
-
-                ////_height = this.Height;
-                this.buttonTextExpand.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.GoRtl;
-                this.textBoxValue.ScrollBars = ScrollBars.Both;
-
-                ////this.Height += this.textBoxValue.Height * 3;
-            }
-            else
-            {
-                ////this.Height = 251;
-                this.buttonTextExpand.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.GoLtr;
-                this.textBoxValue.ScrollBars = ScrollBars.None;
-                this.MaximumSize = new Size(Screen.GetBounds(this).Width, 251);
             }
         }
 

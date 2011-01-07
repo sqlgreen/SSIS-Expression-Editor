@@ -1,6 +1,6 @@
 *** Projects ***
 
-There a two soluction files and two sets of project files, one for SQL Server 2005 and one for SQL Server 2008.
+There a two solution files and two sets of project files, one for SQL Server 2005 and one for SQL Server 2008.
 
 SQL Server 2008 versions of the project all contain the compilation symbol KATMAI.
 Conditional compilation if blocks in the code reference 2005 vs 2008 interface names.
@@ -28,5 +28,5 @@ A simple test harness used to test the ExpressionEditorPublic form.
 
 
 Darren Green
-June 2010
+January 2011
 http://www.konesans.com
