@@ -199,8 +199,16 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             }
             else
             {
+                this.textBoxValue.Enabled = true; 
                 this.textBoxValue.Visible = true;
                 this.textBoxValue.Multiline = !(type == TypeCode.Char);
+
+                // Issue 31458 
+                if (type == TypeCode.DBNull)
+                {
+                    this.textBoxValue.Text = string.Empty;
+                    this.textBoxValue.Enabled = false;
+                }
             }
 
             this.ResumeLayout();
@@ -244,15 +252,38 @@ namespace Konesans.Dts.ExpressionEditor.Controls
                     value = this.textBoxValue.Text;
                 }
 
+                // Issue 
+                if (type == TypeCode.DBNull)
+                {
+                    value = DBNull.Value;
+                }
+
                 if (this.variable == null)
                 {
-                    this.variable = this.variables.Add(this.textBoxName.Text, false, this.textBoxNamespace.Text, Convert.ChangeType(value, type, CultureInfo.CurrentCulture));
+                    // Issue 31458
+                    if (type == TypeCode.DBNull)
+                    {
+                        this.variable = this.variables.Add(this.textBoxName.Text, false, this.textBoxNamespace.Text, DBNull.Value);
+                    }
+                    else
+                    {
+                        this.variable = this.variables.Add(this.textBoxName.Text, false, this.textBoxNamespace.Text, Convert.ChangeType(value, type, CultureInfo.CurrentCulture));
+                    } 
                 }
                 else
                 {
                     this.variable.Namespace = this.textBoxNamespace.Text;
                     this.variable.Name = this.textBoxName.Text;
-                    this.variable.Value = Convert.ChangeType(value, type, CultureInfo.CurrentCulture);
+
+                    // Issue 31458
+                    if (type == TypeCode.DBNull)
+                    {
+                        this.variable.Value = DBNull.Value;
+                    }
+                    else
+                    {
+                        this.variable.Value = Convert.ChangeType(value, type, CultureInfo.CurrentCulture);
+                    }                     
                 }
 
                 this.DialogResult = DialogResult.OK;
