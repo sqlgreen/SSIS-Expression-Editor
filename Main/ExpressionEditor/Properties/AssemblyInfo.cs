@@ -16,19 +16,19 @@ using System.Security.Permissions;
 #if DENALI
 [assembly: AssemblyDescription("SQL Server \"Denali\" Integration Services expression editor control library.")]
 [assembly: AssemblyVersion("3.0.0.0")]
-[assembly: AssemblyFileVersion("3.0.3.0")]
+[assembly: AssemblyFileVersion("3.0.4.0")]
 #endif
 
 #if KATMAI
 [assembly: AssemblyDescription("SQL Server 2008 Integration Services expression editor control library.")]
 [assembly: AssemblyVersion("2.0.0.0")]
-[assembly: AssemblyFileVersion("2.0.3.0")]
+[assembly: AssemblyFileVersion("2.0.4.0")]
 #endif
 
 #if YUKON
 [assembly: AssemblyDescription("SQL Server 2005 Integration Services expression editor control library.")]
 [assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.3.0")]
+[assembly: AssemblyFileVersion("1.0.4.0")]
 #endif
 
 [assembly: AssemblyCompany("Konesans Limited")]
