@@ -12,6 +12,9 @@ You can allow signed scripts to be run
 To re-sign the scripts if required
 	Set-AuthenticodeSignature c:\foo.ps1 @(Get-ChildItem cert:\CurrentUser\My -codesigning)[0]
 
+	Set-AuthenticodeSignature C:\Projects\CodePlex\ExpressionEditor\Main\Build\psake.ps1 @(Get-ChildItem cert:\CurrentUser\My -codesigning)[0]
+
+
 This uses the default coding signing certificate.
 
 To trust these signed scripts you may need to import the certificate public key into a trusted container.
