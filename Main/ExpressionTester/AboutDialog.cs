@@ -41,6 +41,11 @@ namespace Konesans.Dts.Tools.ExpressionTester
 
             this.Text = string.Format(CultureInfo.InvariantCulture, "About {0}", productAttribute.Product);
 
+            if (parentForm == null)
+            {
+                return;
+            }
+
             this.Icon = parentForm.Icon;
             this.picIcon.Image = parentForm.Icon.ToBitmap();
         }

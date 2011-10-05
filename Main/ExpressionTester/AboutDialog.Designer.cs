@@ -80,7 +80,7 @@ namespace Konesans.Dts.Tools.ExpressionTester
             this.lnkLink.BackColor = System.Drawing.SystemColors.Control;
             this.lnkLink.LinkArea = new System.Windows.Forms.LinkArea(0, 23);
             this.lnkLink.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.lnkLink.Location = new System.Drawing.Point(77, 125);
+            this.lnkLink.Location = new System.Drawing.Point(77, 129);
             this.lnkLink.Name = "lnkLink";
             this.lnkLink.Size = new System.Drawing.Size(363, 16);
             this.lnkLink.TabIndex = 1;
@@ -128,7 +128,7 @@ namespace Konesans.Dts.Tools.ExpressionTester
             this.DescriptionLabel.BackColor = System.Drawing.SystemColors.Control;
             this.DescriptionLabel.Location = new System.Drawing.Point(77, 87);
             this.DescriptionLabel.Name = "DescriptionLabel";
-            this.DescriptionLabel.Size = new System.Drawing.Size(363, 16);
+            this.DescriptionLabel.Size = new System.Drawing.Size(363, 38);
             this.DescriptionLabel.TabIndex = 6;
             this.DescriptionLabel.Text = "Description";
             // 
@@ -160,11 +160,11 @@ namespace Konesans.Dts.Tools.ExpressionTester
             this.InfoLabel.Location = new System.Drawing.Point(80, 182);
             this.InfoLabel.Multiline = true;
             this.InfoLabel.Name = "InfoLabel";
-            this.InfoLabel.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.InfoLabel.Size = new System.Drawing.Size(363, 48);
+            this.InfoLabel.ReadOnly = true;
+            this.InfoLabel.Size = new System.Drawing.Size(363, 53);
             this.InfoLabel.TabIndex = 16;
-            this.InfoLabel.Text = "For more information and help information please see CodePlex http://expressioned" +
-                "itor.codeplex.com/";
+            this.InfoLabel.Text = "For information please see CodePlex http://expressioneditor.codeplex.com/\r\n\r\nDeve" +
+                "loped by Darren Green, Konesans Limited.";
             // 
             // AboutDialog
             // 

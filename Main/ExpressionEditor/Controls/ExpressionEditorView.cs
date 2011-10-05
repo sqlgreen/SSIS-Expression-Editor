@@ -574,31 +574,33 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// </summary>
         public void AddVariable()
         {
-            VariableEditor editor = new VariableEditor(this.variables);
-            if (editor.ShowDialog(this) == DialogResult.OK)
+            using (VariableEditor editor = new VariableEditor(this.variables))
             {
-                try
+                if (editor.ShowDialog(this) == DialogResult.OK)
                 {
-                    this.PopulateFunctionsTree();
-
-                    this.treeViewVariablesFunctions.Nodes[0].Expand();
-
-                    foreach (TreeNode node in this.treeViewVariablesFunctions.Nodes[0].Nodes)
+                    try
                     {
-                        if (node.Tag != null && node.Tag.Equals(String.Format(CultureInfo.CurrentCulture, VariablesDragTextFormat, editor.Variable.QualifiedName)))
+                        this.PopulateFunctionsTree();
+
+                        this.treeViewVariablesFunctions.Nodes[0].Expand();
+
+                        foreach (TreeNode node in this.treeViewVariablesFunctions.Nodes[0].Nodes)
                         {
-                            this.treeViewVariablesFunctions.SelectedNode = node;
+                            if (node.Tag != null && node.Tag.Equals(String.Format(CultureInfo.CurrentCulture, VariablesDragTextFormat, editor.Variable.QualifiedName)))
+                            {
+                                this.treeViewVariablesFunctions.SelectedNode = node;
+                            }
                         }
                     }
-                }
-                catch (Exception ex)
-                {
-                    Microsoft.SqlServer.MessageBox.ExceptionMessageBox message = new Microsoft.SqlServer.MessageBox.ExceptionMessageBox(ex);
-                    message.Caption = "Add Variable Failed";
-                    message.Show(this);
-                }
+                    catch (Exception ex)
+                    {
+                        Microsoft.SqlServer.MessageBox.ExceptionMessageBox message = new Microsoft.SqlServer.MessageBox.ExceptionMessageBox(ex);
+                        message.Caption = "Add Variable Failed";
+                        message.Show(this);
+                    }
 
-                this.InvalidateSaved();
+                    this.InvalidateSaved();
+                }
             }
         }
 

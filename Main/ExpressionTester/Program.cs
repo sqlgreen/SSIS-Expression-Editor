@@ -22,6 +22,28 @@ namespace Konesans.Dts.Tools.ExpressionTester
         /// </summary>
         private const string SupportText = "http://www.konesans.com/";
 
+#if DENALI
+        /// <summary>
+        /// SQL Server "Denali" version text
+        /// </summary>
+        private const string SqlVersionText = "\"Denali\"";
+
+        /// <summary>
+        /// Assembly name for SQL Server "Denali" Interation Services runtime wrapper
+        /// </summary>
+        private const string RuntimeWrapperAssemblyName = "Microsoft.SqlServer.DTSRuntimeWrap, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91";
+
+        /// <summary>
+        /// Assembly name for SQL Server "Denali" Interation Services managed assembly
+        /// </summary>
+        private const string ManagedDTSAssemblyName = "Microsoft.SqlServer.ManagedDTS, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91";
+        
+        /// <summary>
+        /// Assembly name for SQL Server "Denali" Interation Services compatible expression editor control library
+        /// </summary>
+        private const string ExpressionEditorAssemblyName = "ExpressionEditor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b2ab4a111192992b";
+#endif
+
 #if KATMAI
         /// <summary>
         /// SQL Server 2008 version text
@@ -42,7 +64,9 @@ namespace Konesans.Dts.Tools.ExpressionTester
         /// Assembly name for SQL Server 2008 Interation Services compatible expression editor control library
         /// </summary>
         private const string ExpressionEditorAssemblyName = "ExpressionEditor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b2ab4a111192992b";
-#else
+#endif
+
+#if YUKON
         /// <summary>
         /// SQL Server 2005 version text
         /// </summary>
