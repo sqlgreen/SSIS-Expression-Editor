@@ -124,9 +124,9 @@ namespace Konesans.Dts.ExpressionEditor
         /// <returns>Formatted string of variable value.</returns>
         internal static string GetVariableStringValue(Variable variable)
         {
-            // BIDS Helper Issue 30851 - No changes as yet, unclear what causes it, but exception can be thrown here
-            // The expression for variable "<<VariableName>> failed evaluation. There was an error in the expression.
-            // Assumed to be variable locking and thread issue in SSIS, as cannot repor and limited evidence
+            //// BIDS Helper Issue 30851 - No changes as yet, unclear what causes it, but exception can be thrown here
+            //// The expression for variable "<<VariableName>>" failed evaluation. There was an error in the expression.
+            //// Assumed to be variable locking and thread issue in SSIS, as cannot repro and limited evidence
 
             if (variable.DataType == TypeCode.String)
             {

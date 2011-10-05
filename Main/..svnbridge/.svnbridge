@@ -9,4 +9,11 @@ _ReSharper.*
 *.user
 StyleCop.Cache
 _ReSharper.*
+</Value></Property><Property><Name>svn:ignore</Name><Value>*.cache
+*.ncb
+*.suo
+*.user
+Releases
+StyleCop.Cache
+_ReSharper.*
 </Value></Property></Properties></ItemProperties>

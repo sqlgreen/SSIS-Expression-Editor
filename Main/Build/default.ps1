@@ -3,12 +3,11 @@ properties{
 
     # Digital Signature SHA1
     $sha1 = "0e1003c6a75db08e6a50ef777635563b809cdd13"
-	#"53df6a03e3dd74ccf55fac7491f7aadadea4a5bc"
 }
 
 properties{#directories
-    #$framework_dir_2 = "$env:systemroot\microsoft.net\framework\v2.0.50727"
-    #$framework_dir_3_5 = "$env:systemroot\microsoft.net\framework\v3.5"
+    $framework_dir_3_5 = "$env:systemroot\microsoft.net\framework\v3.5"
+    $framework_dir_4 = "$env:systemroot\microsoft.net\framework\v4.0.30319"
     $base_dir = [System.IO.Directory]::GetParent("$pwd")
     $build_dir = "$base_dir\build"
 }
@@ -16,6 +15,7 @@ properties{#directories
 properties { #solution file
     $sln_file_2005 = "$base_dir\ExpressionTester2005.sln"
     $sln_file_2008 = "$base_dir\ExpressionTester2008.sln"
+    $sln_file_2012 = "$base_dir\ExpressionTester2012.sln"
     #$sql_ver = "2005"
 }
 
@@ -32,6 +32,11 @@ properties { #utility locations
 task default -depends MakeZips
 
 task Clean2005{ 
+    if (!(Test-Path "$base_dir\Releases\ExpressionEditor2005"))
+    {
+        new-item "$base_dir\Releases\ExpressionEditor2005" -type directory
+    }
+
     if (test-path "$base_dir\ExpressionEditor\bin\Release\")
     {
         remove-item "$base_dir\ExpressionEditor\bin\Release\" -recurse
@@ -45,8 +50,9 @@ task Clean2005{
 
 
 task Compile2005 -depends Clean2005 {
-    write-Host "Path: $msbuild"
-    &($msbuild) $sln_file_2005 /t:Rebuild /p:Configuration=Release /v:q /p:DefineConstants="YUKON" 
+    $frameworkbuild = ($framework_dir_3_5 + "\" + $msbuild)
+    write-Host "Path: $frameworkbuild"
+    &($frameworkbuild) $sln_file_2005 /t:Rebuild /p:Configuration=Release /v:q /p:DefineConstants="YUKON" 
 
     &($sign) sign /sha1 $sha1 /d "Expression Tester" /du http://www.konesans.com /t http://timestamp.comodoca.com/authenticode "$base_dir\ExpressionTester\bin\Release\ExpressionTester.exe"
 }
@@ -58,6 +64,11 @@ task Copy2005 -depends Compile2005 {
 }
 
 task Clean2008 -depends Copy2005 { 
+    if (!(Test-Path "$base_dir\Releases\ExpressionEditor2008"))
+    {
+        new-item "$base_dir\Releases\ExpressionEditor2008" -type directory
+    }
+
     if (test-path "$base_dir\ExpressionEditor\bin\Release\")
     {
         remove-item "$base_dir\ExpressionEditor\bin\Release\" -recurse
@@ -70,8 +81,9 @@ task Clean2008 -depends Copy2005 {
 }
 
 task Compile2008 -depends Clean2008 {
-    write-Host "Path:  $msbuild"
-    &($msbuild) $sln_file_2008 /t:Rebuild /p:Configuration=Release /v:q /p:DefineConstants="KATMAI" 
+    $frameworkbuild = ($framework_dir_3_5 + "\" + $msbuild)
+    write-Host "Path: $frameworkbuild"
+    &($frameworkbuild) $sln_file_2008 /t:Rebuild /p:Configuration=Release /v:q /p:DefineConstants="KATMAI" 
 
     &($sign) sign /sha1 $sha1 /d "Expression Tester" /du http://www.konesans.com /t http://timestamp.comodoca.com/authenticode "$base_dir\ExpressionTester\bin\Release\ExpressionTester.exe"
 }
@@ -81,17 +93,50 @@ task Copy2008 -depends Compile2008 {
     copy-item "$base_dir\ExpressionTester\bin\Release\ExpressionTester.exe" "$base_dir\Releases\ExpressionEditor2008\"
 }
 
-task MakeZips -depends Copy2005, Copy2008 {
+
+task Clean2012 -depends Copy2008 { 
+    if (!(Test-Path "$base_dir\Releases\ExpressionEditorDenali"))
+    {
+        new-item "$base_dir\Releases\ExpressionEditorDenali" -type directory
+    }
+
+    if (test-path "$base_dir\ExpressionEditor\bin\Release\")
+    {
+        remove-item "$base_dir\ExpressionEditor\bin\Release\" -recurse
+    }
+
+    if (test-path "$base_dir\ExpressionTester\bin\Release\")
+    {
+        remove-item "$base_dir\ExpressionTester\bin\Release\" -recurse
+    }
+}
+
+task Compile2012 -depends Clean2012 {
+    $frameworkbuild = ($framework_dir_4 + "\" + $msbuild)
+    write-Host "Path: $frameworkbuild"
+    &($frameworkbuild) $sln_file_2012 /t:Rebuild /p:Configuration=Release /v:q /p:DefineConstants="DENALI" 
+
+    &($sign) sign /sha1 $sha1 /d "Expression Tester" /du http://www.konesans.com /t http://timestamp.comodoca.com/authenticode "$base_dir\ExpressionTester\bin\Release\ExpressionTester.exe"
+}
+
+task Copy2012 -depends Compile2012 {
+    copy-item "$base_dir\ExpressionEditor\bin\Release\ExpressionEditor.dll" "$base_dir\Releases\ExpressionEditorDenali\"
+    copy-item "$base_dir\ExpressionTester\bin\Release\ExpressionTester.exe" "$base_dir\Releases\ExpressionEditorDenali\"
+}
+
+task MakeZips -depends Copy2005, Copy2008, Copy2012 {
     write-Host "Starting Zip $base_dir"
 
     &($zip) a -tzip "$base_dir\Releases\ExpressionEditor.zip" "$base_dir\Releases\ExpressionEditor2005\"
     &($zip) a -tzip "$base_dir\Releases\ExpressionEditor.zip" "$base_dir\Releases\ExpressionEditor2008\"
+    &($zip) a -tzip "$base_dir\Releases\ExpressionEditor.zip" "$base_dir\Releases\ExpressionEditorDenali\"
 }
+
 # SIG # Begin signature block
 # MIINEQYJKoZIhvcNAQcCoIINAjCCDP4CAQExCzAJBgUrDgMCGgUAMGkGCisGAQQB
 # gjcCAQSgWzBZMDQGCisGAQQBgjcCAR4wJgIDAQAABBAfzDtgWUsITrck0sYpfvNR
-# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUheBvJ2dKvL8uLw1L4NK6NaEE
-# zlCgggpMMIIE0DCCA7igAwIBAgIQc1eMcW2zlVMTffMJcxir/jANBgkqhkiG9w0B
+# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUmsZKXndELkX4/r9fiY1udo88
+# Z1ygggpMMIIE0DCCA7igAwIBAgIQc1eMcW2zlVMTffMJcxir/jANBgkqhkiG9w0B
 # AQUFADCBlTELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAlVUMRcwFQYDVQQHEw5TYWx0
 # IExha2UgQ2l0eTEeMBwGA1UEChMVVGhlIFVTRVJUUlVTVCBOZXR3b3JrMSEwHwYD
 # VQQLExhodHRwOi8vd3d3LnVzZXJ0cnVzdC5jb20xHTAbBgNVBAMTFFVUTi1VU0VS
@@ -151,11 +196,11 @@ task MakeZips -depends Copy2005, Copy2008 {
 # Q0EgTGltaXRlZDEfMB0GA1UEAxMWQ09NT0RPIENvZGUgU2lnbmluZyBDQQIQUHMb
 # x0YlnPi/uovPlvtONTAJBgUrDgMCGgUAoHgwGAYKKwYBBAGCNwIBDDEKMAigAoAA
 # oQKAADAZBgkqhkiG9w0BCQMxDAYKKwYBBAGCNwIBBDAcBgorBgEEAYI3AgELMQ4w
-# DAYKKwYBBAGCNwIBFTAjBgkqhkiG9w0BCQQxFgQUMnmK5zylTwaCEg7Cu6aeKyDx
-# S6YwDQYJKoZIhvcNAQEBBQAEggEAPHVw5wnU2edXt9JGIoK1BPiosFkcOYirbnt2
-# qnW+GVqiqmy8H9KKFU7brSKufeNtP41UB895N/p2bGqQE9mu8ne6I0MdJayJg33C
-# qsI394GliRngGX+7BzNGiVsWtlMqK4iCSM/r7hUQ8TgOj1hpYKdPjotgWO5Np2Hi
-# sMJBCm3TG+rT5eIdsIxsi7bX7sh4eFB3dUHd4AqEIge8QuI4Al+UMJoIcRhQVRwS
-# deTCwnAbwhl8tNRRLGRlaRUbIYA1ThEYFeDRD6YleHQWZnC1lfIbZMpUloxq4hyM
-# 2Amp4Nzjpds4JhS2I+MZn06kXPEBcA3uDEQIP9hcxujmRWjH/Q==
+# DAYKKwYBBAGCNwIBFTAjBgkqhkiG9w0BCQQxFgQUXyDH6jRxEjAoBliNQlV8YsrI
+# v2AwDQYJKoZIhvcNAQEBBQAEggEAGxp3VRK/WSSBk4F4FEyDDouvrCIEkAwLxAtG
+# kKiBNjMSCPR2F0Lj6Nb4hDed6IUbuwROZV0p8PHdNLeOAMN9ELxyGtdrdz8kBTfA
+# ZqvU00EbebSkg2Q6e54grntKjTrPszkOc6+avSU2c6zEnIPnwKaF9yz9LkO33u5U
+# wdBVrvXIXsrSZ5mDzetKpQNTU8umOm8C+Va3EERY0t+v09g0aGOj3GAFR6dxfaXz
+# FXoRMAJwT7awGEhyI2dNGtXFmzYhivLs0x4+I3BJqNtwmpIHB4qKCC+C2+/r/eki
+# eMU6J3eAiz1g0dXKIy1Ar8HYkhEDNNhg3NbVEu0J9d8A2v+HQw==
 # SIG # End signature block

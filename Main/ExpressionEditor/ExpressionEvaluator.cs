@@ -8,10 +8,10 @@ namespace Konesans.Dts.ExpressionEditor
 {
     using System;
     using Microsoft.SqlServer.Dts.Runtime;
-#if KATMAI
-    using IDTSVariableDispenserXX = Microsoft.SqlServer.Dts.Runtime.Wrapper.IDTSVariableDispenser100;
-#else
+#if YUKON
     using IDTSVariableDispenserXX = Microsoft.SqlServer.Dts.Runtime.Wrapper.IDTSVariableDispenser90;
+#else // KATMAI, DENALI
+    using IDTSVariableDispenserXX = Microsoft.SqlServer.Dts.Runtime.Wrapper.IDTSVariableDispenser100;
 #endif
     using VariableDispenser = Microsoft.SqlServer.Dts.Runtime.VariableDispenser;
 
@@ -60,11 +60,7 @@ namespace Konesans.Dts.ExpressionEditor
         /// <returns>An object containing the expression result.</returns>
         public object Evaluate(VariableDispenser variableDispenser)
         {
-#if KATMAI
-            IDTSVariableDispenserXX variableDispenserWrapper = DtsConvert.GetExtendedInterface(variableDispenser);
-#else
-            IDTSVariableDispenserXX variableDispenserWrapper = DtsConvert.ToVariableDispenser90(variableDispenser);
-#endif
+            IDTSVariableDispenserXX variableDispenserWrapper = GetVariableDispenserWrapper(variableDispenser);
             return this.Evaluate(variableDispenserWrapper);
         }
 
@@ -106,11 +102,7 @@ namespace Konesans.Dts.ExpressionEditor
         /// <returns>An object containing the expression result.</returns>
         public object Validate(VariableDispenser variableDispenser)
         {
-#if KATMAI
-            IDTSVariableDispenserXX variableDispenserWrapper = DtsConvert.GetExtendedInterface(variableDispenser);
-#else
-            IDTSVariableDispenserXX variableDispenserWrapper = DtsConvert.ToVariableDispenser90(variableDispenser);
-#endif
+            IDTSVariableDispenserXX variableDispenserWrapper = GetVariableDispenserWrapper(variableDispenser);
             return this.Validate(variableDispenserWrapper);
         }
 
@@ -152,11 +144,7 @@ namespace Konesans.Dts.ExpressionEditor
         /// <returns>Boolean for whether the expression result is boolean.</returns>
         public bool IsBoolean(VariableDispenser variableDispenser)
         {
-#if KATMAI
-            IDTSVariableDispenserXX variableDispenserWrapper = DtsConvert.GetExtendedInterface(variableDispenser);
-#else
-            IDTSVariableDispenserXX variableDispenserWrapper = DtsConvert.ToVariableDispenser90(variableDispenser);
-#endif
+            IDTSVariableDispenserXX variableDispenserWrapper = GetVariableDispenserWrapper(variableDispenser);
             return this.IsBoolean(variableDispenserWrapper);
         }
 
@@ -186,6 +174,21 @@ namespace Konesans.Dts.ExpressionEditor
             }
 
             return result;
+        }
+
+        /// <summary>
+        /// Gets the variable dispenser wrapper. This method itself is just an abstraction for the condition compilation code.
+        /// </summary>
+        /// <param name="variableDispenser">The variable dispenser.</param>
+        /// <returns>A version typed variable dispamser wrapper.</returns>
+        private static IDTSVariableDispenserXX GetVariableDispenserWrapper(VariableDispenser variableDispenser)
+        {
+#if YUKON
+            IDTSVariableDispenserXX variableDispenserWrapper = DtsConvert.ToVariableDispenser90(variableDispenser);
+#else // KATMAI, DENALI
+            IDTSVariableDispenserXX variableDispenserWrapper = GetVariableDispenserWrapper(variableDispenser);
+#endif
+            return variableDispenserWrapper;
         }
     }
 }

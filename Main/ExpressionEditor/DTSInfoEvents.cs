@@ -8,11 +8,10 @@ namespace Konesans.Dts.ExpressionEditor
 {
     using System.Collections.ObjectModel;
     using System.Text;
-
-#if KATMAI
-    using IDTSInfoEventsXX = Microsoft.SqlServer.Dts.Runtime.Wrapper.IDTSInfoEvents100;
-#else
+#if YUKON
     using IDTSInfoEventsXX = Microsoft.SqlServer.Dts.Runtime.Wrapper.IDTSInfoEvents90;
+#else // KATMAI, DENALI
+    using IDTSInfoEventsXX = Microsoft.SqlServer.Dts.Runtime.Wrapper.IDTSInfoEvents100;
 #endif
 
     /// <summary>
