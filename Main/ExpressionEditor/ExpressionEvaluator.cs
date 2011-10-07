@@ -186,7 +186,7 @@ namespace Konesans.Dts.ExpressionEditor
 #if YUKON
             IDTSVariableDispenserXX variableDispenserWrapper = DtsConvert.ToVariableDispenser90(variableDispenser);
 #else // KATMAI, DENALI
-            IDTSVariableDispenserXX variableDispenserWrapper = GetVariableDispenserWrapper(variableDispenser);
+            IDTSVariableDispenserXX variableDispenserWrapper = DtsConvert.GetExtendedInterface(variableDispenser);
 #endif
             return variableDispenserWrapper;
         }
