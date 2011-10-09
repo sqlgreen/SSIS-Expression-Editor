@@ -68,7 +68,7 @@ namespace Konesans.Dts.ExpressionEditor
             // Common constructor, called by public constructors
             this.InitializeComponent();
 
-            this.Icon = Konesans.Dts.ExpressionEditor.Properties.Resources.Expression;
+            this.Icon = Konesans.Dts.ExpressionEditor.Resources.Expression;
 
             this.expressionEditorView.ResultTypeValidate = true;
             this.expressionEditorView.Initialize(variableDispenser, variables);

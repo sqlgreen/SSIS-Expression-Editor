@@ -129,7 +129,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // toolStripButtonFind
             // 
             this.toolStripButtonFind.CheckOnClick = true;
-            this.toolStripButtonFind.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.Find;
+            this.toolStripButtonFind.Image = Konesans.Dts.ExpressionEditor.Resources.Find;
             this.toolStripButtonFind.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonFind.Name = "toolStripButtonFind";
             this.toolStripButtonFind.Size = new System.Drawing.Size(47, 22);
@@ -144,7 +144,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // toolStripButtonReplace
             // 
             this.toolStripButtonReplace.CheckOnClick = true;
-            this.toolStripButtonReplace.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.Replace;
+            this.toolStripButtonReplace.Image = Konesans.Dts.ExpressionEditor.Resources.Replace;
             this.toolStripButtonReplace.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonReplace.Name = "toolStripButtonReplace";
             this.toolStripButtonReplace.Size = new System.Drawing.Size(65, 22);

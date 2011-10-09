@@ -22,7 +22,7 @@ namespace Konesans.Dts.ExpressionEditor.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources {
+    internal class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace Konesans.Dts.ExpressionEditor.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Konesans.Dts.ExpressionEditor.Properties.Resources", typeof(Resources).Assembly);
@@ -51,210 +51,12 @@ namespace Konesans.Dts.ExpressionEditor.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        public static System.Drawing.Bitmap BlueDown16 {
-            get {
-                object obj = ResourceManager.GetObject("BlueDown16", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap BlueLeft16 {
-            get {
-                object obj = ResourceManager.GetObject("BlueLeft16", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap BlueRight16 {
-            get {
-                object obj = ResourceManager.GetObject("BlueRight16", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap BlueUp16 {
-            get {
-                object obj = ResourceManager.GetObject("BlueUp16", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap Copy {
-            get {
-                object obj = ResourceManager.GetObject("Copy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap Cut {
-            get {
-                object obj = ResourceManager.GetObject("Cut", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap Delete {
-            get {
-                object obj = ResourceManager.GetObject("Delete", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap EditRedo {
-            get {
-                object obj = ResourceManager.GetObject("EditRedo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap EditUndo {
-            get {
-                object obj = ResourceManager.GetObject("EditUndo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Icon Expression {
-            get {
-                object obj = ResourceManager.GetObject("Expression", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap ExpressionEdit {
-            get {
-                object obj = ResourceManager.GetObject("ExpressionEdit", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap ExpressionlNew {
-            get {
-                object obj = ResourceManager.GetObject("ExpressionlNew", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;
-        ///&lt;!-- 
-        ///  Default Expression Functions - ExpressionEditor.xml
-        ///  Version 2.0.0.0 - SQL Server Integration Services expression editor control
-        ///  Copyright © 2010 Konesans Limited
-        ///--&gt;
-        ///&lt;ExpressionFunctions&gt;
-        ///
-        ///  &lt;Group Name=&quot;Math&quot;&gt;
-        ///	  &lt;Description&gt;Mathematical functions.&lt;/Description&gt;
-        ///    &lt;Function&gt;
-        ///      &lt;Syntax&gt;ABS( «numeric» )&lt;/Syntax&gt;
-        ///      &lt;Description&gt;Returns the absolute, positive value of a numeric expression.&lt;/Description&gt;
-        ///    &lt;/Function&gt;
-        ///    &lt;Function&gt;        /// [rest of string was truncated]&quot;;.
-        /// </summary>
-        public static string ExpressionViewFunctions {
-            get {
-                return ResourceManager.GetString("ExpressionViewFunctions", resourceCulture);
-            }
-        }
-        
-        public static System.Drawing.Bitmap Find {
-            get {
-                object obj = ResourceManager.GetObject("Find", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap Folder {
-            get {
-                object obj = ResourceManager.GetObject("Folder", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap FolderOpen {
-            get {
-                object obj = ResourceManager.GetObject("FolderOpen", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap NewFolder {
-            get {
-                object obj = ResourceManager.GetObject("NewFolder", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap Paste {
-            get {
-                object obj = ResourceManager.GetObject("Paste", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap Replace {
-            get {
-                object obj = ResourceManager.GetObject("Replace", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap Run {
-            get {
-                object obj = ResourceManager.GetObject("Run", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap Save {
-            get {
-                object obj = ResourceManager.GetObject("Save", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Icon SystemVariable {
-            get {
-                object obj = ResourceManager.GetObject("SystemVariable", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        public static System.Drawing.Icon Variable {
-            get {
-                object obj = ResourceManager.GetObject("Variable", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap VariableDelete {
-            get {
-                object obj = ResourceManager.GetObject("VariableDelete", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap VariableEdit {
-            get {
-                object obj = ResourceManager.GetObject("VariableEdit", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap VariableNew {
-            get {
-                object obj = ResourceManager.GetObject("VariableNew", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }
