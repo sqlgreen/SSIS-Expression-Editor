@@ -8,7 +8,6 @@ namespace Konesans.Dts.Tools.ExpressionTester
 {
     using System;
     using System.Windows.Forms;
-    using Konesans.Dts.Tools.ExpressionTester.Properties;
 
     /// <summary>
     /// Options dialog form.
@@ -24,7 +23,7 @@ namespace Konesans.Dts.Tools.ExpressionTester
             this.InitializeComponent();
             this.propertyGridSettings.SelectedObject = settings;
 
-            this.Text = Resources.DialogTitleProgramOptions;
+            this.Text = Konesans.Dts.Tools.ExpressionTester.Properties.Resources.DialogTitleProgramOptions;
         }
 
         /// <summary>
@@ -36,7 +35,7 @@ namespace Konesans.Dts.Tools.ExpressionTester
             this.InitializeComponent();
             this.propertyGridSettings.SelectedObject = settings;
 
-            this.Text = Resources.DialogTitleExpressionProperties;
+            this.Text = Konesans.Dts.Tools.ExpressionTester.Properties.Resources.DialogTitleExpressionProperties;
         }
 
         /// <summary>
