@@ -119,7 +119,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // 
             // addVariableMenuItem
             // 
-            this.addVariableMenuItem.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.VariableNew;
+            this.addVariableMenuItem.Image = Konesans.Dts.ExpressionEditor.Resources.VariableNew;
             this.addVariableMenuItem.ImageTransparentColor = System.Drawing.Color.White;
             this.addVariableMenuItem.Name = "addVariableMenuItem";
             this.addVariableMenuItem.Size = new System.Drawing.Size(146, 22);
@@ -128,7 +128,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // 
             // editVariableMenuItem
             // 
-            this.editVariableMenuItem.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.VariableEdit;
+            this.editVariableMenuItem.Image = Konesans.Dts.ExpressionEditor.Resources.VariableEdit;
             this.editVariableMenuItem.ImageTransparentColor = System.Drawing.Color.White;
             this.editVariableMenuItem.Name = "editVariableMenuItem";
             this.editVariableMenuItem.Size = new System.Drawing.Size(146, 22);
@@ -137,7 +137,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // 
             // deleteVariableMenuItem
             // 
-            this.deleteVariableMenuItem.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.VariableDelete;
+            this.deleteVariableMenuItem.Image = Konesans.Dts.ExpressionEditor.Resources.VariableDelete;
             this.deleteVariableMenuItem.ImageTransparentColor = System.Drawing.Color.White;
             this.deleteVariableMenuItem.Name = "deleteVariableMenuItem";
             this.deleteVariableMenuItem.Size = new System.Drawing.Size(146, 22);
@@ -152,7 +152,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // editFunctionsMenuItem
             // 
             this.editFunctionsMenuItem.CheckOnClick = true;
-            this.editFunctionsMenuItem.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.ExpressionEdit;
+            this.editFunctionsMenuItem.Image = Konesans.Dts.ExpressionEditor.Resources.ExpressionEdit;
             this.editFunctionsMenuItem.Name = "editFunctionsMenuItem";
             this.editFunctionsMenuItem.Size = new System.Drawing.Size(146, 22);
             this.editFunctionsMenuItem.Text = "Edit Functions";
@@ -252,7 +252,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // 
             // undoMenuItem
             // 
-            this.undoMenuItem.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.EditUndo;
+            this.undoMenuItem.Image = Konesans.Dts.ExpressionEditor.Resources.EditUndo;
             this.undoMenuItem.Name = "undoMenuItem";
             this.undoMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
             this.undoMenuItem.Size = new System.Drawing.Size(156, 22);
@@ -261,7 +261,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // 
             // redoMenuItem
             // 
-            this.redoMenuItem.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.EditRedo;
+            this.redoMenuItem.Image = Konesans.Dts.ExpressionEditor.Resources.EditRedo;
             this.redoMenuItem.Name = "redoMenuItem";
             this.redoMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
             this.redoMenuItem.Size = new System.Drawing.Size(156, 22);
@@ -275,7 +275,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // 
             // cutMenuItem
             // 
-            this.cutMenuItem.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.Cut;
+            this.cutMenuItem.Image = Konesans.Dts.ExpressionEditor.Resources.Cut;
             this.cutMenuItem.Name = "cutMenuItem";
             this.cutMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
             this.cutMenuItem.Size = new System.Drawing.Size(156, 22);
@@ -284,7 +284,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // 
             // copyMenuItem
             // 
-            this.copyMenuItem.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.Copy;
+            this.copyMenuItem.Image = Konesans.Dts.ExpressionEditor.Resources.Copy;
             this.copyMenuItem.Name = "copyMenuItem";
             this.copyMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
             this.copyMenuItem.Size = new System.Drawing.Size(156, 22);
@@ -293,7 +293,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // 
             // pasteMenuItem
             // 
-            this.pasteMenuItem.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.Paste;
+            this.pasteMenuItem.Image = Konesans.Dts.ExpressionEditor.Resources.Paste;
             this.pasteMenuItem.Name = "pasteMenuItem";
             this.pasteMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
             this.pasteMenuItem.Size = new System.Drawing.Size(156, 22);
@@ -328,7 +328,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // 
             // addVariableToolStripButton
             // 
-            this.addVariableToolStripButton.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.VariableNew;
+            this.addVariableToolStripButton.Image = Konesans.Dts.ExpressionEditor.Resources.VariableNew;
             this.addVariableToolStripButton.ImageTransparentColor = System.Drawing.Color.White;
             this.addVariableToolStripButton.Name = "addVariableToolStripButton";
             this.addVariableToolStripButton.Size = new System.Drawing.Size(87, 22);
@@ -337,7 +337,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // 
             // editVariableToolStripButton
             // 
-            this.editVariableToolStripButton.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.VariableEdit;
+            this.editVariableToolStripButton.Image = Konesans.Dts.ExpressionEditor.Resources.VariableEdit;
             this.editVariableToolStripButton.ImageTransparentColor = System.Drawing.Color.White;
             this.editVariableToolStripButton.Name = "editVariableToolStripButton";
             this.editVariableToolStripButton.Size = new System.Drawing.Size(86, 22);
@@ -346,7 +346,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // 
             // deleteVariableToolStripButton
             // 
-            this.deleteVariableToolStripButton.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.VariableDelete;
+            this.deleteVariableToolStripButton.Image = Konesans.Dts.ExpressionEditor.Resources.VariableDelete;
             this.deleteVariableToolStripButton.ImageTransparentColor = System.Drawing.Color.White;
             this.deleteVariableToolStripButton.Name = "deleteVariableToolStripButton";
             this.deleteVariableToolStripButton.Size = new System.Drawing.Size(99, 22);
@@ -356,7 +356,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // 
             // toolStripButtonFind
             // 
-            this.toolStripButtonFind.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.Find;
+            this.toolStripButtonFind.Image = Konesans.Dts.ExpressionEditor.Resources.Find;
             this.toolStripButtonFind.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonFind.Name = "toolStripButtonFind";
             this.toolStripButtonFind.Size = new System.Drawing.Size(47, 22);
@@ -366,7 +366,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // 
             // toolStripButtonReplace
             // 
-            this.toolStripButtonReplace.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.Replace;
+            this.toolStripButtonReplace.Image = Konesans.Dts.ExpressionEditor.Resources.Replace;
             this.toolStripButtonReplace.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonReplace.Name = "toolStripButtonReplace";
             this.toolStripButtonReplace.Size = new System.Drawing.Size(65, 22);
@@ -375,7 +375,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // 
             // evalToolStripButton
             // 
-            this.evalToolStripButton.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.Run;
+            this.evalToolStripButton.Image = Konesans.Dts.ExpressionEditor.Resources.Run;
             this.evalToolStripButton.ImageTransparentColor = System.Drawing.Color.Black;
             this.evalToolStripButton.Name = "evalToolStripButton";
             this.evalToolStripButton.Size = new System.Drawing.Size(69, 22);
@@ -386,7 +386,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // editFunctionsToolStripButton
             // 
             this.editFunctionsToolStripButton.CheckOnClick = true;
-            this.editFunctionsToolStripButton.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.ExpressionEdit;
+            this.editFunctionsToolStripButton.Image = Konesans.Dts.ExpressionEditor.Resources.ExpressionEdit;
             this.editFunctionsToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.editFunctionsToolStripButton.Name = "editFunctionsToolStripButton";
             this.editFunctionsToolStripButton.Size = new System.Drawing.Size(73, 22);

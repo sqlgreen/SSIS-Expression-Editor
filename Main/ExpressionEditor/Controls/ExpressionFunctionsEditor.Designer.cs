@@ -190,7 +190,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // toolStripButtonNewExpressionGroup
             // 
             this.toolStripButtonNewExpressionGroup.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonNewExpressionGroup.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.NewFolder;
+            this.toolStripButtonNewExpressionGroup.Image = Konesans.Dts.ExpressionEditor.Resources.NewFolder;
             this.toolStripButtonNewExpressionGroup.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonNewExpressionGroup.Name = "toolStripButtonNewExpressionGroup";
             this.toolStripButtonNewExpressionGroup.Size = new System.Drawing.Size(23, 22);
@@ -200,7 +200,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // toolStripButtonNewExpressionFunction
             // 
             this.toolStripButtonNewExpressionFunction.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonNewExpressionFunction.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.ExpressionlNew;
+            this.toolStripButtonNewExpressionFunction.Image = Konesans.Dts.ExpressionEditor.Resources.ExpressionlNew;
             this.toolStripButtonNewExpressionFunction.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonNewExpressionFunction.Name = "toolStripButtonNewExpressionFunction";
             this.toolStripButtonNewExpressionFunction.Size = new System.Drawing.Size(23, 22);
@@ -210,7 +210,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // toolStripButtonExpressionDelete
             // 
             this.toolStripButtonExpressionDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonExpressionDelete.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.Delete;
+            this.toolStripButtonExpressionDelete.Image = Konesans.Dts.ExpressionEditor.Resources.Delete;
             this.toolStripButtonExpressionDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonExpressionDelete.Name = "toolStripButtonExpressionDelete";
             this.toolStripButtonExpressionDelete.Size = new System.Drawing.Size(23, 22);
@@ -225,7 +225,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // toolStripButtonUp
             // 
             this.toolStripButtonUp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonUp.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.BlueUp16;
+            this.toolStripButtonUp.Image = Konesans.Dts.ExpressionEditor.Resources.BlueUp16;
             this.toolStripButtonUp.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonUp.Name = "toolStripButtonUp";
             this.toolStripButtonUp.Size = new System.Drawing.Size(23, 22);
@@ -235,7 +235,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // toolStripButtonDown
             // 
             this.toolStripButtonDown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonDown.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.BlueDown16;
+            this.toolStripButtonDown.Image = Konesans.Dts.ExpressionEditor.Resources.BlueDown16;
             this.toolStripButtonDown.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonDown.Name = "toolStripButtonDown";
             this.toolStripButtonDown.Size = new System.Drawing.Size(23, 22);
@@ -245,7 +245,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // toolStripButtonLeft
             // 
             this.toolStripButtonLeft.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonLeft.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.BlueLeft16;
+            this.toolStripButtonLeft.Image = Konesans.Dts.ExpressionEditor.Resources.BlueLeft16;
             this.toolStripButtonLeft.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonLeft.Name = "toolStripButtonLeft";
             this.toolStripButtonLeft.Size = new System.Drawing.Size(23, 22);
@@ -255,7 +255,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // toolStripButtonRight
             // 
             this.toolStripButtonRight.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonRight.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.BlueRight16;
+            this.toolStripButtonRight.Image = Konesans.Dts.ExpressionEditor.Resources.BlueRight16;
             this.toolStripButtonRight.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonRight.Name = "toolStripButtonRight";
             this.toolStripButtonRight.Size = new System.Drawing.Size(23, 22);
@@ -270,7 +270,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // toolStripButtonSaveFunctions
             // 
             this.toolStripButtonSaveFunctions.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonSaveFunctions.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.Save;
+            this.toolStripButtonSaveFunctions.Image = Konesans.Dts.ExpressionEditor.Resources.Save;
             this.toolStripButtonSaveFunctions.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonSaveFunctions.Name = "toolStripButtonSaveFunctions";
             this.toolStripButtonSaveFunctions.Size = new System.Drawing.Size(23, 22);
@@ -280,7 +280,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // toolStripButtonCloseFunctionEditor
             // 
             this.toolStripButtonCloseFunctionEditor.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButtonCloseFunctionEditor.Image = global::Konesans.Dts.ExpressionEditor.Properties.Resources.ExpressionEdit;
+            this.toolStripButtonCloseFunctionEditor.Image = Konesans.Dts.ExpressionEditor.Resources.ExpressionEdit;
             this.toolStripButtonCloseFunctionEditor.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonCloseFunctionEditor.Name = "toolStripButtonCloseFunctionEditor";
             this.toolStripButtonCloseFunctionEditor.Size = new System.Drawing.Size(53, 22);

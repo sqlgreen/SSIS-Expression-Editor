@@ -157,11 +157,11 @@ namespace Konesans.Dts.ExpressionEditor.Controls
 
             this.expressionEditorViewEditorPanel.ExpressionEditorView = this;
 
-            this.imageListIcons.Images.Add(Properties.Resources.Folder);
-            this.imageListIcons.Images.Add(Properties.Resources.FolderOpen);
-            this.imageListIcons.Images.Add(Properties.Resources.Variable);
-            this.imageListIcons.Images.Add(Properties.Resources.SystemVariable);
-            this.imageListIcons.Images.Add(Properties.Resources.Expression);
+            this.imageListIcons.Images.Add(Resources.Folder);
+            this.imageListIcons.Images.Add(Resources.FolderOpen);
+            this.imageListIcons.Images.Add(Resources.Variable);
+            this.imageListIcons.Images.Add(Resources.SystemVariable);
+            this.imageListIcons.Images.Add(Resources.Expression);
 
             this.ExpressionTextBox.EnableAutoDragDrop = true;
             this.ExpressionTextBox.AllowDrop = true;
@@ -1394,7 +1394,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
 
             // Final trap, use embedded resource, but the filename is still set to AppData
             System.Diagnostics.Debug.WriteLine("Loading functions from resource string");
-            document.LoadXml(Konesans.Dts.ExpressionEditor.Properties.Resources.ExpressionViewFunctions);
+            document.LoadXml(Konesans.Dts.ExpressionEditor.Resources.ExpressionViewFunctions);
             this.functionsDocument = document;
         }
 

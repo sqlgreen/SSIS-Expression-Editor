@@ -52,7 +52,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             this.textBoxNamespace.Text = "User";
             this.textBoxName.Focus();
 
-            this.Icon = global::Konesans.Dts.ExpressionEditor.Properties.Resources.Variable;
+            this.Icon = Konesans.Dts.ExpressionEditor.Resources.Variable;
 
             this.activeControl = this.textBoxName;
         }
