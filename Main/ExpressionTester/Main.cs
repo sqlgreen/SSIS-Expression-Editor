@@ -14,7 +14,6 @@ namespace Konesans.Dts.Tools.ExpressionTester
     using Konesans.Dts.ExpressionEditor;
     using Konesans.Dts.ExpressionEditor.Controls;
     using Konesans.Dts.Tools.Common;
-    using Konesans.Dts.Tools.ExpressionTester.Properties;
     using Microsoft.SqlServer.MessageBox;
 
     /// <summary>
@@ -658,7 +657,7 @@ namespace Konesans.Dts.Tools.ExpressionTester
                 fileListEmptyToolStripMenuItem.Enabled = false;
                 fileListEmptyToolStripMenuItem.Name = "fileListEmptyToolStripMenuItem";
                 fileListEmptyToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-                fileListEmptyToolStripMenuItem.Text = Resources.TextFileListEmpty;
+                fileListEmptyToolStripMenuItem.Text = Konesans.Dts.Tools.ExpressionTester.Properties.Resources.TextFileListEmpty;
                 this.recentFilesToolStripMenuItem.DropDownItems.Add(fileListEmptyToolStripMenuItem);
             }
         }
@@ -840,9 +839,9 @@ namespace Konesans.Dts.Tools.ExpressionTester
             {
                 Microsoft.SqlServer.MessageBox.ExceptionMessageBox messageBox = new Microsoft.SqlServer.MessageBox.ExceptionMessageBox();
                 messageBox.Caption = Application.ProductName;
-                messageBox.Text = String.Format(CultureInfo.CurrentCulture, "{0}\r\n\r\n{1}", Resources.FindOrReplaceFindNotFound, e.SearchTerm);
+                messageBox.Text = String.Format(CultureInfo.CurrentCulture, "{0}\r\n\r\n{1}", Konesans.Dts.Tools.ExpressionTester.Properties.Resources.FindOrReplaceFindNotFound, e.SearchTerm);
                 messageBox.ShowCheckBox = true;
-                messageBox.CheckBoxText = Resources.AlwaysDisplayThisMessage;
+                messageBox.CheckBoxText = Konesans.Dts.Tools.ExpressionTester.Properties.Resources.AlwaysDisplayThisMessage;
                 messageBox.IsCheckBoxChecked = this.programSettings.FindNotFound;
                 messageBox.Show(this);
                 this.programSettings.FindNotFound = messageBox.IsCheckBoxChecked;
@@ -858,10 +857,10 @@ namespace Konesans.Dts.Tools.ExpressionTester
         {
             if (this.programSettings.ReplaceAllCount)
             {
-                Microsoft.SqlServer.MessageBox.ExceptionMessageBox messageBox = new Microsoft.SqlServer.MessageBox.ExceptionMessageBox(String.Format(CultureInfo.CurrentCulture, Resources.FindOrReplaceReplaceAllCount, e.ReplaceCount), Application.ProductName);
+                Microsoft.SqlServer.MessageBox.ExceptionMessageBox messageBox = new Microsoft.SqlServer.MessageBox.ExceptionMessageBox(String.Format(CultureInfo.CurrentCulture, Konesans.Dts.Tools.ExpressionTester.Properties.Resources.FindOrReplaceReplaceAllCount, e.ReplaceCount), Application.ProductName);
                 messageBox.Caption = Application.ProductName;
                 messageBox.ShowCheckBox = true;
-                messageBox.CheckBoxText = Resources.AlwaysDisplayThisMessage;
+                messageBox.CheckBoxText = Konesans.Dts.Tools.ExpressionTester.Properties.Resources.AlwaysDisplayThisMessage;
                 messageBox.IsCheckBoxChecked = this.programSettings.ReplaceAllCount;
                 messageBox.Show(this);
                 this.programSettings.ReplaceAllCount = messageBox.IsCheckBoxChecked;

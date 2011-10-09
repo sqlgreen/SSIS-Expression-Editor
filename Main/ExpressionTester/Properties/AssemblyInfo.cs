@@ -10,22 +10,25 @@ using System.Resources;
 using System.Runtime.InteropServices;
 using System.Security.Permissions;
 
-[assembly: AssemblyTitle("Expression Tester")]
-[assembly: AssemblyProduct("Expression Tester Tool")]
-
 #if DENALI
+[assembly: AssemblyTitle("Expression Tester Denali")]
+[assembly: AssemblyProduct("Expression Tester Tool for SQL Server Denali")]
 [assembly: AssemblyDescription("SQL Server \"Denali\" Integration Services expression development and testing tool.")]
 [assembly: AssemblyVersion("3.0.0.0")]
 [assembly: AssemblyFileVersion("3.0.5.0")]
 #endif
 
 #if KATMAI
+[assembly: AssemblyTitle("Expression Tester 2008")]
+[assembly: AssemblyProduct("Expression Tester Tool for SQL Server 2008")]
 [assembly: AssemblyDescription("SQL Server 2008 Integration Services expression development and testing tool.")]
 [assembly: AssemblyVersion("2.0.0.0")]
 [assembly: AssemblyFileVersion("2.0.5.0")]
 #endif
 
 #if YUKON
+[assembly: AssemblyTitle("Expression Tester")]
+[assembly: AssemblyProduct("Expression Tester Tool for SQL Server 2005")]
 [assembly: AssemblyDescription("SQL Server 2005 Integration Services expression development and testing tool.")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.5.0")]
