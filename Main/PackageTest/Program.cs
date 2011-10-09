@@ -35,10 +35,10 @@ namespace PackageTest
             variableValid.EvaluateAsExpression = true;
             variableValid.Expression = "@PackageName + \" Extra\"";
 
-            Variable variableInvalid = package.Variables.Add("BadExpression", false, "User", string.Empty);
-            variableInvalid.EvaluateAsExpression = true;
-            variableInvalid.Expression = "@PackageNameInvalid + \" Extra\"";
-            variableInvalid.Expression = "\"Package Name: \" + @[System::PackageName] +\" was executed at: \" + (DT_WSTR, 40) @[System::StartTime] + \" by user: \" + @[System::UserName] + \" on Server Name \" + @[System::MachineName]\"";
+            //Variable variableInvalid = package.Variables.Add("BadExpression", false, "User", string.Empty);
+            //variableInvalid.EvaluateAsExpression = true;
+            //variableInvalid.Expression = "@PackageNameInvalid + \" Extra\"";
+            //variableInvalid.Expression = "\"Package Name: \" + @[System::PackageName] +\" was executed at: \" + (DT_WSTR, 40) @[System::StartTime] + \" by user: \" + @[System::UserName] + \" on Server Name \" + @[System::MachineName]\"";
 
             Forms.Application.Run(new Konesans.Dts.ExpressionEditor.ExpressionEditorPublic(package.Variables, package.VariableDispenser, taskHost.Description.GetType(), "Operation", string.Empty));
 
