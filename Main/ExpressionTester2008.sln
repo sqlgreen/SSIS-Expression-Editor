@@ -1,13 +1,13 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressionTester2008", "ExpressionTester\ExpressionTester2008.csproj", "{5B99FCCA-5191-4309-ABD6-6CDCE43C10F9}"
-EndProject
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3A5C906E-AFEB-4E02-BD01-490A2E73BAD2}"
 	ProjectSection(SolutionItems) = preProject
 		CustomDictionary.xml = CustomDictionary.xml
 		Readme.txt = Readme.txt
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressionTester2008", "ExpressionTester\ExpressionTester2008.csproj", "{5B99FCCA-5191-4309-ABD6-6CDCE43C10F9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressionEditor2008", "ExpressionEditor\ExpressionEditor2008.csproj", "{7AB5FDFF-4AF9-4F20-8AEF-FC9B1F82B4CC}"
 EndProject

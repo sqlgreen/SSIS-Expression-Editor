@@ -1,6 +1,6 @@
 ﻿// ======================================================================================
 // <copyright file="AssemblyInfo.cs" company="Konesans Limited">
-// Copyright (C) 2010 Konesans Limited
+// Copyright (C) 2012 Konesans Limited
 // </copyright>
 // ======================================================================================
 
@@ -8,31 +8,26 @@ using System;
 using System.Reflection;
 using System.Resources;
 using System.Runtime.InteropServices;
-using System.Security.Permissions;
 
 [assembly: AssemblyTitle("Expression Editor")]
 [assembly: AssemblyProduct("Expression Editor Control")]
 
 #if DENALI
-[assembly: AssemblyDescription("SQL Server \"Denali\" Integration Services expression editor control library.")]
+[assembly: AssemblyDescription("SQL Server 2012 Integration Services expression editor control library.")]
 [assembly: AssemblyVersion("3.0.0.0")]
-[assembly: AssemblyFileVersion("3.0.5.0")]
-#endif
-
-#if KATMAI
+[assembly: AssemblyFileVersion("3.0.7.0")]
+#elif KATMAI
 [assembly: AssemblyDescription("SQL Server 2008 Integration Services expression editor control library.")]
 [assembly: AssemblyVersion("2.0.0.0")]
-[assembly: AssemblyFileVersion("2.0.5.0")]
-#endif
-
-#if YUKON
+[assembly: AssemblyFileVersion("2.0.7.0")]
+#elif YUKON
 [assembly: AssemblyDescription("SQL Server 2005 Integration Services expression editor control library.")]
 [assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.5.0")]
+[assembly: AssemblyFileVersion("1.0.7.0")]
 #endif
 
 [assembly: AssemblyCompany("Konesans Limited")]
-[assembly: AssemblyCopyright("Copyright © 2011 Konesans Limited")]
+[assembly: AssemblyCopyright("Copyright © 2012 Konesans Limited")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -42,8 +37,7 @@ using System.Security.Permissions;
 
 #if KATMAI
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, UnmanagedCode = false)]
-#endif
-#if YUKON
+#elif YUKON
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, UnmanagedCode = false)]
 #endif
 
