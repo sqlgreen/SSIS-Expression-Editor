@@ -154,7 +154,17 @@ namespace Konesans.Dts.ExpressionEditor
         internal static string GetVariableScope(Variable variable)
         {
             string path = variable.GetPackagePath();
-            path = path.Remove(path.LastIndexOf(".Variables[", StringComparison.CurrentCulture));
+            if (variable.Namespace.StartsWith("$"))
+            {
+                // Parameters for SQL 2012. Path example - \Package.Parameters[ExecuteSQLTask1_Name]
+                // Namespace/Scope can only be Package or Project
+                return variable.Namespace;
+            }
+            else
+            {
+                path = path.Remove(path.LastIndexOf(".Variables[", StringComparison.CurrentCulture));
+            }
+            
             return path.Remove(0, 1 + path.LastIndexOf('\\'));
         }
 

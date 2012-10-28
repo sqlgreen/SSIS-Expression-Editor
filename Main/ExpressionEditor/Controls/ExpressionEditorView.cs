@@ -8,7 +8,6 @@ namespace Konesans.Dts.ExpressionEditor.Controls
 {
     using System;
     using System.Collections.Generic;
-    using System.Collections.Specialized;
     using System.ComponentModel;
     using System.Drawing;
     using System.Globalization;
@@ -152,8 +151,8 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             this.expressionEvaluator = new ExpressionEvaluator();
 
             this.findReplace = new FindReplace(this.ExpressionTextBox);
-            this.findReplace.FindNotFound += new EventHandler<FindOrReplaceEventArgs>(this.FindReplaceInternal_FindNotFound);
-            this.findReplace.ReplaceAllComplete += new EventHandler<FindOrReplaceEventArgs>(this.FindReplaceInternal_ReplaceAllComplete);
+            this.findReplace.FindNotFound += this.FindReplaceInternalFindNotFound;
+            this.findReplace.ReplaceAllComplete += this.FindReplaceInternalReplaceAllComplete;
 
             this.expressionEditorViewEditorPanel.ExpressionEditorView = this;
 
@@ -162,10 +161,13 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             this.imageListIcons.Images.Add(Resources.Variable);
             this.imageListIcons.Images.Add(Resources.SystemVariable);
             this.imageListIcons.Images.Add(Resources.Expression);
+#if DENALI
+            this.imageListIcons.Images.Add(Resources.Parameter);
+#endif
 
             this.ExpressionTextBox.EnableAutoDragDrop = true;
             this.ExpressionTextBox.AllowDrop = true;
-            this.ExpressionTextBox.DragEnter += new DragEventHandler(this.ExpressionTextBox_DragEnter);
+            this.ExpressionTextBox.DragEnter += this.ExpressionTextBox_DragEnter;
         }
 
         /// <summary>
@@ -651,7 +653,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
 
                         foreach (TreeNode node in this.treeViewVariablesFunctions.Nodes[0].Nodes)
                         {
-                            if (node.Tag != null && node.Tag.Equals(String.Format(CultureInfo.CurrentCulture, VariablesDragTextFormat, editor.Variable.QualifiedName)))
+                            if (node.Tag != null && node.Tag.Equals(string.Format(CultureInfo.CurrentCulture, VariablesDragTextFormat, editor.Variable.QualifiedName)))
                             {
                                 this.treeViewVariablesFunctions.SelectedNode = node;
                             }
@@ -729,7 +731,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         public void Copy()
         {
             TextBoxBase textBox = this.activeTextControl;
-            if (textBox != null && !String.IsNullOrEmpty(textBox.SelectedText))
+            if (textBox != null && !string.IsNullOrEmpty(textBox.SelectedText))
             {
                 Clipboard.SetText(textBox.SelectedText);
             }
@@ -829,9 +831,9 @@ namespace Konesans.Dts.ExpressionEditor.Controls
                 }
                 else
                 {
-                    string message = String.Format(CultureInfo.CurrentCulture, "Cannot convert expression value type ({0}) to result type ({1}).", result.GetType().Name, propertyType.Name);
+                    string message = string.Format(CultureInfo.CurrentCulture, "Cannot convert expression value type ({0}) to result type ({1}).", result.GetType().Name, propertyType.Name);
                     string additionalInfo = "The expression is valid, but value type conflicts with the result type. Try using the Cast operators to convert the value to match the result type. You can also change the result type from the Expression Properties menu item.";
-                    ExpressionException exceptionMessage = new ExpressionException(String.Format(CultureInfo.CurrentCulture, "Cannot convert {0} to {1}.", result.GetType().FullName, propertyType.FullName));
+                    ExpressionException exceptionMessage = new ExpressionException(string.Format(CultureInfo.CurrentCulture, "Cannot convert {0} to {1}.", result.GetType().FullName, propertyType.FullName));
                     Microsoft.SqlServer.MessageBox.ExceptionMessageBox messageBox = new Microsoft.SqlServer.MessageBox.ExceptionMessageBox(message, this.ApplicationTitle, Microsoft.SqlServer.MessageBox.ExceptionMessageBoxButtons.OK, Microsoft.SqlServer.MessageBox.ExceptionMessageBoxSymbol.Warning);
                     messageBox.InnerException = new ExpressionException(additionalInfo, exceptionMessage);
                     messageBox.Show(this);
@@ -968,7 +970,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// </summary>
         internal void ExpressionEdited()
         {
-            if (!String.IsNullOrEmpty(this.functionsFileName))
+            if (!string.IsNullOrEmpty(this.functionsFileName))
             {
                 this.expressionEditorViewEditorPanel.SaveEnabled();
             }
@@ -1023,7 +1025,8 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             {
                 return;
             }
-            else if (treeNode.Parent.Parent == null)
+            
+            if (treeNode.Parent.Parent == null)
             {
                 // If grandparent is null, then use TreeView
                 grandParentNodes = treeNode.Parent.TreeView.Nodes;
@@ -1113,7 +1116,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         }
 
         /// <summary>
-        /// Raises the <see cref="E:VariableSelectionChanged"/> event.
+        /// Raises the <see cref="VariableSelectionChanged"></see> event.
         /// </summary>
         /// <param name="e">The <see cref="Konesans.Dts.ExpressionEditor.Controls.VariableSelectionChangedEventArgs"/> instance containing the event data.</param>
         protected virtual void OnVariableSelectionChanged(VariableSelectionChangedEventArgs e)
@@ -1131,7 +1134,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         }
 
         /// <summary>
-        /// Raises the <see cref="E:CursorPositionChanged"/> event.
+        /// Raises the <see cref="CursorPositionChanged"/> event.
         /// </summary>
         /// <param name="e">The <see cref="Konesans.Dts.ExpressionEditor.Controls.CursorPositionChangedEventArgs"/> instance containing the event data.</param>
         protected virtual void OnCursorPositionChanged(CursorPositionChangedEventArgs e)
@@ -1143,7 +1146,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         }
 
         /// <summary>
-        /// Raises the <see cref="E:TitleChanged"/> event.
+        /// Raises the <see cref="TitleChanged"/> event.
         /// </summary>
         /// <param name="e">The <see cref="Konesans.Dts.ExpressionEditor.Controls.TitleChangedEventArgs"/> instance containing the event data.</param>
         protected virtual void OnTitleChanged(TitleChangedEventArgs e)
@@ -1157,7 +1160,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         }
 
         /// <summary>
-        /// Raises the <see cref="E:ResultTypeChanged"/> event.
+        /// Raises the <see cref="ResultTypeChanged"/> event.
         /// </summary>
         /// <param name="e">The <see cref="Konesans.Dts.ExpressionEditor.Controls.ResultTypeChangedEventArgs"/> instance containing the event data.</param>
         protected virtual void OnResultTypeChanged(ResultTypeChangedEventArgs e)
@@ -1169,7 +1172,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         }
 
         /// <summary>
-        /// Raises the <see cref="E:UndoOrRedoCountChanged"/> event.
+        /// Raises the <see cref="UndoOrRedoCountChanged"/> event.
         /// </summary>
         /// <param name="e">The <see cref="Konesans.Dts.ExpressionEditor.Controls.UndoOrRedoCountChangedEventArgs"/> instance containing the event data.</param>
         protected virtual void OnUndoOrRedoCountChanged(UndoOrRedoCountChangedEventArgs e)
@@ -1181,7 +1184,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         }
 
         /// <summary>
-        /// Raises the <see cref="E:EditModeChanged"/> event.
+        /// Raises the <see cref="EditModeChanged"/> event.
         /// </summary>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         protected virtual void OnEditModeChanged(EventArgs e)
@@ -1193,7 +1196,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         }
 
         /// <summary>
-        /// Raises the <see cref="E:FindNotFound"/> event.
+        /// Raises the <see cref="FindNotFound"/> event.
         /// </summary>
         /// <param name="e">The <see cref="Konesans.Dts.ExpressionEditor.Controls.FindOrReplaceEventArgs"/> instance containing the event data.</param>
         protected virtual void OnFindNotFound(FindOrReplaceEventArgs e)
@@ -1205,7 +1208,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         }
 
         /// <summary>
-        /// Raises the <see cref="E:ReplaceAllComplete"/> event.
+        /// Raises the <see cref="ReplaceAllComplete"/> event.
         /// </summary>
         /// <param name="e">The <see cref="Konesans.Dts.ExpressionEditor.Controls.FindOrReplaceEventArgs"/> instance containing the event data.</param>
         protected virtual void OnReplaceAllComplete(FindOrReplaceEventArgs e)
@@ -1227,15 +1230,24 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             if (var.SystemVariable)
             {
                 node = parent.Nodes.Add(var.QualifiedName, var.QualifiedName, 3, 3);
-                node.Tag = String.Format(CultureInfo.CurrentCulture, VariablesDragTextFormat, var.QualifiedName);
+                node.Tag = string.Format(CultureInfo.CurrentCulture, VariablesDragTextFormat, var.QualifiedName);
             }
             else
             {
-                node = parent.Nodes.Add(var.QualifiedName, var.QualifiedName, 2, 2);
-                node.Tag = String.Format(CultureInfo.CurrentCulture, VariablesDragTextFormat, var.QualifiedName);
+                // Check for Parameter. Can only be true for SQL 2012
+                if (var.Namespace.StartsWith("$"))
+                {
+                    node = parent.Nodes.Add(var.QualifiedName, var.QualifiedName, 5, 5);
+                }
+                else
+                {
+                    node = parent.Nodes.Add(var.QualifiedName, var.QualifiedName, 2, 2);
+                }
+
+                node.Tag = string.Format(CultureInfo.CurrentCulture, VariablesDragTextFormat, var.QualifiedName);
             }
 
-            node.ToolTipText = String.Format(CultureInfo.CurrentCulture, "@[{0}], Data Type: {1}, Path: {2},  Value: {3}  {4}", var.QualifiedName, var.DataType == TypeCode.UInt16 ? TypeCode.Char.ToString() : var.DataType.ToString(), RuntimeHelper.GetVariableScope(var), RuntimeHelper.GetVariableStringValue(var), var.ReadOnly ? "[Read Only]" : string.Empty);
+            node.ToolTipText = string.Format(CultureInfo.CurrentCulture, "@[{0}], Data Type: {1}, Path: {2},  Value: {3}  {4}", var.QualifiedName, var.DataType == TypeCode.UInt16 ? TypeCode.Char.ToString() : var.DataType.ToString(), RuntimeHelper.GetVariableScope(var), RuntimeHelper.GetVariableStringValue(var), var.ReadOnly ? "[Read Only]" : string.Empty);
         }
 
         /// <summary>
@@ -1249,7 +1261,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
 
             foreach (Variable var in variables)
             {
-                // Filter variables to exclude patrent and above variables which
+                // Filter variables to exclude parent and above variables which
                 // are obscured by local or lower level variables.
                 if (names.ContainsKey(var.QualifiedName))
                 {
@@ -1261,16 +1273,17 @@ namespace Konesans.Dts.ExpressionEditor.Controls
                 else
                 {
                     names.Add(var.QualifiedName, var);
+                    System.Diagnostics.Debug.WriteLine(var.Name);
+                    System.Diagnostics.Debug.WriteLine(var.QualifiedName);
+                    System.Diagnostics.Debug.WriteLine(var.Namespace);
+                    System.Diagnostics.Debug.WriteLine(var.Site);
+                    System.Diagnostics.Debug.WriteLine(var.CreationName);
+                    System.Diagnostics.Debug.WriteLine(".");
                 }
             }
 
             Variable[] outputVariables = new Variable[names.Count];
             names.Values.CopyTo(outputVariables, 0);
-
-            ////foreach (KeyValuePair<String, Variable>int index = 0; index < names.Count; index++)
-            ////{
-            //    outputVariables[index] = names[index];
-            ////}
             return outputVariables;
         }
 
@@ -1388,13 +1401,13 @@ namespace Konesans.Dts.ExpressionEditor.Controls
                 }
                 catch (XmlException ex)
                 {
-                    ExceptionMessageBox.Show(this, String.Format(CultureInfo.CurrentCulture, "The expression function file is invalid ({0}), the default function list will be used.", this.functionsFileName), ex);
+                    ExceptionMessageBox.Show(this, string.Format(CultureInfo.CurrentCulture, "The expression function file is invalid ({0}), the default function list will be used.", this.functionsFileName), ex);
                 }
             }
 
             // Final trap, use embedded resource, but the filename is still set to AppData
             System.Diagnostics.Debug.WriteLine("Loading functions from resource string");
-            document.LoadXml(Konesans.Dts.ExpressionEditor.Resources.ExpressionViewFunctions);
+            document.LoadXml(Resources.ExpressionViewFunctions);
             this.functionsDocument = document;
         }
 
@@ -1405,7 +1418,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         {
             this.treeViewVariablesFunctions.Nodes.Clear();
 
-            this.variablesNode = this.treeViewVariablesFunctions.Nodes.Add(VariablesNodeName, "Variables", 0, 0);
+            this.variablesNode = this.treeViewVariablesFunctions.Nodes.Add(VariablesNodeName, Resources.VariablesNodeText, 0, 0);
             this.variablesNode.Tag = VariablesNodeName;
             TreeNode systemVariablesNode = this.variablesNode.Nodes.Add(SystemVariablesNodeName, "System", 0, 0);
 
@@ -1434,7 +1447,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.Windows.Forms.TreeViewEventArgs"/> instance containing the event data.</param>
-        private void TreeViewVariablesFunctions_AfterExpand(object sender, TreeViewEventArgs e)
+        private void TreeViewVariablesFunctionsAfterExpand(object sender, TreeViewEventArgs e)
         {
             if (e.Node.IsExpanded && e.Node.ImageIndex == 0)
             {
@@ -1448,7 +1461,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.Windows.Forms.TreeViewEventArgs"/> instance containing the event data.</param>
-        private void TreeViewVariablesFunctions_AfterCollapse(object sender, TreeViewEventArgs e)
+        private void TreeViewVariablesFunctionsAfterCollapse(object sender, TreeViewEventArgs e)
         {
             if (!e.Node.IsExpanded && e.Node.ImageIndex == 1)
             {
@@ -1462,7 +1475,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.Windows.Forms.TreeViewEventArgs"/> instance containing the event data.</param>
-        private void TreeViewVariablesFunctions_AfterSelect(object sender, TreeViewEventArgs e)
+        private void TreeViewVariablesFunctionsAfterSelect(object sender, TreeViewEventArgs e)
         {
             TreeNode node = e.Node;
 
@@ -1474,8 +1487,10 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             }
             else
             {
-                // node != null &&
-                if (node.Level == 1 && node.Parent.Name == VariablesNodeName && node.Name != SystemVariablesNodeName)
+                // Detect type of node, and enable.disable variable editing
+                // Disable for anything of the wrong level, patent node must be of the correct name, not the system variable folder, and also must not be a parameter
+                // Maybe look to use the image key or similar going forward, detect variable vs parameters
+                if (node.Level == 1 && node.Parent.Name == VariablesNodeName && node.Name != SystemVariablesNodeName && !node.Name.StartsWith("$"))
                 {
                     this.OnVariableSelectionChanged(new VariableSelectionChangedEventArgs(true));
                 }
@@ -1491,7 +1506,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.Windows.Forms.ItemDragEventArgs"/> instance containing the event data.</param>
-        private void TreeViewVariablesFunctions_ItemDrag(object sender, ItemDragEventArgs e)
+        private void TreeViewVariablesFunctionsItemDrag(object sender, ItemDragEventArgs e)
         {
             TreeNode node = e.Item as TreeNode;
             if (node == null)
@@ -1505,7 +1520,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
                 return;
             }
 
-            DoDragDrop(dragText, DragDropEffects.All);
+            this.DoDragDrop(dragText, DragDropEffects.All);
         }
 
         /// <summary>
@@ -1513,7 +1528,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.Windows.Forms.TreeNodeMouseClickEventArgs"/> instance containing the event data.</param>
-        private void TreeViewVariablesFunctions_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        private void TreeViewVariablesFunctionsNodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             if (this.editMode)
             {
@@ -1531,7 +1546,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.Windows.Forms.TreeNodeMouseClickEventArgs"/> instance containing the event data.</param>
-        private void TreeViewVariablesFunctions_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        private void TreeViewVariablesFunctionsNodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             if (this.editMode)
             {
@@ -1549,7 +1564,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void RichTxtExpression_TextChanged(object sender, EventArgs e)
+        private void RichTxtExpressionTextChanged(object sender, EventArgs e)
         {
             if (!this.ignoreEvents)
             {
@@ -1579,7 +1594,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void LinkEvaluate_Click(object sender, EventArgs e)
+        private void LinkEvaluateClick(object sender, EventArgs e)
         {
             this.Run();
         }
@@ -1589,7 +1604,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void ExpressionEditor_Load(object sender, EventArgs e)
+        private void ExpressionEditorLoad(object sender, EventArgs e)
         {
             ////try
             ////{
@@ -1612,7 +1627,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void TextControls_Enter(object sender, EventArgs e)
+        private void TextControlsEnter(object sender, EventArgs e)
         {
             this.activeTextControl = sender as TextBoxBase;
         }
@@ -1622,7 +1637,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void TextControls_Leave(object sender, EventArgs e)
+        private void TextControlsLeave(object sender, EventArgs e)
         {
             this.activeTextControl = null;
         }
@@ -1650,7 +1665,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="Konesans.Dts.ExpressionEditor.Controls.FindOrReplaceEventArgs"/> instance containing the event data.</param>
-        private void FindReplaceInternal_FindNotFound(object sender, FindOrReplaceEventArgs e)
+        private void FindReplaceInternalFindNotFound(object sender, FindOrReplaceEventArgs e)
         {
             this.OnFindNotFound(e);
         }
@@ -1660,7 +1675,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="Konesans.Dts.ExpressionEditor.Controls.FindOrReplaceEventArgs"/> instance containing the event data.</param>
-        private void FindReplaceInternal_ReplaceAllComplete(object sender, FindOrReplaceEventArgs e)
+        private void FindReplaceInternalReplaceAllComplete(object sender, FindOrReplaceEventArgs e)
         {
             this.OnReplaceAllComplete(e);
         }
@@ -1670,7 +1685,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void ExpressionTextBox_SelectionChanged(object sender, EventArgs e)
+        private void ExpressionTextBoxSelectionChanged(object sender, EventArgs e)
         {
             TextBoxBase textBox = sender as TextBoxBase;
             if (textBox == null)
@@ -1713,7 +1728,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.ComponentModel.CancelEventArgs"/> instance containing the event data.</param>
-        private void ContextMenuStripTextPanes_Opening(object sender, CancelEventArgs e)
+        private void ContextMenuStripTextPanesOpening(object sender, CancelEventArgs e)
         {
             ContextMenuStrip menu = sender as ContextMenuStrip;
             if (menu == null)
@@ -1760,7 +1775,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void UndoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void UndoToolStripMenuItemClick(object sender, EventArgs e)
         {
             this.Undo();
         }
@@ -1770,7 +1785,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void RedoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void RedoToolStripMenuItemClick(object sender, EventArgs e)
         {
             this.Redo();
         }
@@ -1780,7 +1795,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void CutToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CutToolStripMenuItemClick(object sender, EventArgs e)
         {
             this.Cut();
         }
@@ -1790,7 +1805,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CopyToolStripMenuItemClick(object sender, EventArgs e)
         {
             this.Copy();
         }
@@ -1800,7 +1815,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
+        private void PasteToolStripMenuItemClick(object sender, EventArgs e)
         {
             this.Paste();
         }
@@ -1810,7 +1825,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void SelectAllToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SelectAllToolStripMenuItemClick(object sender, EventArgs e)
         {
             this.SelectAllText();
         }
@@ -1820,7 +1835,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.Windows.Forms.KeyEventArgs"/> instance containing the event data.</param>
-        private void ExpressionTextBox_KeyDown(object sender, KeyEventArgs e)
+        private void ExpressionTextBoxKeyDown(object sender, KeyEventArgs e)
         {
             // Capture key presses for the rich text box that we wish to handle 
             // ourselves or just supress because we do not want the functionality
@@ -1845,7 +1860,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void AddVariable_Click(object sender, EventArgs e)
+        private void AddVariableClick(object sender, EventArgs e)
         {
             this.AddVariable();
         }
@@ -1855,7 +1870,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void EditVariable_Click(object sender, EventArgs e)
+        private void EditVariableClick(object sender, EventArgs e)
         {
             this.EditVariable();
         }
@@ -1865,7 +1880,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void DeleteVariable_Click(object sender, EventArgs e)
+        private void DeleteVariableClick(object sender, EventArgs e)
         {
             this.DeleteVariable();
         }
@@ -1875,7 +1890,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void EditFunctions_Click(object sender, EventArgs e)
+        private void EditFunctionsClick(object sender, EventArgs e)
         {
             ToolStripMenuItem menu = sender as ToolStripMenuItem;
             if (menu != null)
@@ -1888,7 +1903,6 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             if (button != null)
             {
                 this.EditMode = button.Checked;
-                return;
             }
         }
 
@@ -1897,7 +1911,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void Find_Click(object sender, EventArgs e)
+        private void FindClick(object sender, EventArgs e)
         {
             this.Find();
         }
@@ -1907,7 +1921,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void Replace_Click(object sender, EventArgs e)
+        private void ReplaceClick(object sender, EventArgs e)
         {
             this.Replace();
         }
@@ -1917,7 +1931,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.Windows.Forms.ToolStripItemEventArgs"/> instance containing the event data.</param>
-        private void ToolStrip_ItemRemoved(object sender, ToolStripItemEventArgs e)
+        private void ToolStripItemRemoved(object sender, ToolStripItemEventArgs e)
         {
             // Hides the toolstrip if nothing in it
             // Used when toolstrip is merged into parent for example

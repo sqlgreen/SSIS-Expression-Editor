@@ -1,6 +1,6 @@
 ﻿// ======================================================================================
 // <copyright file="AssemblyInfo.cs" company="Konesans Limited">
-// Copyright (C) 2010 Konesans Limited
+// Copyright (C) 2012 Konesans Limited
 // </copyright>
 // ======================================================================================
 
@@ -8,13 +8,12 @@ using System;
 using System.Reflection;
 using System.Resources;
 using System.Runtime.InteropServices;
-using System.Security.Permissions;
 
 [assembly: AssemblyTitle("Package Test")]
 [assembly: AssemblyProduct("Package Test")]
 
 #if DENALI
-[assembly: AssemblyDescription("SQL Server \"Denali\" Integration Services expression editor test harnessy.")]
+[assembly: AssemblyDescription("SQL Server 2012 Integration Services expression editor test harnessy.")]
 [assembly: AssemblyVersion("3.0.0.0")]
 [assembly: AssemblyFileVersion("3.0.0.0")]
 #endif

@@ -1,6 +1,6 @@
 // ======================================================================================
 // <copyright file="AssemblyInfo.cs" company="Konesans Limited">
-// Copyright (C) 2010 Konesans Limited
+// Copyright (C) 2012 Konesans Limited
 // </copyright>
 // ======================================================================================
 
@@ -11,31 +11,27 @@ using System.Runtime.InteropServices;
 using System.Security.Permissions;
 
 #if DENALI
-[assembly: AssemblyTitle("Expression Tester Denali")]
-[assembly: AssemblyProduct("Expression Tester Tool for SQL Server Denali")]
-[assembly: AssemblyDescription("SQL Server \"Denali\" Integration Services expression development and testing tool.")]
+[assembly: AssemblyTitle("Expression Tester 2012")]
+[assembly: AssemblyProduct("Expression Tester Tool for SQL Server 2012")]
+[assembly: AssemblyDescription("SQL Server 2012 Integration Services expression development and testing tool.")]
 [assembly: AssemblyVersion("3.0.0.0")]
-[assembly: AssemblyFileVersion("3.0.5.0")]
-#endif
-
-#if KATMAI
+[assembly: AssemblyFileVersion("3.0.6.0")]
+#elif KATMAI
 [assembly: AssemblyTitle("Expression Tester 2008")]
 [assembly: AssemblyProduct("Expression Tester Tool for SQL Server 2008")]
 [assembly: AssemblyDescription("SQL Server 2008 Integration Services expression development and testing tool.")]
 [assembly: AssemblyVersion("2.0.0.0")]
-[assembly: AssemblyFileVersion("2.0.5.0")]
-#endif
-
-#if YUKON
-[assembly: AssemblyTitle("Expression Tester")]
+[assembly: AssemblyFileVersion("2.0.6.0")]
+#elif YUKON
+[assembly: AssemblyTitle("Expression Tester 2005")]
 [assembly: AssemblyProduct("Expression Tester Tool for SQL Server 2005")]
 [assembly: AssemblyDescription("SQL Server 2005 Integration Services expression development and testing tool.")]
 [assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.5.0")]
+[assembly: AssemblyFileVersion("1.0.6.0")]
 #endif
 
 [assembly: AssemblyCompany("Konesans Limited")]
-[assembly: AssemblyCopyright("Copyright © 2011 Konesans Limited")]
+[assembly: AssemblyCopyright("Copyright © 2012 Konesans Limited")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -45,8 +41,7 @@ using System.Security.Permissions;
 
 #if KATMAI
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, UnmanagedCode = false)]
-#endif
-#if YUKON
+#elif YUKON
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, UnmanagedCode = false)]
 #endif
 

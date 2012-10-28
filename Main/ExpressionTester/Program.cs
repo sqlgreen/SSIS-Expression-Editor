@@ -24,22 +24,22 @@ namespace Konesans.Dts.Tools.ExpressionTester
 
 #if DENALI
         /// <summary>
-        /// SQL Server "Denali" version text
+        /// SQL Server 2012 version text
         /// </summary>
-        private const string SqlVersionText = "\"Denali\"";
+        private const string SqlVersionText = "2012";
 
         /// <summary>
-        /// Assembly name for SQL Server "Denali" Interation Services runtime wrapper
+        /// Assembly name for SQL Server 2012 Interation Services runtime wrapper
         /// </summary>
         private const string RuntimeWrapperAssemblyName = "Microsoft.SqlServer.DTSRuntimeWrap, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91";
 
         /// <summary>
-        /// Assembly name for SQL Server "Denali" Interation Services managed assembly
+        /// Assembly name for SQL Server 2012 Interation Services managed assembly
         /// </summary>
         private const string ManagedDTSAssemblyName = "Microsoft.SqlServer.ManagedDTS, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91";
         
         /// <summary>
-        /// Assembly name for SQL Server "Denali" Interation Services compatible expression editor control library
+        /// Assembly name for SQL Server 2012 Interation Services compatible expression editor control library
         /// </summary>
         private const string ExpressionEditorAssemblyName = "ExpressionEditor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b2ab4a111192992b";
 #endif
