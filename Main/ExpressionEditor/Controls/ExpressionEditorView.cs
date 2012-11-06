@@ -1234,7 +1234,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             }
             else
             {
-                // Check for Parameter. Can only be true for SQL 2012
+                // Check for Parameter ($Package::ParamaterName or $Project::ParamaterName), now available in SQL 2012
                 if (var.Namespace.StartsWith("$"))
                 {
                     node = parent.Nodes.Add(var.QualifiedName, var.QualifiedName, 5, 5);
