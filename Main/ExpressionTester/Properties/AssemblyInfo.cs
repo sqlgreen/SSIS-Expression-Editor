@@ -14,19 +14,19 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyProduct("Expression Tester Tool for SQL Server 2012")]
 [assembly: AssemblyDescription("SQL Server 2012 Integration Services expression development and testing tool.")]
 [assembly: AssemblyVersion("3.0.0.0")]
-[assembly: AssemblyFileVersion("3.0.6.0")]
+[assembly: AssemblyFileVersion("3.0.8.0")]
 #elif KATMAI
 [assembly: AssemblyTitle("Expression Tester 2008")]
 [assembly: AssemblyProduct("Expression Tester Tool for SQL Server 2008")]
 [assembly: AssemblyDescription("SQL Server 2008 Integration Services expression development and testing tool.")]
 [assembly: AssemblyVersion("2.0.0.0")]
-[assembly: AssemblyFileVersion("2.0.6.0")]
+[assembly: AssemblyFileVersion("2.0.8.0")]
 #elif YUKON
 [assembly: AssemblyTitle("Expression Tester 2005")]
 [assembly: AssemblyProduct("Expression Tester Tool for SQL Server 2005")]
 [assembly: AssemblyDescription("SQL Server 2005 Integration Services expression development and testing tool.")]
 [assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.6.0")]
+[assembly: AssemblyFileVersion("1.0.8.0")]
 #endif
 
 [assembly: AssemblyCompany("Konesans Limited")]
