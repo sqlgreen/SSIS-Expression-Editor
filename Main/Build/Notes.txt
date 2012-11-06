@@ -13,6 +13,7 @@ To re-sign the scripts if required
 	Set-AuthenticodeSignature c:\foo.ps1 @(Get-ChildItem cert:\CurrentUser\My -codesigning)[0]
 
 	Set-AuthenticodeSignature C:\Projects\CodePlex\ExpressionEditor\Main\Build\psake.ps1 @(Get-ChildItem cert:\CurrentUser\My -codesigning)[0]
+	Set-AuthenticodeSignature C:\Projects\CodePlex\ExpressionEditor\Main\Build\default.ps1 @(Get-ChildItem cert:\CurrentUser\My -codesigning)[0]
 
 
 This uses the default coding signing certificate.

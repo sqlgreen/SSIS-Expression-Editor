@@ -15,15 +15,15 @@ using System.Runtime.InteropServices;
 #if DENALI
 [assembly: AssemblyDescription("SQL Server 2012 Integration Services expression editor control library.")]
 [assembly: AssemblyVersion("3.0.0.0")]
-[assembly: AssemblyFileVersion("3.0.7.0")]
+[assembly: AssemblyFileVersion("3.0.8.0")]
 #elif KATMAI
 [assembly: AssemblyDescription("SQL Server 2008 Integration Services expression editor control library.")]
 [assembly: AssemblyVersion("2.0.0.0")]
-[assembly: AssemblyFileVersion("2.0.7.0")]
+[assembly: AssemblyFileVersion("2.0.8.0")]
 #elif YUKON
 [assembly: AssemblyDescription("SQL Server 2005 Integration Services expression editor control library.")]
 [assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.7.0")]
+[assembly: AssemblyFileVersion("1.0.8.0")]
 #endif
 
 [assembly: AssemblyCompany("Konesans Limited")]
@@ -36,9 +36,9 @@ using System.Runtime.InteropServices;
 [assembly: CLSCompliant(true)]
 
 #if KATMAI
-[assembly: SecurityPermission(SecurityAction.RequestMinimum, UnmanagedCode = false)]
+[assembly: System.Security.Permissions.SecurityPermission(System.Security.Permissions.SecurityAction.RequestMinimum, UnmanagedCode = false)]
 #elif YUKON
-[assembly: SecurityPermission(SecurityAction.RequestMinimum, UnmanagedCode = false)]
+[assembly: System.Security.Permissions.SecurityPermission(System.Security.Permissions.SecurityAction.RequestMinimum, UnmanagedCode = false)]
 #endif
 
 #if DEBUG
