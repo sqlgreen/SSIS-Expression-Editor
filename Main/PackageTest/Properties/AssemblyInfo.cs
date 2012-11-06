@@ -40,10 +40,9 @@ using System.Runtime.InteropServices;
 [assembly: CLSCompliant(true)]
 
 #if KATMAI
-[assembly: SecurityPermission(SecurityAction.RequestMinimum, UnmanagedCode = false)]
-#endif
-#if YUKON
-[assembly: SecurityPermission(SecurityAction.RequestMinimum, UnmanagedCode = false)]
+[assembly: System.Security.Permissions.SecurityPermission(System.Security.Permissions.SecurityAction.RequestMinimum, UnmanagedCode = false)]
+#elif YUKON
+[assembly: System.Security.Permissions.SecurityPermission(System.Security.Permissions.SecurityAction.RequestMinimum, UnmanagedCode = false)]
 #endif
 
 #if DEBUG

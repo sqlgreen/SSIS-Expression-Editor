@@ -1273,7 +1273,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
                 else
                 {
                     names.Add(var.QualifiedName, var);
-                    System.Diagnostics.Debug.WriteLine(var.Name);
+                    System.Diagnostics.Debug.WriteLine(string.Format("Variable: {0}", var.Name));
                     System.Diagnostics.Debug.WriteLine(var.QualifiedName);
                     System.Diagnostics.Debug.WriteLine(var.Namespace);
                     System.Diagnostics.Debug.WriteLine(var.Site);

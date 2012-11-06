@@ -8,7 +8,6 @@ using System;
 using System.Reflection;
 using System.Resources;
 using System.Runtime.InteropServices;
-using System.Security.Permissions;
 
 #if DENALI
 [assembly: AssemblyTitle("Expression Tester 2012")]
@@ -40,9 +39,9 @@ using System.Security.Permissions;
 [assembly: CLSCompliant(true)]
 
 #if KATMAI
-[assembly: SecurityPermission(SecurityAction.RequestMinimum, UnmanagedCode = false)]
+[assembly: System.Security.Permissions.SecurityPermission(System.Security.Permissions.SecurityAction.RequestMinimum, UnmanagedCode = false)]
 #elif YUKON
-[assembly: SecurityPermission(SecurityAction.RequestMinimum, UnmanagedCode = false)]
+[assembly: System.Security.Permissions.SecurityPermission(System.Security.Permissions.SecurityAction.RequestMinimum, UnmanagedCode = false)]
 #endif
 
 #if DEBUG

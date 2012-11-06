@@ -95,9 +95,9 @@ task Copy2008 -depends Compile2008 {
 
 
 task Clean2012 -depends Copy2008 { 
-    if (!(Test-Path "$base_dir\Releases\ExpressionEditorDenali"))
+    if (!(Test-Path "$base_dir\Releases\ExpressionEditor2012"))
     {
-        new-item "$base_dir\Releases\ExpressionEditorDenali" -type directory
+        new-item "$base_dir\Releases\ExpressionEditor2012" -type directory
     }
 
     if (test-path "$base_dir\ExpressionEditor\bin\Release\")
@@ -120,8 +120,8 @@ task Compile2012 -depends Clean2012 {
 }
 
 task Copy2012 -depends Compile2012 {
-    copy-item "$base_dir\ExpressionEditor\bin\Release\ExpressionEditor.dll" "$base_dir\Releases\ExpressionEditorDenali\"
-    copy-item "$base_dir\ExpressionTester\bin\Release\ExpressionTester.exe" "$base_dir\Releases\ExpressionEditorDenali\"
+    copy-item "$base_dir\ExpressionEditor\bin\Release\ExpressionEditor.dll" "$base_dir\Releases\ExpressionEditor2012\"
+    copy-item "$base_dir\ExpressionTester\bin\Release\ExpressionTester.exe" "$base_dir\Releases\ExpressionEditor2012\"
 }
 
 task MakeZips -depends Copy2005, Copy2008, Copy2012 {
@@ -129,14 +129,14 @@ task MakeZips -depends Copy2005, Copy2008, Copy2012 {
 
     &($zip) a -tzip "$base_dir\Releases\ExpressionEditor.zip" "$base_dir\Releases\ExpressionEditor2005\"
     &($zip) a -tzip "$base_dir\Releases\ExpressionEditor.zip" "$base_dir\Releases\ExpressionEditor2008\"
-    &($zip) a -tzip "$base_dir\Releases\ExpressionEditor.zip" "$base_dir\Releases\ExpressionEditorDenali\"
+    &($zip) a -tzip "$base_dir\Releases\ExpressionEditor.zip" "$base_dir\Releases\ExpressionEditor2012\"
 }
 
 # SIG # Begin signature block
 # MIINEQYJKoZIhvcNAQcCoIINAjCCDP4CAQExCzAJBgUrDgMCGgUAMGkGCisGAQQB
 # gjcCAQSgWzBZMDQGCisGAQQBgjcCAR4wJgIDAQAABBAfzDtgWUsITrck0sYpfvNR
-# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUmsZKXndELkX4/r9fiY1udo88
-# Z1ygggpMMIIE0DCCA7igAwIBAgIQc1eMcW2zlVMTffMJcxir/jANBgkqhkiG9w0B
+# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUFdIxihtoaFyegC6JFR1Gw6eH
+# W3KgggpMMIIE0DCCA7igAwIBAgIQc1eMcW2zlVMTffMJcxir/jANBgkqhkiG9w0B
 # AQUFADCBlTELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAlVUMRcwFQYDVQQHEw5TYWx0
 # IExha2UgQ2l0eTEeMBwGA1UEChMVVGhlIFVTRVJUUlVTVCBOZXR3b3JrMSEwHwYD
 # VQQLExhodHRwOi8vd3d3LnVzZXJ0cnVzdC5jb20xHTAbBgNVBAMTFFVUTi1VU0VS
@@ -196,11 +196,11 @@ task MakeZips -depends Copy2005, Copy2008, Copy2012 {
 # Q0EgTGltaXRlZDEfMB0GA1UEAxMWQ09NT0RPIENvZGUgU2lnbmluZyBDQQIQUHMb
 # x0YlnPi/uovPlvtONTAJBgUrDgMCGgUAoHgwGAYKKwYBBAGCNwIBDDEKMAigAoAA
 # oQKAADAZBgkqhkiG9w0BCQMxDAYKKwYBBAGCNwIBBDAcBgorBgEEAYI3AgELMQ4w
-# DAYKKwYBBAGCNwIBFTAjBgkqhkiG9w0BCQQxFgQUXyDH6jRxEjAoBliNQlV8YsrI
-# v2AwDQYJKoZIhvcNAQEBBQAEggEAGxp3VRK/WSSBk4F4FEyDDouvrCIEkAwLxAtG
-# kKiBNjMSCPR2F0Lj6Nb4hDed6IUbuwROZV0p8PHdNLeOAMN9ELxyGtdrdz8kBTfA
-# ZqvU00EbebSkg2Q6e54grntKjTrPszkOc6+avSU2c6zEnIPnwKaF9yz9LkO33u5U
-# wdBVrvXIXsrSZ5mDzetKpQNTU8umOm8C+Va3EERY0t+v09g0aGOj3GAFR6dxfaXz
-# FXoRMAJwT7awGEhyI2dNGtXFmzYhivLs0x4+I3BJqNtwmpIHB4qKCC+C2+/r/eki
-# eMU6J3eAiz1g0dXKIy1Ar8HYkhEDNNhg3NbVEu0J9d8A2v+HQw==
+# DAYKKwYBBAGCNwIBFTAjBgkqhkiG9w0BCQQxFgQUHIOQPbcWB4gJMNSb0uwkvUh2
+# lZswDQYJKoZIhvcNAQEBBQAEggEAbHEHE4FTqmuCSXRxlLEsPNWc/LvFp1W1hp8z
+# PmhZiu9bALYan/2SlutAU5rVU9n6lREPmaNq8vr7JMiEJs9x7K4DHc0by9c1a2hX
+# bOnUsoT50iJXSqI4fZ+eHX4/BcL6cJmKO6psCT3ulk2/IXFDwWYdHmMH569D7O8T
+# G6fF67R94YZG1Aya+W5mupPZ6Bfz6FscHaPknjfCYkRz9DZNdGxWouT/RJOOEdAF
+# 1vw0ixyNGvPTqSDO+6984ceTqozanB/K/OiDI+pqU8d1N0+PkpXZ5J3FA2qQCtK/
+# 2NZupvjDTq4Afc+bK+s6S9Mbq9U0lG0N24DgkBiVu/tzHIcGGg==
 # SIG # End signature block
