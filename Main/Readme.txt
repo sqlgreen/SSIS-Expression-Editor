@@ -1,6 +1,6 @@
 *** Projects ***
 
-There are currently three four files, one each for SQL Server 2008 (including R2), SQL Server 2012 and SQL Server 2014
+There are currently four solution files, one each for version of SQL Server. Please note that 2005 an 2008 are no longer being actively developed.
 
 SQL Server 2005 versions of the project files all contain the compilation symbol YUKON.
 SQL Server 2008 versions of the project files all contain the compilation symbol KATMAI.
