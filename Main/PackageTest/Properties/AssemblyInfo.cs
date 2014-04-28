@@ -12,6 +12,12 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Package Test")]
 [assembly: AssemblyProduct("Package Test")]
 
+#if SQL2014
+[assembly: AssemblyDescription("SQL Server 2014 Integration Services expression editor test harnessy.")]
+[assembly: AssemblyVersion("4.0.0.0")]
+[assembly: AssemblyFileVersion("4.0.0.0")]
+#endif
+
 #if DENALI
 [assembly: AssemblyDescription("SQL Server 2012 Integration Services expression editor test harnessy.")]
 [assembly: AssemblyVersion("3.0.0.0")]

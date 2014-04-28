@@ -1,6 +1,6 @@
 // ======================================================================================
 // <copyright file="AssemblyInfo.cs" company="Konesans Limited">
-// Copyright (C) 2012 Konesans Limited
+// Copyright (C) 2014 Konesans Limited
 // </copyright>
 // ======================================================================================
 
@@ -9,7 +9,13 @@ using System.Reflection;
 using System.Resources;
 using System.Runtime.InteropServices;
 
-#if DENALI
+#if SQL2014
+[assembly: AssemblyTitle("Expression Tester 2014")]
+[assembly: AssemblyProduct("Expression Tester Tool for SQL Server 2014")]
+[assembly: AssemblyDescription("SQL Server 2014 Integration Services expression development and testing tool.")]
+[assembly: AssemblyVersion("4.0.0.0")]
+[assembly: AssemblyFileVersion("4.0.8.0")]
+#elif DENALI
 [assembly: AssemblyTitle("Expression Tester 2012")]
 [assembly: AssemblyProduct("Expression Tester Tool for SQL Server 2012")]
 [assembly: AssemblyDescription("SQL Server 2012 Integration Services expression development and testing tool.")]
@@ -30,7 +36,7 @@ using System.Runtime.InteropServices;
 #endif
 
 [assembly: AssemblyCompany("Konesans Limited")]
-[assembly: AssemblyCopyright("Copyright © 2012 Konesans Limited")]
+[assembly: AssemblyCopyright("Copyright © 2014 Konesans Limited")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

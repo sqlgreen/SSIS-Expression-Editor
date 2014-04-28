@@ -1,6 +1,6 @@
 ﻿// ======================================================================================
 // <copyright file="AssemblyInfo.cs" company="Konesans Limited">
-// Copyright (C) 2012 Konesans Limited
+// Copyright (C) 2014 Konesans Limited
 // </copyright>
 // ======================================================================================
 
@@ -12,7 +12,11 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Expression Editor")]
 [assembly: AssemblyProduct("Expression Editor Control")]
 
-#if DENALI
+#if SQL2014
+[assembly: AssemblyDescription("SQL Server 2014 Integration Services expression editor control library.")]
+[assembly: AssemblyVersion("4.0.0.0")]
+[assembly: AssemblyFileVersion("4.0.8.0")]
+#elif DENALI
 [assembly: AssemblyDescription("SQL Server 2012 Integration Services expression editor control library.")]
 [assembly: AssemblyVersion("3.0.0.0")]
 [assembly: AssemblyFileVersion("3.0.8.0")]
@@ -27,7 +31,7 @@ using System.Runtime.InteropServices;
 #endif
 
 [assembly: AssemblyCompany("Konesans Limited")]
-[assembly: AssemblyCopyright("Copyright © 2012 Konesans Limited")]
+[assembly: AssemblyCopyright("Copyright © 2014 Konesans Limited")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
