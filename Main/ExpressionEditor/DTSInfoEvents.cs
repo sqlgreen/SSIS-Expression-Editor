@@ -10,7 +10,7 @@ namespace Konesans.Dts.ExpressionEditor
     using System.Text;
 #if YUKON
     using IDTSInfoEventsXX = Microsoft.SqlServer.Dts.Runtime.Wrapper.IDTSInfoEvents90;
-#else // KATMAI, DENALI
+#else // KATMAI, DENALI, SQL2014
     using IDTSInfoEventsXX = Microsoft.SqlServer.Dts.Runtime.Wrapper.IDTSInfoEvents100;
 #endif
 
