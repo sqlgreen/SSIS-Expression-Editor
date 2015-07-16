@@ -2,8 +2,10 @@ properties{
     $newVersion = $ReleaseVersion
 
     # Digital Signature SHA1
-    $sha1 = "0e1003c6a75db08e6a50ef777635563b809cdd13"
+	$sha1 = "5d09b85530bf392164be69af8f988c958a5fe53d"
 }
+
+
 
 properties{#directories
     $framework_dir_3_5 = "$env:systemroot\microsoft.net\framework\v3.5"

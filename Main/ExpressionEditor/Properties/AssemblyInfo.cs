@@ -15,11 +15,11 @@ using System.Runtime.InteropServices;
 #if SQL2014
 [assembly: AssemblyDescription("SQL Server 2014 Integration Services expression editor control library.")]
 [assembly: AssemblyVersion("4.0.0.0")]
-[assembly: AssemblyFileVersion("4.0.8.0")]
+[assembly: AssemblyFileVersion("4.0.8.1")]
 #elif DENALI
 [assembly: AssemblyDescription("SQL Server 2012 Integration Services expression editor control library.")]
 [assembly: AssemblyVersion("3.0.0.0")]
-[assembly: AssemblyFileVersion("3.0.8.0")]
+[assembly: AssemblyFileVersion("3.0.8.1")]
 #elif KATMAI
 [assembly: AssemblyDescription("SQL Server 2008 Integration Services expression editor control library.")]
 [assembly: AssemblyVersion("2.0.0.0")]
@@ -31,7 +31,7 @@ using System.Runtime.InteropServices;
 #endif
 
 [assembly: AssemblyCompany("Konesans Limited")]
-[assembly: AssemblyCopyright("Copyright © 2014 Konesans Limited")]
+[assembly: AssemblyCopyright("Copyright © 2015 Konesans Limited")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
