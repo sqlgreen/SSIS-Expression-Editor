@@ -13,7 +13,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\..\..\KonesansStrongNameKeyPublicPrivateKeyPair.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>KonesansStrongNameKeyPublicPrivateKeyPair.pfx</AssemblyOriginatorKeyFile>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
@@ -58,9 +58,9 @@
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.ExceptionMessageBox, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.SQLServer.DTSRuntimeWrap, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=x86">
       <Private>False</Private>
     </Reference>
@@ -180,6 +180,7 @@
     </CodeAnalysisDictionary>
   </ItemGroup>
   <ItemGroup>
+    <None Include="KonesansStrongNameKeyPublicPrivateKeyPair.pfx" />
     <None Include="Resources2012\ExpressionEdit.png" />
   </ItemGroup>
   <ItemGroup>
@@ -210,7 +211,9 @@
     <None Include="Resources2012\Delete.png" />
     <None Include="Resources2012\EditRedo.png" />
     <None Include="Resources2012\EditUndo.png" />
-    <None Include="Resources2012\ExpressionEditor.xml" />
+    <None Include="Resources2012\ExpressionEditor.xml">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources2012\Find.png" />

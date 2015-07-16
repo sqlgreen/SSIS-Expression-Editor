@@ -1,6 +1,6 @@
 *** Projects ***
 
-There are currently four solution files, one each for version of SQL Server. Please note that 2005 an 2008 are no longer being actively developed.
+There are currently four solution files, one each for version of SQL Server. Please note that 2005 an 2008 releases are no longer being actively developed or tested.
 
 SQL Server 2005 versions of the project files all contain the compilation symbol YUKON.
 SQL Server 2008 versions of the project files all contain the compilation symbol KATMAI.
@@ -19,7 +19,7 @@ Version 4 - SQL Server 2014
  
 
 ** ExpressionEditorNNNN ** 
-The expression editor conttrol library. 
+The expression editor control library. 
 ExpressionEditorPublic is a reusable form for custom tasks.
 ExpressionEditorView is the editor control if you wish to host it yourself.
 

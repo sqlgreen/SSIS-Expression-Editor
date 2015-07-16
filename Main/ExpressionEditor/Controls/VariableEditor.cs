@@ -291,9 +291,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             }
             catch (Exception ex)
             {
-                Microsoft.SqlServer.MessageBox.ExceptionMessageBox message = new Microsoft.SqlServer.MessageBox.ExceptionMessageBox(ex);
-                message.Caption = System.Windows.Forms.Application.ProductName;
-                message.Show(this);
+                ExceptionMessageBox.Show(this, ex, System.Windows.Forms.Application.ProductName);
             }
         }
 

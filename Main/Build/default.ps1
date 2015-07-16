@@ -67,7 +67,7 @@ task Copy2012 -depends Compile2012 {
 
 
 task Clean2014 -depends Copy2012 { 
-    if (!(Test-Path "$base_dir\Releases\ExpressionEditor2012"))
+    if (!(Test-Path "$base_dir\Releases\ExpressionEditor2014"))
     {
         new-item "$base_dir\Releases\ExpressionEditor2014"-type directory
     }
@@ -86,6 +86,7 @@ task Clean2014 -depends Copy2012 {
 task Compile2014 -depends Clean2014 {
     $frameworkbuild = ($framework_dir_4 + "\" + $msbuild)
     write-Host "Path: $frameworkbuild"
+	Write-Host $sln_file_2014
     &($frameworkbuild) $sln_file_2014 /t:Rebuild /p:Configuration=Release /v:q /p:DefineConstants="SQL2014" 
 
     &($sign) sign /sha1 $sha1 /d "Expression Tester" /du http://www.konesans.com /t http://timestamp.comodoca.com/authenticode "$base_dir\ExpressionTester\bin\Release\ExpressionTester.exe"
