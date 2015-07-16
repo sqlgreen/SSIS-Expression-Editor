@@ -1,6 +1,6 @@
 PowerShell Build - Notes to Self
 
-The PowerShell build requires the ability to execute scriots, which is disabled by default.
+The PowerShell build requires the ability to execute scripts, which is disabled by default.
 
 Review your execution policy with the following command
 	Get-ExecutionPolicy

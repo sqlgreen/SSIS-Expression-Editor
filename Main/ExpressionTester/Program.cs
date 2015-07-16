@@ -192,15 +192,7 @@ namespace Konesans.Dts.Tools.ExpressionTester
         {
             System.Diagnostics.Debug.WriteLine(exception.ToString());
 
-            try
-            {
-                Microsoft.SqlServer.MessageBox.ExceptionMessageBox messagebox = new Microsoft.SqlServer.MessageBox.ExceptionMessageBox(exception);
-                messagebox.Show(null);
-            }
-            catch
-            {
-                MessageBox.Show(exception.ToString());
-            }
+            MessageBox.Show(exception.ToString(), "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

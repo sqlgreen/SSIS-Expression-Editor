@@ -73,6 +73,8 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             this.findOptionsTop = this.groupBoxFindOptions.Top - (this.comboBoxReplace.Top - this.comboBoxFind.Top);
             this.replaceOptionsTop = this.groupBoxFindOptions.Top;
             this.optionsHeight = this.groupBoxFindOptions.Height;
+
+            this.AcceptButton = this.buttonFind;
         }
 
         /// <summary>

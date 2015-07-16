@@ -14,7 +14,6 @@ namespace Konesans.Dts.Tools.ExpressionTester
     using Konesans.Dts.ExpressionEditor;
     using Konesans.Dts.ExpressionEditor.Controls;
     using Konesans.Dts.Tools.Common;
-    using Microsoft.SqlServer.MessageBox;
 
     /// <summary>
     /// Main form class.
@@ -121,8 +120,7 @@ namespace Konesans.Dts.Tools.ExpressionTester
             }
             else
             {
-                Microsoft.SqlServer.MessageBox.ExceptionMessageBox messageBox = new Microsoft.SqlServer.MessageBox.ExceptionMessageBox(String.Format(CultureInfo.CurrentCulture, "The file '{0}' cannot be found. Do you wish to remove it from the Recent Files list?", filename), Application.ProductName, ExceptionMessageBoxButtons.YesNo, ExceptionMessageBoxSymbol.Warning);
-                if (messageBox.Show(this) == DialogResult.Yes)
+                if (MessageBox.Show(this, string.Format(CultureInfo.CurrentCulture, "The file '{0}' cannot be found. Do you wish to remove it from the Recent Files list?", filename), Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     this.applicationSettings.RecentFiles.RemoveRecentFile(filename);
                 }
@@ -161,9 +159,7 @@ namespace Konesans.Dts.Tools.ExpressionTester
             }
             catch (Exception ex)
             {
-                Microsoft.SqlServer.MessageBox.ExceptionMessageBox messageBox = new Microsoft.SqlServer.MessageBox.ExceptionMessageBox(String.Format(CultureInfo.CurrentCulture, "An error occured whilst loading the expression file. This may be an invalid file."), Application.ProductName, ExceptionMessageBoxButtons.OK, ExceptionMessageBoxSymbol.Error);
-                messageBox.InnerException = ex;
-                messageBox.Show(this);
+                MessageBox.Show(this, string.Format(CultureInfo.CurrentCulture, "An error occured whilst loading the expression file '{0}'. This may be an invalid file.\r\n\r\n{1}", filename, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -180,8 +176,7 @@ namespace Konesans.Dts.Tools.ExpressionTester
                 if (this.expressionEditor.FileName == null || this.expressionEditor.FileName.Length == 0)
                 {
                     string message = String.Format(CultureInfo.CurrentCulture, "Do you want to save changes to \"New Expression\"?");
-                    Microsoft.SqlServer.MessageBox.ExceptionMessageBox messageBox = new Microsoft.SqlServer.MessageBox.ExceptionMessageBox(message, Application.ProductName, ExceptionMessageBoxButtons.YesNoCancel, ExceptionMessageBoxSymbol.Question);
-                    result = messageBox.Show(this);
+                    result = MessageBox.Show(this, message, Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
 
                     if (result == DialogResult.Yes)
                     {
@@ -191,8 +186,7 @@ namespace Konesans.Dts.Tools.ExpressionTester
                 else
                 {
                     string message = String.Format(CultureInfo.CurrentCulture, "Do you want to save changes to \"{0}\"?", Path.GetFileName(this.expressionEditor.FileName));
-                    Microsoft.SqlServer.MessageBox.ExceptionMessageBox messageBox = new Microsoft.SqlServer.MessageBox.ExceptionMessageBox(message, Application.ProductName, ExceptionMessageBoxButtons.YesNoCancel, ExceptionMessageBoxSymbol.Question);
-                    result = messageBox.Show(this);
+                    result = MessageBox.Show(this, message, Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
 
                     if (result == DialogResult.Yes)
                     {
@@ -291,10 +285,7 @@ namespace Konesans.Dts.Tools.ExpressionTester
             }
             catch (Exception ex)
             {
-                Microsoft.SqlServer.MessageBox.ExceptionMessageBox messageBox = new Microsoft.SqlServer.MessageBox.ExceptionMessageBox(ex);
-                messageBox.Caption = Application.ProductName;
-                messageBox.Symbol = ExceptionMessageBoxSymbol.Error;
-                messageBox.Show(this);
+                MessageBox.Show(this, ex.ToString(), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -536,34 +527,6 @@ namespace Konesans.Dts.Tools.ExpressionTester
             {
                 this.settingsManager.EndSave();
             }
-
-            // TODO: DO we need this or not?
-            //////try
-            //////{
-            ////    Settings.Default.ExpressionTesterState = this.WindowState;
-            ////    Settings.Default.ToolStripVisible = this.toolStrip.Visible;
-            ////    Settings.Default.StatusBarVisible = this.statusStrip.Visible;
-            ////    Settings.Default.WordWrap = this.expressionEditor.WordWrap;
-            ////    Settings.Default.SplitterDistanceExpressions = this.expressionEditor.SplitterDistanceExpressions;
-            ////    Settings.Default.SplitterDistanceResult = this.expressionEditor.SplitterDistanceResult;
-            ////    Settings.Default.SplitterDistanceMain = this.expressionEditor.SplitterDistanceMain;
-            ////    if (this.WindowState == FormWindowState.Normal)
-            ////    {
-            ////        Settings.Default.ExpressionTesterSize = this.Size;
-            ////        Settings.Default.ExpressionTesterLocation = this.Location;
-            ////    }
-            ////    else
-            ////    {
-            ////        Settings.Default.ExpressionTesterSize = this.RestoreBounds.Size;
-            ////        Settings.Default.ExpressionTesterLocation = this.RestoreBounds.Location;
-            ////    }
-            //////}
-            //////catch { }
-            //////try
-            //////{
-            ////    Settings.Default.Save();
-            //////}
-            //////catch { }
         }
 
         /// <summary>
@@ -603,10 +566,7 @@ namespace Konesans.Dts.Tools.ExpressionTester
             }
             catch (Exception ex)
             {
-                Microsoft.SqlServer.MessageBox.ExceptionMessageBox messageBox = new Microsoft.SqlServer.MessageBox.ExceptionMessageBox(ex);
-                messageBox.Caption = Application.ProductName;
-                messageBox.Symbol = ExceptionMessageBoxSymbol.Error;
-                messageBox.Show(this);
+                MessageBox.Show(this, ex.ToString(), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -837,14 +797,7 @@ namespace Konesans.Dts.Tools.ExpressionTester
         {
             if (this.programSettings.FindNotFound)
             {
-                Microsoft.SqlServer.MessageBox.ExceptionMessageBox messageBox = new Microsoft.SqlServer.MessageBox.ExceptionMessageBox();
-                messageBox.Caption = Application.ProductName;
-                messageBox.Text = String.Format(CultureInfo.CurrentCulture, "{0}\r\n\r\n{1}", Konesans.Dts.Tools.ExpressionTester.Properties.Resources.FindOrReplaceFindNotFound, e.SearchTerm);
-                messageBox.ShowCheckBox = true;
-                messageBox.CheckBoxText = Konesans.Dts.Tools.ExpressionTester.Properties.Resources.AlwaysDisplayThisMessage;
-                messageBox.IsCheckBoxChecked = this.programSettings.FindNotFound;
-                messageBox.Show(this);
-                this.programSettings.FindNotFound = messageBox.IsCheckBoxChecked;
+                MessageBox.Show(this, string.Format(CultureInfo.CurrentCulture, "{0}\r\n\r\n{1}", Konesans.Dts.Tools.ExpressionTester.Properties.Resources.FindOrReplaceFindNotFound, e.SearchTerm), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -857,13 +810,7 @@ namespace Konesans.Dts.Tools.ExpressionTester
         {
             if (this.programSettings.ReplaceAllCount)
             {
-                Microsoft.SqlServer.MessageBox.ExceptionMessageBox messageBox = new Microsoft.SqlServer.MessageBox.ExceptionMessageBox(String.Format(CultureInfo.CurrentCulture, Konesans.Dts.Tools.ExpressionTester.Properties.Resources.FindOrReplaceReplaceAllCount, e.ReplaceCount), Application.ProductName);
-                messageBox.Caption = Application.ProductName;
-                messageBox.ShowCheckBox = true;
-                messageBox.CheckBoxText = Konesans.Dts.Tools.ExpressionTester.Properties.Resources.AlwaysDisplayThisMessage;
-                messageBox.IsCheckBoxChecked = this.programSettings.ReplaceAllCount;
-                messageBox.Show(this);
-                this.programSettings.ReplaceAllCount = messageBox.IsCheckBoxChecked;
+                MessageBox.Show(this, string.Format(CultureInfo.CurrentCulture, Konesans.Dts.Tools.ExpressionTester.Properties.Resources.FindOrReplaceReplaceAllCount, e.ReplaceCount), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

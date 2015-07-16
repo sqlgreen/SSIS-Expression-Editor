@@ -54,7 +54,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // buttonFind
             // 
             this.buttonFind.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonFind.Location = new System.Drawing.Point(61, 228);
+            this.buttonFind.Location = new System.Drawing.Point(61, 224);
             this.buttonFind.Name = "buttonFind";
             this.buttonFind.Size = new System.Drawing.Size(96, 23);
             this.buttonFind.TabIndex = 8;
@@ -66,7 +66,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // 
             this.buttonReplace.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonReplace.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonReplace.Location = new System.Drawing.Point(163, 228);
+            this.buttonReplace.Location = new System.Drawing.Point(163, 224);
             this.buttonReplace.Name = "buttonReplace";
             this.buttonReplace.Size = new System.Drawing.Size(96, 23);
             this.buttonReplace.TabIndex = 9;
@@ -76,8 +76,8 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // 
             // comboBoxFind
             // 
-            this.comboBoxFind.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxFind.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxFind.Items.AddRange(new object[] {
             ""});
             this.comboBoxFind.Location = new System.Drawing.Point(12, 52);
@@ -129,10 +129,10 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // toolStripButtonFind
             // 
             this.toolStripButtonFind.CheckOnClick = true;
-            this.toolStripButtonFind.Image = Konesans.Dts.ExpressionEditor.Resources.Find;
+            this.toolStripButtonFind.Image = global::Konesans.Dts.ExpressionEditor.Resources.Find;
             this.toolStripButtonFind.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonFind.Name = "toolStripButtonFind";
-            this.toolStripButtonFind.Size = new System.Drawing.Size(47, 22);
+            this.toolStripButtonFind.Size = new System.Drawing.Size(50, 22);
             this.toolStripButtonFind.Text = "Find";
             this.toolStripButtonFind.Click += new System.EventHandler(this.ToolStripButtonFind_Click);
             // 
@@ -144,17 +144,17 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // toolStripButtonReplace
             // 
             this.toolStripButtonReplace.CheckOnClick = true;
-            this.toolStripButtonReplace.Image = Konesans.Dts.ExpressionEditor.Resources.Replace;
+            this.toolStripButtonReplace.Image = global::Konesans.Dts.ExpressionEditor.Resources.Replace;
             this.toolStripButtonReplace.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonReplace.Name = "toolStripButtonReplace";
-            this.toolStripButtonReplace.Size = new System.Drawing.Size(65, 22);
+            this.toolStripButtonReplace.Size = new System.Drawing.Size(68, 22);
             this.toolStripButtonReplace.Text = "Replace";
             this.toolStripButtonReplace.Click += new System.EventHandler(this.ToolStripButtonReplace_Click);
             // 
             // buttonReplaceAll
             // 
             this.buttonReplaceAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonReplaceAll.Location = new System.Drawing.Point(265, 228);
+            this.buttonReplaceAll.Location = new System.Drawing.Point(265, 224);
             this.buttonReplaceAll.Name = "buttonReplaceAll";
             this.buttonReplaceAll.Size = new System.Drawing.Size(96, 23);
             this.buttonReplaceAll.TabIndex = 10;
@@ -164,8 +164,8 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // 
             // comboBoxReplace
             // 
-            this.comboBoxReplace.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxReplace.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxReplace.Location = new System.Drawing.Point(12, 96);
             this.comboBoxReplace.Name = "comboBoxReplace";
             this.comboBoxReplace.Size = new System.Drawing.Size(349, 21);
@@ -182,8 +182,8 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // 
             // groupBoxFindOptions
             // 
-            this.groupBoxFindOptions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxFindOptions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxFindOptions.Controls.Add(this.checkBoxSearchUp);
             this.groupBoxFindOptions.Controls.Add(this.checkBoxMatchCase);
             this.groupBoxFindOptions.Location = new System.Drawing.Point(12, 131);
@@ -230,7 +230,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(373, 263);
+            this.ClientSize = new System.Drawing.Size(373, 261);
             this.Controls.Add(this.line3D1);
             this.Controls.Add(this.buttonOptionsToggle);
             this.Controls.Add(this.label1);
@@ -245,7 +245,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             this.Controls.Add(this.labelFind);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.KeyPreview = true;
-            this.MaximumSize = new System.Drawing.Size(1000, 289);
+            this.MaximumSize = new System.Drawing.Size(1000, 300);
             this.Name = "FindReplace";
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;

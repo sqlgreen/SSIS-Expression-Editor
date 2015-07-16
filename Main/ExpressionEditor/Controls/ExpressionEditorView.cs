@@ -596,9 +596,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
                     }
                     catch (Exception ex)
                     {
-                        Microsoft.SqlServer.MessageBox.ExceptionMessageBox message = new Microsoft.SqlServer.MessageBox.ExceptionMessageBox(ex);
-                        message.Caption = "Add Variable Failed";
-                        message.Show(this);
+                        ExceptionMessageBox.Show(this, ex, "Add Variable Failed");
                     }
 
                     this.InvalidateSaved();
@@ -625,9 +623,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             }
             catch (Exception ex)
             {
-                Microsoft.SqlServer.MessageBox.ExceptionMessageBox message = new Microsoft.SqlServer.MessageBox.ExceptionMessageBox(ex);
-                message.Caption = "Add Variable Failed";
-                message.Show(this);
+                ExceptionMessageBox.Show(this, ex, "Add Variable Failed");
             }
 
             this.InvalidateSaved();
@@ -665,9 +661,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             }
             catch (Exception ex)
             {
-                Microsoft.SqlServer.MessageBox.ExceptionMessageBox message = new Microsoft.SqlServer.MessageBox.ExceptionMessageBox(ex);
-                message.Caption = "Edit Variable Failed";
-                message.Show(this);
+                ExceptionMessageBox.Show(this, ex, "Edit Variable Failed");
             }
         }
 
@@ -816,6 +810,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         public void Run()
         {
             // Start by clearing any existing result
+            this.richTextResult.ForeColor = Color.Black;
             this.richTextResult.Text = string.Empty;
 
             try
@@ -831,28 +826,15 @@ namespace Konesans.Dts.ExpressionEditor.Controls
                 }
                 else
                 {
-                    string message = string.Format(CultureInfo.CurrentCulture, "Cannot convert expression value type ({0}) to result type ({1}).", result.GetType().Name, propertyType.Name);
-                    string additionalInfo = "The expression is valid, but value type conflicts with the result type. Try using the Cast operators to convert the value to match the result type. You can also change the result type from the Expression Properties menu item.";
-                    ExpressionException exceptionMessage = new ExpressionException(string.Format(CultureInfo.CurrentCulture, "Cannot convert {0} to {1}.", result.GetType().FullName, propertyType.FullName));
-                    Microsoft.SqlServer.MessageBox.ExceptionMessageBox messageBox = new Microsoft.SqlServer.MessageBox.ExceptionMessageBox(message, this.ApplicationTitle, Microsoft.SqlServer.MessageBox.ExceptionMessageBoxButtons.OK, Microsoft.SqlServer.MessageBox.ExceptionMessageBoxSymbol.Warning);
-                    messageBox.InnerException = new ExpressionException(additionalInfo, exceptionMessage);
-                    messageBox.Show(this);
+                    this.richTextResult.ForeColor = Color.Red;
+                    this.richTextResult.Text = string.Format(CultureInfo.CurrentCulture, "Cannot convert expression value type ({0}) to result type ({1}).\r\nThe expression is valid, but value type conflicts with the result type. Try using the Cast operators to convert the value to match the result type. You can also change the result type from the Expression Properties menu item.", result.GetType().Name, propertyType.Name);
                 }
             }
             catch (ExpressionException ex)
             {
-                string message = "Expression cannot be evaluated";
-                Microsoft.SqlServer.MessageBox.ExceptionMessageBox messageBox = new Microsoft.SqlServer.MessageBox.ExceptionMessageBox(message, this.ApplicationTitle, Microsoft.SqlServer.MessageBox.ExceptionMessageBoxButtons.OK, Microsoft.SqlServer.MessageBox.ExceptionMessageBoxSymbol.Warning);
-                messageBox.InnerException = new ApplicationException(ex.Message);
-                messageBox.Show(this);
+                this.richTextResult.ForeColor = Color.Red;
+                this.richTextResult.Text = "Expression cannot be evaluated\r\n" + ex.Message;                
             }
-
-            ////if (this.evaluatorResultTextBox.Text.Length > 4000)
-            ////{
-            //    string message = "Expressions cannot be greater than 4000 characters.";
-            //    Microsoft.SqlServer.MessageBox.ExceptionMessageBox messageBox = new Microsoft.SqlServer.MessageBox.ExceptionMessageBox(message, ApplicationTitle, Microsoft.SqlServer.MessageBox.ExceptionMessageBoxButtons.OK, Microsoft.SqlServer.MessageBox.ExceptionMessageBoxSymbol.Warning);
-            //    messageBox.Show(this);
-            ////}
         }
 
         /// <summary>
@@ -1103,11 +1085,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             try
             {
                 ExpressionEditorViewSerializer.Serialize(this.treeViewVariablesFunctions, this.functionsFileName);
-                ExceptionMessageBox messageBox = new ExceptionMessageBox();
-                messageBox.Caption = "Expression Editor";
-                messageBox.Text = "Expression functions saved successfully.";
-                messageBox.Symbol = Microsoft.SqlServer.MessageBox.ExceptionMessageBoxSymbol.Information;
-                messageBox.Show(this);
+                MessageBox.Show(this, "Expression functions saved successfully.", "Expression Editor", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -1715,10 +1693,6 @@ namespace Konesans.Dts.ExpressionEditor.Controls
                     return;
                 }
             }
-
-            //// TODO:  Need to add file load support if we want to include this, default action for Auto mode is to embed it.
-            //// if (e.Data.GetDataPresent(DataFormats.FileDrop))
-            ////     string[] files = e.Data.GetData(DataFormats.FileDrop) as string[];
 
             e.Effect = DragDropEffects.None;
         }
