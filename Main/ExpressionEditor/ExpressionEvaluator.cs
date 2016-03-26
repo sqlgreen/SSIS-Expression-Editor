@@ -10,7 +10,7 @@ namespace Konesans.Dts.ExpressionEditor
     using Microsoft.SqlServer.Dts.Runtime;
 #if YUKON
     using IDTSVariableDispenserXX = Microsoft.SqlServer.Dts.Runtime.Wrapper.IDTSVariableDispenser90;
-#else // KATMAI, DENALI, SQL2014
+#else // KATMAI, DENALI, SQL2014, 2016
     using IDTSVariableDispenserXX = Microsoft.SqlServer.Dts.Runtime.Wrapper.IDTSVariableDispenser100;
 #endif
     using VariableDispenser = Microsoft.SqlServer.Dts.Runtime.VariableDispenser;
@@ -185,7 +185,7 @@ namespace Konesans.Dts.ExpressionEditor
         {
 #if YUKON
             IDTSVariableDispenserXX variableDispenserWrapper = DtsConvert.ToVariableDispenser90(variableDispenser);
-#else // KATMAI, DENALI, SQL2014
+#else // KATMAI, DENALI, SQL2014, 2016
             IDTSVariableDispenserXX variableDispenserWrapper = DtsConvert.GetExtendedInterface(variableDispenser);
 #endif
             return variableDispenserWrapper;

@@ -161,7 +161,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             this.imageListIcons.Images.Add(Resources.Variable);
             this.imageListIcons.Images.Add(Resources.SystemVariable);
             this.imageListIcons.Images.Add(Resources.Expression);
-#if DENALI || SQL2014
+#if DENALI || SQL2014 || SQL2016
             this.imageListIcons.Images.Add(Resources.Parameter);
 #endif
 
