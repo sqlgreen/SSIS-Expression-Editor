@@ -6,8 +6,9 @@ SQL Server 2005 versions of the project files all contain the compilation symbol
 SQL Server 2008 versions of the project files all contain the compilation symbol KATMAI.
 SQL Server 2012 versions of the project files all contain the compilation symbol DENALI.
 SQL Server 2014 versions of the project files all contain the compilation symbol SQL2014.
+SQL Server 2016 versions of the project files all contain the compilation symbol SQL2016.
 
-Conditional compilation if blocks in the code reference 2005 vs 2008 vs 2012 vs 2014 interface names or specific code.
+Conditional compilation if blocks in the code reference 2005 vs 2008 vs 2012 vs 2014 vs 2016 interface names or specific code.
 Project files are specific to the SQL Server version but the code files are written for all.
 
 
@@ -16,6 +17,7 @@ Version 1 - SQL Server 2005
 Version 2 - SQL Server 2008
 Version 3 - SQL Server 2012
 Version 4 - SQL Server 2014
+Version 5 - SQL Server 2016
  
 
 ** ExpressionEditorNNNN ** 
@@ -34,5 +36,5 @@ A simple test harness used to test the ExpressionEditorPublic form.
 
 
 Darren Green
-April 2014
+March 2016
 http://www.konesans.com
