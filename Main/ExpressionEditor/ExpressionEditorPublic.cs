@@ -1,17 +1,16 @@
 //-------------------------------------------------------------------------------------------------
 // <copyright file="ExpressionEditorPublic.cs" company="Konesans Limited">
-// Copyright (C) 2010 Konesans Limited.  All rights reserved.
+// Copyright (C) 2017 Konesans Limited.  All rights reserved.
 // </copyright>
 //-------------------------------------------------------------------------------------------------
 
 namespace Konesans.Dts.ExpressionEditor
 {
-    using System;
-    using System.Drawing;
-    using System.Globalization;
-    using System.Windows.Forms;
     using Konesans.Dts.ExpressionEditor.Controls;
     using Microsoft.SqlServer.Dts.Runtime;
+    using System;
+    using System.Globalization;
+    using System.Windows.Forms;
 
     /// <summary>
     /// Expression editing form, hosting editor control. Used by Konesans custom tasks and BIDSHelper project.
@@ -93,6 +92,15 @@ namespace Konesans.Dts.ExpressionEditor
         {
             get { return this.expressionEditorView.Expression; }
             set { this.expressionEditorView.Expression = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the editor expression
+        /// </summary>
+        public ExpressionEditorView Editor
+        {
+            get { return this.expressionEditorView; }
+            set { this.expressionEditorView = value; }
         }
 
         /// <summary>

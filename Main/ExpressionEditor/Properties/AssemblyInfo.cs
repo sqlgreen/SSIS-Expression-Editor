@@ -1,6 +1,6 @@
 ﻿// ======================================================================================
 // <copyright file="AssemblyInfo.cs" company="Konesans Limited">
-// Copyright (C) 2016 Konesans Limited
+// Copyright (C) 2017 Konesans Limited
 // </copyright>
 // ======================================================================================
 
@@ -15,27 +15,27 @@ using System.Runtime.InteropServices;
 #if SQL2016
 [assembly: AssemblyDescription("SQL Server 2016 Integration Services expression editor control library.")]
 [assembly: AssemblyVersion("5.0.0.0")]
-[assembly: AssemblyFileVersion("5.0.9.0")]
+[assembly: AssemblyFileVersion("5.0.10.0")]
 #elif SQL2014
 [assembly: AssemblyDescription("SQL Server 2014 Integration Services expression editor control library.")]
 [assembly: AssemblyVersion("4.0.0.0")]
-[assembly: AssemblyFileVersion("4.0.9.0")]
+[assembly: AssemblyFileVersion("4.0.10.0")]
 #elif DENALI
 [assembly: AssemblyDescription("SQL Server 2012 Integration Services expression editor control library.")]
 [assembly: AssemblyVersion("3.0.0.0")]
-[assembly: AssemblyFileVersion("3.0.9.0")]
+[assembly: AssemblyFileVersion("3.0.10.0")]
 #elif KATMAI
 [assembly: AssemblyDescription("SQL Server 2008 Integration Services expression editor control library.")]
 [assembly: AssemblyVersion("2.0.0.0")]
-[assembly: AssemblyFileVersion("2.0.9.0")]
+[assembly: AssemblyFileVersion("2.0.10.0")]
 #elif YUKON
 [assembly: AssemblyDescription("SQL Server 2005 Integration Services expression editor control library.")]
 [assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.9.0")]
+[assembly: AssemblyFileVersion("1.0.10.0")]
 #endif
 
 [assembly: AssemblyCompany("Konesans Limited")]
-[assembly: AssemblyCopyright("Copyright © 2016 Konesans Limited")]
+[assembly: AssemblyCopyright("Copyright © 2017 Konesans Limited")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
