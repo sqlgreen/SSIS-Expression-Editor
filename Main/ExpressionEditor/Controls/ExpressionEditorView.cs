@@ -1,6 +1,6 @@
 //-------------------------------------------------------------------------------------------------
 // <copyright file="ExpressionEditorView.cs" company="Konesans Limited">
-// Copyright (C) 2010 Konesans Limited.  All rights reserved.
+// Copyright (C) 2017 Konesans Limited.  All rights reserved.
 // </copyright>
 //-------------------------------------------------------------------------------------------------
 
@@ -140,6 +140,11 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         /// Private property member.
         /// </summary>
         private string title;
+
+        /// <summary>
+        /// Private member for result colour, preserve and restore colour following errors.
+        /// </summary>
+        private Color resultColour = SystemColors.WindowText;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ExpressionEditorView"/> class.
@@ -317,8 +322,16 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         [Description("The color used for the result text.")]
         public Color ResultColor
         {
-            get { return this.richTextResult.ForeColor; }
-            set { this.richTextResult.ForeColor = value; }
+            get
+            {
+                return resultColour;
+            }
+
+            set
+            {
+                resultColour = value;
+                this.richTextResult.ForeColor = value;
+            }
         }
 
         /// <summary>
@@ -810,7 +823,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
         public void Run()
         {
             // Start by clearing any existing result
-            this.richTextResult.ForeColor = Color.Black;
+            this.richTextResult.ForeColor = resultColour;
             this.richTextResult.Text = string.Empty;
 
             try
