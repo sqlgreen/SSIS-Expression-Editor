@@ -131,14 +131,14 @@ namespace Konesans.Dts.ExpressionEditor
             if (variable.DataType == TypeCode.String)
             {
                 // Format string with quotes for display
-#if DENALI || SQL2014 || SQL2016
+#if YUKON || KATMAI
+                return String.Format(CultureInfo.CurrentCulture, "'{0}'", variable.Value);
+#else
                 // Parameters marked as Sensitive will throw an exception if you access the Value property directly
                 // DTS_E_SENSITIVEPARAMVALUENOTALLOWED - 0xC0017011L
                 // Accessing value of the parameter variable for the sensitive parameter "%1!s!" is not allowed. 
                 // Verify that the variable is used properly and that it protects the sensitive information.
                 return String.Format(CultureInfo.CurrentCulture, "'{0}'", variable.GetSensitiveValue());
-#else
-                return String.Format(CultureInfo.CurrentCulture, "'{0}'", variable.Value);
 #endif
             }
             else if (variable.DataType == TypeCode.UInt16)
@@ -150,11 +150,11 @@ namespace Konesans.Dts.ExpressionEditor
             {
                 // All other types, use plain object.ToString()
 
-#if DENALI || SQL2014 || SQL2016
+#if YUKON || KATMAI
+                return variable.Value.ToString();
+#else
                 // Parameters marked as Sensitive will throw an exception if you access the Value property directly, as above.
                 return variable.GetSensitiveValue().ToString();
-#else
-                return variable.Value.ToString();
 #endif                
             }
         }

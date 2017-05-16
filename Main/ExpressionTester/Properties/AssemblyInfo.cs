@@ -1,6 +1,6 @@
 // ======================================================================================
 // <copyright file="AssemblyInfo.cs" company="Konesans Limited">
-// Copyright (C) 2014 Konesans Limited
+// Copyright (C) 2017 Konesans Limited
 // </copyright>
 // ======================================================================================
 
@@ -9,7 +9,13 @@ using System.Reflection;
 using System.Resources;
 using System.Runtime.InteropServices;
 
-#if SQL2016
+#if SQL2017
+[assembly: AssemblyTitle("Expression Tester 2017")]
+[assembly: AssemblyProduct("Expression Tester Tool for SQL Server 2017")]
+[assembly: AssemblyDescription("SQL Server 2017 Integration Services expression development and testing tool.")]
+[assembly: AssemblyVersion("6.0.0.0")]
+[assembly: AssemblyFileVersion("6.0.9.0")]
+#elif SQL2016
 [assembly: AssemblyTitle("Expression Tester 2016")]
 [assembly: AssemblyProduct("Expression Tester Tool for SQL Server 2016")]
 [assembly: AssemblyDescription("SQL Server 2016 Integration Services expression development and testing tool.")]
@@ -42,7 +48,7 @@ using System.Runtime.InteropServices;
 #endif
 
 [assembly: AssemblyCompany("Konesans Limited")]
-[assembly: AssemblyCopyright("Copyright © 2016 Konesans Limited")]
+[assembly: AssemblyCopyright("Copyright © 2017 Konesans Limited")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

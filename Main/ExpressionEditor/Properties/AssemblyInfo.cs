@@ -12,7 +12,11 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Expression Editor")]
 [assembly: AssemblyProduct("Expression Editor Control")]
 
-#if SQL2016
+#if SQL2017
+[assembly: AssemblyDescription("SQL Server 2017 Integration Services expression editor control library.")]
+[assembly: AssemblyVersion("6.1.0.0")]
+[assembly: AssemblyFileVersion("6.1.10.0")]
+#elif SQL2016
 [assembly: AssemblyDescription("SQL Server 2016 Integration Services expression editor control library.")]
 [assembly: AssemblyVersion("5.1.0.0")]
 [assembly: AssemblyFileVersion("5.1.10.0")]

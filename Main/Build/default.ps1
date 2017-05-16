@@ -12,10 +12,10 @@ properties{#directories
 }
 
 properties { #solution file
-    $sln_file_2008 = "$base_dir\ExpressionTester2008.sln"
     $sln_file_2012 = "$base_dir\ExpressionTester2012.sln"
     $sln_file_2014 = "$base_dir\ExpressionTester2014.sln"
 	$sln_file_2016 = "$base_dir\ExpressionTester2016.sln"
+	$sln_file_2017 = "$base_dir\ExpressionTester2017.sln"
 }
 
 
@@ -23,7 +23,7 @@ properties { #utility locations
     $msbuild = "msbuild.exe"  
     $tf = "$env:ProgramFiles\Microsoft Visual Studio 14.0\Common7\IDE\tf.exe"
     # Install 7-Zip - 7-Zip for 64-bit Windows x64 (Intel 64 or AMD64)
-    $zip = "C:\Program Files (x86)\7-zip\7z.exe"
+    $zip = "C:\Program Files\7-zip\7z.exe"
     $sign = "C:\Program Files (x86)\Windows Kits\10\bin\x86\signtool.exe"
 }
 
@@ -122,11 +122,44 @@ task Copy2016 -depends Compile2016 {
     copy-item "$base_dir\ExpressionTester\bin\Release\ExpressionTester.exe" "$base_dir\Releases\ExpressionEditor2016\"
 }
 
-task MakeZips -depends Copy2012, Copy2014, Copy2016 {
+
+task Clean2017 -depends Copy2016 { 
+    if (!(Test-Path "$base_dir\Releases\ExpressionEditor2017"))
+    {
+        new-item "$base_dir\Releases\ExpressionEditor2017"-type directory
+    }
+
+    if (test-path "$base_dir\ExpressionEditor\bin\Release\")
+    {
+        remove-item "$base_dir\ExpressionEditor\bin\Release\" -recurse
+    }
+
+    if (test-path "$base_dir\ExpressionTester\bin\Release\")
+    {
+        remove-item "$base_dir\ExpressionTester\bin\Release\" -recurse
+    }
+}
+
+task Compile2017 -depends Clean2017 {
+    $frameworkbuild = ($framework_dir_4 + "\" + $msbuild)
+    write-Host "Path: $frameworkbuild"
+	Write-Host $sln_file_2017
+    &($frameworkbuild) $sln_file_2017 /t:Rebuild /p:Configuration=Release /v:q /p:DefineConstants="SQL2017" 
+
+    &($sign) sign /a /d "Expression Tester" /du http://www.konesans.com /t http://timestamp.comodoca.com/authenticode "$base_dir\ExpressionTester\bin\Release\ExpressionTester.exe"
+}
+
+task Copy2017 -depends Compile2017 {
+    copy-item "$base_dir\ExpressionEditor\bin\Release\ExpressionEditor.dll" "$base_dir\Releases\ExpressionEditor2017\"
+    copy-item "$base_dir\ExpressionTester\bin\Release\ExpressionTester.exe" "$base_dir\Releases\ExpressionEditor2017\"
+}
+
+task MakeZips -depends Copy2012, Copy2014, Copy2016, Copy2017 {
     write-Host "Starting Zip $base_dir"
 
     &($zip) a -tzip "$base_dir\Releases\ExpressionEditor.zip" "$base_dir\Releases\ExpressionEditor2012\"
     &($zip) a -tzip "$base_dir\Releases\ExpressionEditor.zip" "$base_dir\Releases\ExpressionEditor2014\"
 	&($zip) a -tzip "$base_dir\Releases\ExpressionEditor.zip" "$base_dir\Releases\ExpressionEditor2016\"
+	&($zip) a -tzip "$base_dir\Releases\ExpressionEditor.zip" "$base_dir\Releases\ExpressionEditor2017\"
 }
 

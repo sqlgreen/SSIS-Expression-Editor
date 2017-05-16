@@ -24,8 +24,10 @@ namespace PackageTest
             Forms.Application.EnableVisualStyles();
             Forms.Application.SetCompatibleTextRenderingDefault(false);
 
+            // MSCoreXml errors here can indicate SSIS is not installed, cannot get away with just SSDT for this.
             Package package = new Package();
             Executable exec = package.Executables.Add("STOCK:FileSystemTask");
+            
             TaskHost taskHost = exec as TaskHost;
 
             Variable variable = package.Variables.Add("MyVariable", false, "User", string.Empty);

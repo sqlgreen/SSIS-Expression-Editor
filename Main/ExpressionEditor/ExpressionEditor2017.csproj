@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7AB5FDFF-4AF9-4F20-8AEF-FC9B1F82B4CC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Konesans.Dts.ExpressionEditor</RootNamespace>
+    <AssemblyName>ExpressionEditor</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\..\KonesansStrongNameKeyPublicPrivateKeyPair.pfx</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;SQL2017</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>BasicCorrectnessRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;SQL2017</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.SQLServer.DTSRuntimeWrap, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=x86">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.SQLServer.ManagedDTS, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\ExpressionRichTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FindOrReplaceEventArgs.cs" />
+    <Compile Include="Controls\UndoOrRedoCountChangedEventArgs.cs" />
+    <Compile Include="Controls\ResultTypeChangedEventArgs.cs" />
+    <Compile Include="Controls\CursorPositionChangedEventArgs.cs" />
+    <Compile Include="Controls\UndoText.cs" />
+    <Compile Include="Controls\VariableSelectionChangedEventArgs.cs" />
+    <Compile Include="Controls\TitleChangedEventArgs.cs" />
+    <Compile Include="DTSInfoEvents.cs" />
+    <Compile Include="ExceptionMessageBox.cs" />
+    <Compile Include="ExpressionEditorPublic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExpressionEditorPublic.Designer.cs">
+      <DependentUpon>ExpressionEditorPublic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ExpressionEditorView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ExpressionEditorView.designer.cs">
+      <DependentUpon>ExpressionEditorView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ExpressionFunctionsEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ExpressionFunctionsEditor.Designer.cs">
+      <DependentUpon>ExpressionFunctionsEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ExpressionEditorViewSerializer.cs" />
+    <Compile Include="ExpressionEvaluator.cs" />
+    <Compile Include="ExpressionException.cs" />
+    <Compile Include="Controls\FindReplace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\FindReplace.Designer.cs">
+      <DependentUpon>FindReplace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Line3D.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Line3D.Designer.cs">
+      <DependentUpon>Line3D.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MruComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Controls\RichPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\RichPanel.Designer.cs">
+      <DependentUpon>RichPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources2012\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RuntimeHelper.cs" />
+    <Compile Include="Controls\VariableEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\VariableEditor.Designer.cs">
+      <DependentUpon>VariableEditor.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\ExpressionEditorView.resx">
+      <DependentUpon>ExpressionEditorView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ExpressionFunctionsEditor.resx">
+      <DependentUpon>ExpressionFunctionsEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FindReplace.resx">
+      <DependentUpon>FindReplace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\VariableEditor.resx">
+      <DependentUpon>VariableEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExpressionEditorPublic.resx">
+      <DependentUpon>ExpressionEditorPublic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources2012\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <CustomToolNamespace>Konesans.Dts.ExpressionEditor</CustomToolNamespace>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDictionary Include="..\CustomDictionary.xml">
+      <Link>Properties\CustomDictionary.xml</Link>
+    </CodeAnalysisDictionary>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources2012\ExpressionEdit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources2012\ExpressionlNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources2012\SystemVariable.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources2012\Variable.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources2012\Expression.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources2012\FolderOpen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources2012\Folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources2012\BlueDown16.png" />
+    <None Include="Resources2012\BlueLeft16.png" />
+    <None Include="Resources2012\BlueRight16.png" />
+    <None Include="Resources2012\BlueUp16.png" />
+    <None Include="Resources2012\Copy.png" />
+    <None Include="Resources2012\Cut.png" />
+    <None Include="Resources2012\Delete.png" />
+    <None Include="Resources2012\EditRedo.png" />
+    <None Include="Resources2012\EditUndo.png" />
+    <None Include="Resources2012\ExpressionEditor.xml">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources2012\Find.png" />
+    <None Include="Resources2012\GoLtr.bmp" />
+    <None Include="Resources2012\GoRtl.bmp" />
+    <None Include="Resources2012\Help.bmp" />
+    <None Include="Resources2012\NewFolder.png" />
+    <None Include="Resources2012\Paste.png" />
+    <None Include="Resources2012\Replace.png" />
+    <None Include="Resources2012\Save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\KonesansStrongNameKeyPublicPrivateKeyPair.pfx">
+      <Link>Properties\KonesansStrongNameKeyPublicPrivateKeyPair.pfx</Link>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources2012\Run.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources2012\VariableNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources2012\Parameterize.ico" />
+    <Content Include="Resources2012\Parameter.ico" />
+    <Content Include="Resources2012\VariableDelete.png" />
+    <Content Include="Resources2012\VariableEdit.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
