@@ -21,7 +21,27 @@ namespace Konesans.Dts.Tools.ExpressionTester
         /// Support text for assembly check failures.
         /// </summary>
         private const string SupportText = "http://www.konesans.com/";
-#if SQL2016
+#if SQL2017
+        /// <summary>
+        /// SQL Server 2017 version text
+        /// </summary>
+        private const string SqlVersionText = "2017";
+
+        /// <summary>
+        /// Assembly name for SQL Server 2017 Interation Services runtime wrapper
+        /// </summary>
+        private const string RuntimeWrapperAssemblyName = "Microsoft.SqlServer.DTSRuntimeWrap, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91";
+
+        /// <summary>
+        /// Assembly name for SQL Server 2017 Interation Services managed assembly
+        /// </summary>
+        private const string ManagedDTSAssemblyName = "Microsoft.SqlServer.ManagedDTS, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91";
+
+        /// <summary>
+        /// Assembly name for SQL Server 2017 Interation Services compatible expression editor control library
+        /// </summary>
+        private const string ExpressionEditorAssemblyName = "ExpressionEditor, Version=6.1.0.0, Culture=neutral, PublicKeyToken=b2ab4a111192992b";
+#elif SQL2016
         /// <summary>
         /// SQL Server 2016 version text
         /// </summary>
@@ -40,7 +60,7 @@ namespace Konesans.Dts.Tools.ExpressionTester
         /// <summary>
         /// Assembly name for SQL Server 2016 Interation Services compatible expression editor control library
         /// </summary>
-        private const string ExpressionEditorAssemblyName = "ExpressionEditor, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b2ab4a111192992b";
+        private const string ExpressionEditorAssemblyName = "ExpressionEditor, Version=5.1.0.0, Culture=neutral, PublicKeyToken=b2ab4a111192992b";
 #elif SQL2014
         /// <summary>
         /// SQL Server 2014 version text
@@ -60,7 +80,7 @@ namespace Konesans.Dts.Tools.ExpressionTester
         /// <summary>
         /// Assembly name for SQL Server 2014 Interation Services compatible expression editor control library
         /// </summary>
-        private const string ExpressionEditorAssemblyName = "ExpressionEditor, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b2ab4a111192992b";
+        private const string ExpressionEditorAssemblyName = "ExpressionEditor, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b2ab4a111192992b";
 #elif DENALI
         /// <summary>
         /// SQL Server 2012 version text
@@ -80,7 +100,7 @@ namespace Konesans.Dts.Tools.ExpressionTester
         /// <summary>
         /// Assembly name for SQL Server 2012 Interation Services compatible expression editor control library
         /// </summary>
-        private const string ExpressionEditorAssemblyName = "ExpressionEditor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b2ab4a111192992b";
+        private const string ExpressionEditorAssemblyName = "ExpressionEditor, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b2ab4a111192992b";
 #elif KATMAI
         /// <summary>
         /// SQL Server 2008 version text
@@ -100,7 +120,7 @@ namespace Konesans.Dts.Tools.ExpressionTester
         /// <summary>
         /// Assembly name for SQL Server 2008 Interation Services compatible expression editor control library
         /// </summary>
-        private const string ExpressionEditorAssemblyName = "ExpressionEditor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b2ab4a111192992b";
+        private const string ExpressionEditorAssemblyName = "ExpressionEditor, Version=2.1.0.0, Culture=neutral, PublicKeyToken=b2ab4a111192992b";
 #elif YUKON
         /// <summary>
         /// SQL Server 2005 version text
@@ -120,7 +140,7 @@ namespace Konesans.Dts.Tools.ExpressionTester
         /// <summary>
         /// Assembly name for SQL Server 2005 Interation Services compatible expression editor control library
         /// </summary>
-       private const string ExpressionEditorAssemblyName = "ExpressionEditor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b2ab4a111192992b";
+       private const string ExpressionEditorAssemblyName = "ExpressionEditor, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b2ab4a111192992b";
 #endif
 
         /// <summary>

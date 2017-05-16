@@ -1,6 +1,6 @@
 ﻿// ======================================================================================
 // <copyright file="AssemblyInfo.cs" company="Konesans Limited">
-// Copyright (C) 2016 Konesans Limited
+// Copyright (C) 2017 Konesans Limited
 // </copyright>
 // ======================================================================================
 
@@ -12,7 +12,11 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Package Test")]
 [assembly: AssemblyProduct("Package Test")]
 
-#if SQL2016
+#if SQL2017
+[assembly: AssemblyDescription("SQL Server 2017 Integration Services expression editor test harness.")]
+[assembly: AssemblyVersion("6.0.0.0")]
+[assembly: AssemblyFileVersion("6.0.0.0")]
+#elif SQL2016
 [assembly: AssemblyDescription("SQL Server 2016 Integration Services expression editor test harness.")]
 [assembly: AssemblyVersion("5.0.0.0")]
 [assembly: AssemblyFileVersion("5.0.0.0")]

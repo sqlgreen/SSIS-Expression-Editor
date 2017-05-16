@@ -166,7 +166,7 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             this.imageListIcons.Images.Add(Resources.Variable);
             this.imageListIcons.Images.Add(Resources.SystemVariable);
             this.imageListIcons.Images.Add(Resources.Expression);
-#if DENALI || SQL2014 || SQL2016
+#if (!YUKON  && !KATAMAI)
             this.imageListIcons.Images.Add(Resources.Parameter);
 #endif
 
@@ -1339,9 +1339,13 @@ namespace Konesans.Dts.ExpressionEditor.Controls
             this.ResultType = (TypeCode)Enum.Parse(typeof(TypeCode), document.SelectSingleNode("/ExpressionProject/ResultType").InnerText);
             this.ResultTypeValidate = Convert.ToBoolean(document.SelectSingleNode("/ExpressionProject/ResultTypeValidate").InnerText, CultureInfo.CurrentCulture);
 
-            XmlDocument hostDocument = new XmlDocument();
-            hostDocument.LoadXml(document.SelectSingleNode("/ExpressionProject/Host").FirstChild.Value);
-            this.host.LoadFromXML(hostDocument, null);
+            string tempFileName = System.IO.Path.GetTempFileName();
+            File.WriteAllText(tempFileName, document.SelectSingleNode("/ExpressionProject/Host").FirstChild.Value);
+
+            // SSDT 17 install doesn't include v14 of Microsoft.SqlServer.Msxml6_interop.dll, so we cannot use DtsContainer.LoadFromXML method anymore, due to the missing dependency
+            // Changed to use Application.LoadPackage instead
+            Microsoft.SqlServer.Dts.Runtime.Application application = new Microsoft.SqlServer.Dts.Runtime.Application();
+            this.host = application.LoadPackage(tempFileName, null);
         }
 
         /// <summary>
