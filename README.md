@@ -8,7 +8,7 @@ Choose the download that matches the version of SQL Server you have installled. 
 * SQL Server 2014 (v12)
 * SQL Server 2016 (v13)
 * SQL Server 2017 (v14)
-* SQL Server 2018 (v15)
+* SQL Server 2019 (v15)
 
 There are additional downloads for 
 * SQL Server 2005 (v9)
