@@ -1,6 +1,6 @@
 ﻿// ======================================================================================
 // <copyright file="AssemblyInfo.cs" company="Konesans Limited">
-// Copyright (C) 2017 Konesans Limited
+// Copyright (C) 2018 Konesans Limited
 // </copyright>
 // ======================================================================================
 
@@ -12,7 +12,11 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Expression Editor")]
 [assembly: AssemblyProduct("Expression Editor Control")]
 
-#if SQL2017
+#if SQL2019
+[assembly: AssemblyDescription("SQL Server 2019 Integration Services expression editor control library.")]
+[assembly: AssemblyVersion("7.1.0.0")]
+[assembly: AssemblyFileVersion("7.1.10.0")]
+#elif SQL2017
 [assembly: AssemblyDescription("SQL Server 2017 Integration Services expression editor control library.")]
 [assembly: AssemblyVersion("6.1.0.0")]
 [assembly: AssemblyFileVersion("6.1.10.0")]
@@ -39,7 +43,7 @@ using System.Runtime.InteropServices;
 #endif
 
 [assembly: AssemblyCompany("Konesans Limited")]
-[assembly: AssemblyCopyright("Copyright © 2017 Konesans Limited")]
+[assembly: AssemblyCopyright("Copyright © 2018 Konesans Limited")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

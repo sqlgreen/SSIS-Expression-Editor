@@ -21,7 +21,27 @@ namespace Konesans.Dts.Tools.ExpressionTester
         /// Support text for assembly check failures.
         /// </summary>
         private const string SupportText = "http://www.konesans.com/";
-#if SQL2017
+#if SQL2019
+        /// <summary>
+        /// SQL Server 2019 version text
+        /// </summary>
+        private const string SqlVersionText = "2017";
+
+        /// <summary>
+        /// Assembly name for SQL Server 2019 Interation Services runtime wrapper
+        /// </summary>
+        private const string RuntimeWrapperAssemblyName = "Microsoft.SqlServer.DTSRuntimeWrap, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91";
+
+        /// <summary>
+        /// Assembly name for SQL Server 2019 Interation Services managed assembly
+        /// </summary>
+        private const string ManagedDTSAssemblyName = "Microsoft.SqlServer.ManagedDTS, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91";
+
+        /// <summary>
+        /// Assembly name for SQL Server 2019 Interation Services compatible expression editor control library
+        /// </summary>
+        private const string ExpressionEditorAssemblyName = "ExpressionEditor, Version=7.1.0.0, Culture=neutral, PublicKeyToken=b2ab4a111192992b";
+#elif SQL2017
         /// <summary>
         /// SQL Server 2017 version text
         /// </summary>

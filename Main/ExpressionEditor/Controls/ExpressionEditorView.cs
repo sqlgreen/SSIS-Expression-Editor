@@ -1,6 +1,6 @@
 //-------------------------------------------------------------------------------------------------
 // <copyright file="ExpressionEditorView.cs" company="Konesans Limited">
-// Copyright (C) 2017 Konesans Limited.  All rights reserved.
+// Copyright (C) 2018 Konesans Limited.  All rights reserved.
 // </copyright>
 //-------------------------------------------------------------------------------------------------
 

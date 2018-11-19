@@ -163,7 +163,7 @@ namespace Konesans.Dts.Tools.ExpressionTester
             this.InfoLabel.ReadOnly = true;
             this.InfoLabel.Size = new System.Drawing.Size(363, 53);
             this.InfoLabel.TabIndex = 16;
-            this.InfoLabel.Text = "For information please see CodePlex http://expressioneditor.codeplex.com/\r\n\r\nDeve" +
+            this.InfoLabel.Text = "For information please see GitHub https://github.com/sqlgreen/SSIS-Expression-Editor\r\n\r\nDeve" +
                 "loped by Darren Green, Konesans Limited.";
             // 
             // AboutDialog

@@ -3,3 +3,10 @@
 ################################################################################
 
 /.vs
+/Main/.vs
+/Main/ExpressionEditor/bin
+/Main/ExpressionEditor/obj
+/Main/ExpressionTester/bin
+/Main/ExpressionTester/obj
+/Main/PackageTest/bin
+/Main/PackageTest/obj

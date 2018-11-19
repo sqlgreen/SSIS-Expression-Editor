@@ -925,7 +925,7 @@ namespace Konesans.Dts.Tools.ExpressionTester
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void SearchToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            const string CodeplexUrl = "http://expressioneditor.codeplex.com/";
+            const string CodeplexUrl = "https://github.com/sqlgreen/SSIS-Expression-Editor";
             System.Diagnostics.Process.Start(CodeplexUrl);
         }
     }

@@ -1,6 +1,6 @@
 ﻿// ======================================================================================
 // <copyright file="AssemblyInfo.cs" company="Konesans Limited">
-// Copyright (C) 2017 Konesans Limited
+// Copyright (C) 2018 Konesans Limited
 // </copyright>
 // ======================================================================================
 
@@ -12,7 +12,11 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Package Test")]
 [assembly: AssemblyProduct("Package Test")]
 
-#if SQL2017
+#if SQL2019
+[assembly: AssemblyDescription("SQL Server 2019 Integration Services expression editor test harness.")]
+[assembly: AssemblyVersion("7.0.0.0")]
+[assembly: AssemblyFileVersion("7.0.0.0")]
+#elif SQL2017
 [assembly: AssemblyDescription("SQL Server 2017 Integration Services expression editor test harness.")]
 [assembly: AssemblyVersion("6.0.0.0")]
 [assembly: AssemblyFileVersion("6.0.0.0")]
@@ -39,7 +43,7 @@ using System.Runtime.InteropServices;
 #endif
 
 [assembly: AssemblyCompany("Konesans Limited")]
-[assembly: AssemblyCopyright("Copyright © 2016 Konesans Limited")]
+[assembly: AssemblyCopyright("Copyright © 2018 Konesans Limited")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
