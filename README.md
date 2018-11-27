@@ -1,5 +1,5 @@
 # SSIS Expression Editor & Tester
-## Downoads
+## Downloads
 See [Releases folder for the latest downloads](https://github.com/sqlgreen/SSIS-Expression-Editor/tree/master/Main/Releases)
 ## Expression Tester
 The expression tester tool is a standalone application that allows you to easily develop and test expressions. It is like a workbench to quickly try things without having to open a package or mess up the one your currently working on. It is designed to be easily portable, just extract the files and run, but it does require SQL Server Integration Services to be installed on the machine. 
